@@ -1,7 +1,22 @@
-
-def setDataBase(saving,qtdJogos,numJogo,titulo,nome,fase,life,lifeRegen,ataque,defesa,magia,moedas,itens,lifeInim,ataqueInim,defesaInim):
-    
-    file = open("./Database/Dados_Salvos/"+str(numJogo),'w')
+def saveToStorage(
+    saving, 
+    qtdJogos, 
+    numJogo, 
+    titulo, 
+    nome, 
+    fase, 
+    life, 
+    lifeRegen, 
+    ataque, 
+    defesa, 
+    magia, 
+    moedas, 
+    itens, 
+    lifeInim, 
+    ataqueInim, 
+    defesaInim
+):
+    file = open("./Database/Dados_Salvos/"+str(numJogo), 'w')
     
     file.write(str(titulo) + "\n")
     file.write(str(nome) + "\n")
@@ -18,14 +33,9 @@ def setDataBase(saving,qtdJogos,numJogo,titulo,nome,fase,life,lifeRegen,ataque,d
     file.write(str(defesaInim) + "\n")
     
     file.close()
-    
-## ---------//-----------//------
+
     # Deixando progresso visível
-    
-    file = open("./Database/dadosGame.txt",'w')
+    file = open("./Database/dadosGame.txt", 'w')
     file.write(str(saving) + "\n")
     file.write(str(qtdJogos))
     file.close()
-    
-# setDataBase(True,1,"Title","dan",2,100,30,80,70,10,500,[],90,70,50)
-

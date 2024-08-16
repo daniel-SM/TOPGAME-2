@@ -1,7 +1,6 @@
+from search_player_items import searchItems
 
-from PRCRND_ITNSprsngm import procurandoItens
-
-def venderItens(itensPerson,moedas):
+def sellItems(itensPerson, moedas):
     item= input("\nNº do item: ")
     
     aux= True
@@ -20,13 +19,13 @@ def venderItens(itensPerson,moedas):
         
             itensPerson.pop(i)
         
-            poder= procurandoItens(itensPerson,texto,tipo)
+            poder= searchItems(itensPerson,texto,tipo)
         
         i+= 1
         
     if(aux):
         print("Item não encontrado!")
-        itensPerson,moedas,poder= venderItens(itensPerson,moedas)
+        itensPerson,moedas,poder= sellItems(itensPerson,moedas)
         
     return itensPerson,moedas,poder,tipo
         

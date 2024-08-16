@@ -1,6 +1,6 @@
 import time
 
-def mostrandoItens(itens,texto):
+def showItems(itens, texto):
     for i in range(len(itens)):
         print("")
         print(itens[i][0],"-",itens[i][1])
@@ -9,5 +9,4 @@ def mostrandoItens(itens,texto):
         time.sleep(0.5)
         
         input("\nEnter para continuar...")
-        print("")
-#
+        print()

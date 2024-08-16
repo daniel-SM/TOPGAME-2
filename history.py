@@ -2,9 +2,9 @@
 import time
 
 # Importando funcao para limpar o terminal
-from LIMPAR import limpar
+from clear import limpar
 
-def Game_History(nome):
+def printInitialHistory(nome):
     # Imprimindo a historia inicial do RPG
     print()
     print("||---------##---------##---------##---------||")

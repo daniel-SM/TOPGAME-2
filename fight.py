@@ -3,11 +3,11 @@
 import time
 import random
 
-from DANO import calcAtaque
-from DESEJO import desejoErro
-from SUSPENSE import suspense
-     
-def batalha(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas,i):
+from damage import calculateAttack
+from option import validateOption
+from suspense import makeSuspense
+
+def fight(life, lifeInim, ataque, ataqueInim, defesa, defesaInim, magia, moedas, i):
 
     if(ataque-defesaInim <= 0) and (ataqueInim-defesa <= 0):
         print('''
@@ -36,8 +36,8 @@ def batalha(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas,i):
             if(jogsInim > 1):
                 print("\nSeu inimigo novamente!\n")
             print("\nSeu inimigo está atacando!")
-            suspense(0.3)
-            life,fim= calcAtaque(1,life,ataqueInim,defesa)
+            makeSuspense(0.3)
+            life,fim= calculateAttack(1,life,ataqueInim,defesa)
             if(fim == True):
                 break
                         
@@ -66,25 +66,25 @@ def batalha(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas,i):
                      
             if(acao == "1"):
                 print("\nVocê está atacando!")
-                suspense(0.3)
-                lifeInim,fim= calcAtaque(0,lifeInim,ataque,defesaInim)
+                makeSuspense(0.3)
+                lifeInim,fim= calculateAttack(0,lifeInim,ataque,defesaInim)
             elif(acao == "2"):
                 print("\nVocê está atacando!")
                 print("Sua magia é",magia)
-                suspense(0.3)
-                lifeInim,fim= calcAtaque(0,lifeInim,ataque,defesaInim,magia)
+                makeSuspense(0.3)
+                lifeInim,fim= calculateAttack(0,lifeInim,ataque,defesaInim,magia)
                 magia= 0
             elif(acao == "3"):
                 sorteio= 2
             elif(acao == "4"):
                 desejo= input("\nQuer mesmo fugir?\n(S: sim) ou (N: não): ")
-                desejo= desejoErro(desejo)
+                desejo= validateOption(desejo)
                 if(desejo == "s"):
                     i-= 1
                     print("\n||---------------------------||")
                     print("||           FUGIU           ||")
                     print("||---------------------------||")
-                    print("||  Você fugiu da batalha!   ||")
+                    print("||  Você fugiu da fight!   ||")
                     print("||  Você perdeu 100 moedas!  ||")
                     print("||---------------------------||")
                     if(moedas > 100):
@@ -121,26 +121,26 @@ def batalha(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas,i):
                 acao= input("\nAção: ")        
             if(acao == "1"):
                 print("\nVocê está atacando!")
-                suspense(0.3)
-                lifeInim,fim= calcAtaque(0,lifeInim,ataque,defesaInim)
+                makeSuspense(0.3)
+                lifeInim,fim= calculateAttack(0,lifeInim,ataque,defesaInim)
             elif(acao == "2"):
                 print("\nVocê está atacando!")
                 print("Sua magia é",magia)
-                suspense(0.3)
-                lifeInim,fim= calcAtaque(0,lifeInim,ataque,defesaInim,magia)
+                makeSuspense(0.3)
+                lifeInim,fim= calculateAttack(0,lifeInim,ataque,defesaInim,magia)
                 magia = 0
             elif(acao == "3"):
                 sorteio= 2
                 fim = False
             elif(acao == "4"):
                 desejo= input("\nQuer mesmo fugir?\n(S - sim) ou (N - não): ")
-                desejo= desejoErro(desejo)
+                desejo= validateOption(desejo)
                 if(desejo == "s"):
                     i-= 1
                     print("\n||---------------------------||")
                     print("||           FUGIU           ||")
                     print("||---------------------------||")
-                    print("||  Você fugiu da batalha!   ||")
+                    print("||  Você fugiu da fight!   ||")
                     print("||  Você perdeu 100 moedas!  ||")
                     print("||---------------------------||")
                     if(moedas > 100):
@@ -160,13 +160,13 @@ def batalha(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas,i):
             if(jogsInim > 1):
                 print("\nSeu inimigo novamente!")
             print("\nSeu inimigo está atacando!")
-            suspense(0.3)
-            life,fim= calcAtaque(1,life,ataqueInim,defesa)
+            makeSuspense(0.3)
+            life,fim= calculateAttack(1,life,ataqueInim,defesa)
             if(fim):
                 break
                    
     return life,magia,moedas,i,True
 
-# batalha(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas)
-#batalha(100,100,140,120,90,60,0,100,1)
+# fight(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas)
+#fight(100,100,140,120,90,60,0,100,1)
 

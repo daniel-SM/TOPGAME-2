@@ -1,6 +1,4 @@
-
-
-def procurandoItens(itensPerson,texto,tipo):
+def searchItems(itensPerson, texto, tipo):
     aux= True
     
     for i in range(len(itensPerson)):

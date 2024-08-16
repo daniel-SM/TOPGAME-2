@@ -4,13 +4,13 @@ import random
 import time
 
 # Importando funcao para mostrar a historia inicial
-from HISTORY_GAME   import Game_History
+from history import printInitialHistory
 # Importando funcao para consultar os jogos salvos
-from CONSULTA_JOGOS import consultaJogos
+from games   import searchSavedGames
 # Importando funcao para gerenciar a batalha completa
-from BATALHA_Nlog   import batalhaNlog
+from battle  import battleManager
 # Importando funcao para validar a entrada do usuario 
-from DESEJO         import desejoErro
+from option  import validateOption
 
 # Imprimindo o nome do jogo
 print('''
@@ -36,7 +36,7 @@ file = open("./Database/dadosGame.txt", "r")
 # Carregando informacao se existe jogo salvo
 jogoSalvo = eval(file.readline().rstrip())
 # Carregando quantidade de jogos salvos
-qtdJogos  =  int(file.readline().rstrip())
+qtdJogos  = int(file.readline().rstrip())
 
 # Fechando arquivo
 file.close()
@@ -48,12 +48,12 @@ iniciarZero = True
 if (jogoSalvo == True):
     # Perguntando se o jogador quer continuar algum progresso
     desejo = input("\nS - sim\nN - não\nContinuar algum progresso salvo? ")
-    desejo = desejoErro(desejo)
+    desejo = validateOption(desejo)
     
     # Caso queira continuar progresso, faz busca dos jogos salvos
     if (desejo == "s"):
         # Funcao para buscar e imprimir informacao dos jogos salvos
-        jogoSalvo = consultaJogos(qtdJogos)
+        jogoSalvo = searchSavedGames(qtdJogos)
         
         print("\nResgatando o progresso...\n")
         time.sleep(1)
@@ -107,7 +107,7 @@ if (iniciarZero == True):
     aumentar    = True
 
     # História Inicial do Jogo
-    Game_History(nome)
+    printInitialHistory(nome)
 # Fim do if
 
 # Variavel de controle do loop
@@ -138,7 +138,7 @@ while (fase < 15 or not fim):
         lifeRegen,
         fase,
         fim,
-        aumentar = batalhaNlog(
+        aumentar = battleManager(
             qtdJogos,
             nome,
             itensPerson,

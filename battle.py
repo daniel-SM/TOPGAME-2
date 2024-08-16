@@ -1,15 +1,27 @@
-#DK 
-#
-#
 import time
-from LIMPAR import limpar
+from clear import limpar
 
-from MERCADO import mercado
-from BATALHA import batalha
-from DESEJO import desejoErro
-from DATABASE import setDataBase
+from market import market
+from fight import fight
+from option import validateOption
+from storage import saveToStorage
 
-def batalhaNlog(qtdJogos,nome,itensPerson,lifeRegen,life,lifeInim,magia,ataque,ataqueInim,defesa,defesaInim,moedas,jogoSalvo,n):
+def battleManager(
+    qtdJogos, 
+    nome, 
+    itensPerson, 
+    lifeRegen, 
+    life, 
+    lifeInim, 
+    magia, 
+    ataque, 
+    ataqueInim, 
+    defesa, 
+    defesaInim, 
+    moedas, 
+    jogoSalvo, 
+    n
+):
     limpar(100)
     
     print("||--------##--------##--------##----||")
@@ -48,22 +60,22 @@ def batalhaNlog(qtdJogos,nome,itensPerson,lifeRegen,life,lifeInim,magia,ataque,a
         acao= input("\nAção: ")
 
         if(acao == "1"):
-            print("\nComeçar batalha!")
-            desejo= input("\nQuer mesmo começar a batalha?\n(S: sim) ou (N: não): ")
-            desejo= desejoErro(desejo)
+            print("\nComeçar fight!")
+            desejo= input("\nQuer mesmo começar a fight?\n(S: sim) ou (N: não): ")
+            desejo= validateOption(desejo)
             if(desejo == "s"):
                 print("\n||--------------------||")
                 print("||       BATALHA      ||")
                 print("||--------------------||\n")
         
-                life,magia,moedas,n,aumentar = batalha(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas,n)
+                life,magia,moedas,n,aumentar = fight(life,lifeInim,ataque,ataqueInim,defesa,defesaInim,magia,moedas,n)
                 time.sleep(2)
             else:
                 acao= ""
                 limpar(10)
         
         elif(acao == "2"):
-            itensPerson,moedas,life,ataque,defesa,lifeRegen,magia= mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia)
+            itensPerson,moedas,life,ataque,defesa,lifeRegen,magia= market(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia)
             time.sleep(2)
             limpar(10)
         
@@ -86,24 +98,24 @@ def batalhaNlog(qtdJogos,nome,itensPerson,lifeRegen,life,lifeInim,magia,ataque,a
     
         elif(acao == "4"):
             desejo = input("\nSalvar o progresso?\n(S: sim) ou (N: não): ")
-            desejo = desejoErro(desejo)
+            desejo = validateOption(desejo)
             
             if(desejo == 's'):
                 print("\nSalvando seu progresso...")
                 time.sleep(1)
                 
                 if(jogoSalvo):
-                    setDataBase(True,qtdJogos,jogoSalvo,"PAUSADO",nome,n,life,lifeRegen,ataque,defesa,magia,moedas,itensPerson,lifeInim,ataqueInim,defesaInim)
+                    saveToStorage(True,qtdJogos,jogoSalvo,"PAUSADO",nome,n,life,lifeRegen,ataque,defesa,magia,moedas,itensPerson,lifeInim,ataqueInim,defesaInim)
                 else:
                     jogoSalvo = qtdJogos+1
                     qtdJogos += 1
-                    setDataBase(True,qtdJogos,jogoSalvo,"PAUSADO",nome,n,life,lifeRegen,ataque,defesa,magia,moedas,itensPerson,lifeInim,ataqueInim,defesaInim)
-                   
+                    saveToStorage(True,qtdJogos,jogoSalvo,"PAUSADO",nome,n,life,lifeRegen,ataque,defesa,magia,moedas,itensPerson,lifeInim,ataqueInim,defesaInim)
+
             limpar(10)
         
         elif(acao == "5"):
             desejo = input("\nQuer mesmo sair do jogo?\n(S: sim) ou (N: não): ")
-            desejo = desejoErro(desejo)
+            desejo = validateOption(desejo)
             
             if(desejo == 's'):
                 print("\nSaindo do jogo...")
@@ -126,7 +138,3 @@ def batalhaNlog(qtdJogos,nome,itensPerson,lifeRegen,life,lifeInim,magia,ataque,a
         
         
     return itensPerson,moedas,ataque,defesa,magia,life,lifeRegen,n,fim,aumentar
-
-# batalhaNlog(lifeRegen,life,lifeInim,ataque,ataqueInim,defesa,defesaInim,moedas,n):
-#moedas,ataque,defesa,life,lifeRegen= batalhaNlog(30,100,100,0,150,120,80,50,300,1)
-

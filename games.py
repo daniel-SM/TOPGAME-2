@@ -1,5 +1,4 @@
-def consultaJogos(qtdJogos):
-    
+def searchSavedGames(qtdJogos):
     arquivo = 1
     while(arquivo != 0) and (arquivo <= qtdJogos) and (qtdJogos > 0):
         file = open("./Database/Dados_Salvos/"+str(arquivo),'r')
@@ -41,5 +40,3 @@ def consultaJogos(qtdJogos):
         jogoSalvo = int(jogoSalvo)
     
     return jogoSalvo
-
-# consultaJogos(1)

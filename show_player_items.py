@@ -1,6 +1,6 @@
 import time
 
-def mostrandoItensPrsngm(itensPerson):
+def showPurchasedItems(itensPerson):
     for i in range(len(itensPerson)):
         print("")
         print(itensPerson[i][0],"-",itensPerson[i][1])

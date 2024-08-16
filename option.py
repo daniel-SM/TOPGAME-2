@@ -1,4 +1,4 @@
-def desejoErro(desejo):
+def validateOption(desejo):
     desejo= desejo.lower()
     while(desejo != "s" and desejo != "n"):
         print("Inválido!")

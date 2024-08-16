@@ -1,5 +1,6 @@
+import time 
 
-def comprandoItens(itensPerson,itens,moedas,poder,texto,num=None,teste=False):
+def buyItems(itensPerson, itens, moedas, poder, texto, num = None, teste = False):
     item= input("\nNº do item: ")
         
     aux= True
@@ -23,7 +24,7 @@ def comprandoItens(itensPerson,itens,moedas,poder,texto,num=None,teste=False):
 
             elif(moedas > 200):          
                 print("\nMoedas insuficientes!")
-                itensPerson,moedas,poder= comprandoItens(itensPerson,itens,moedas,poder,texto,num,teste)
+                itensPerson,moedas,poder= buyItems(itensPerson,itens,moedas,poder,texto,num,teste)
             else:
                 print("\nMoedas insuficientes!")
                 print("Impossível comprar outro item!")
@@ -33,7 +34,7 @@ def comprandoItens(itensPerson,itens,moedas,poder,texto,num=None,teste=False):
 
     if(aux):
         print("\nItem não encontrado!")
-        itensPerson,moedas,poder= comprandoItens(itensPerson,itens,moedas,poder,texto,num,teste)
+        itensPerson,moedas,poder= buyItems(itensPerson,itens,moedas,poder,texto,num,teste)
     
     return itensPerson,moedas,poder
     

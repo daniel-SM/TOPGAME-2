@@ -1,19 +1,15 @@
-##DK
-#
-#
 import time
 
-from LIMPAR import limpar
-from DESEJO import desejoErro
-from ITENS import itensAtaque,itensDefesa,itensLife,itensRegener,itensMagia
-from MSTRND_ITNS import mostrandoItens
-from MSTRND_ITNSprsngm import mostrandoItensPrsngm
-from CMPRND_ITNS import comprandoItens
-from VENDER_ITNS import venderItens
+from clear import clearScreen
+from option import validateOption
+from show_items import showItems
+from show_player_items import showPurchasedItems
+from buy import buyItems
+from sell import sellItems
+from items import attackItems, defenseItems, potionItems, regenItems, magicItems
 
-def mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia):
-    
-    limpar(100)
+def market(itensPerson, moedas, life, ataque, defesa, lifeRegen, magia):
+    clearScreen(100)
     print("\n||-------##-------##------##------||")
     print("||      BEM-VINDO AO MERCADO      ||")
     print("||-------##-------##------##------||")
@@ -40,41 +36,41 @@ def mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia):
         print("Inválido!")
         loja= input("Numº da loja: ")
     
-    limpar(10)
+    clearScreen(10)
     
     if(loja == "1"):
         print("||--------------------||")
         print("||    LOJA DE ARMAS   ||")
         print("||--------------------||\n")
         
-        mostrandoItens(itensAtaque,"ataque")
+        showItems(attackItems,"ataque")
         desejo= input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo= desejoErro(desejo)
+        desejo= validateOption(desejo)
         if(desejo == "s"):
-            itensPerson,moedas,ataque= comprandoItens(itensPerson,itensAtaque,moedas,ataque,"ataque",0,True)
+            itensPerson,moedas,ataque= buyItems(itensPerson,attackItems,moedas,ataque,"ataque",0,True)
     
     elif(loja == "2"):
         print("||--------------------||")
         print("||  LOJA DE ESCUDOS   ||")
         print("||--------------------||\n")
         
-        mostrandoItens(itensDefesa,"defesa")
+        showItems(defenseItems,"defesa")
         desejo= input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo= desejoErro(desejo)
+        desejo= validateOption(desejo)
         if(desejo == "s"):
-            itensPerson,moedas,defesa= comprandoItens(itensPerson,itensDefesa,moedas,defesa,"defesa",1,True)
+            itensPerson,moedas,defesa= buyItems(itensPerson,defenseItems,moedas,defesa,"defesa",1,True)
     
     elif(loja == "3"):
         print("||--------------------||")
         print("||   LOJA DE POÇÕES   ||")
         print("||--------------------||\n")
         
-        mostrandoItens(itensLife,"vida a mais")
+        showItems(potionItems,"vida a mais")
         desejo= input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo= desejoErro(desejo)
+        desejo= validateOption(desejo)
         if(desejo == "s"):
             poder= 0
-            itensPerson,moedas,poder= comprandoItens(itensPerson,itensLife,moedas,poder,"vida a mais")
+            itensPerson,moedas,poder= buyItems(itensPerson,potionItems,moedas,poder,"vida a mais")
             life+= poder
     
     elif(loja == "4"):
@@ -82,23 +78,23 @@ def mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia):
         print("||  LOJA DE ARMADURAS  ||")
         print("||---------------------||\n")
         
-        mostrandoItens(itensRegener,"vida p/ fase")
+        showItems(regenItems,"vida p/ fase")
         desejo= input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo= desejoErro(desejo)
+        desejo= validateOption(desejo)
         if(desejo == "s"):
-            itensPerson,moedas,lifeRegen= comprandoItens(itensPerson,itensRegener,moedas,lifeRegen,"vida p/ fase",2,True)
+            itensPerson,moedas,lifeRegen= buyItems(itensPerson,regenItems,moedas,lifeRegen,"vida p/ fase",2,True)
             
     elif(loja == "5"):
         print("||--------------------||")
         print("||   LOJA DE MAGIAS   ||")
-        print("||--------------------||\n")
-        
-        mostrandoItens(itensMagia,"ataque extra")
+        print("||--------------------||\n ")
+
+        showItems( magicItems,"ataque extra")
         desejo= input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo= desejoErro(desejo)
+        desejo= validateOption(desejo)
         if(desejo == "s"):
             poder= 0
-            itensPerson,moedas,poder= comprandoItens(itensPerson,itensMagia,moedas,poder,"ataque extra")
+            itensPerson,moedas, poder=  buyItems( itensPerson, magicItems,moedas,poder,"ataque extra")
             magia+= poder
             
     elif(loja == "6"):
@@ -107,11 +103,11 @@ def mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia):
         print("||--------------------||\n")
         
         if(len(itensPerson) > 0):
-            mostrandoItensPrsngm(itensPerson)
+            showPurchasedItems(itensPerson)
             desejo= input("\nVender algum item seu?\n(S: sim) ou (N: não): ")
-            desejo= desejoErro(desejo)
+            desejo= validateOption(desejo)
             if(desejo == "s"):
-                itensPerson,moedas,poder,tipo= venderItens(itensPerson,moedas)
+                itensPerson,moedas,poder,tipo= sellItems(itensPerson,moedas)
                 if(tipo == 0):
                     ataque= poder
                 elif(tipo == 1):
@@ -121,7 +117,7 @@ def mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia):
         else:
             print("\nVOCÊ NÃO TEM ITENS!!!\n")
             desejo= input("Sair do mercado?\n(S: sim) ou (N: não): ")
-            desejo= desejoErro(desejo)
+            desejo= validateOption(desejo)
             if(desejo == "s"):
                 return itensPerson,moedas,life,ataque,defesa,lifeRegen,magia
     
@@ -132,18 +128,18 @@ def mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia):
         
         print("Sair do mercado!\n")
         desejo= input("Quer mesmo sair?\n(S: sim) ou (N: não): ")
-        desejo= desejoErro(desejo)
+        desejo= validateOption(desejo)
         if(desejo == "s"):
             print("\nSaindo do mercado...")
             return itensPerson,moedas,life,ataque,defesa,lifeRegen,magia      
     else:
         print("Inválido!")
-        limpar(100)
-        itensPerson,moedas,life,ataque,defesa,lifeRegen,magia= mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia) 
+        clearScreen(100)
+        itensPerson,moedas,life,ataque,defesa,lifeRegen,magia= market(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia) 
 
     if(desejo == "n"):
-        limpar(100)
-        itensPerson,moedas,life,ataque,defesa,lifeRegen,magia= mercado(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia)
+        clearScreen(100)
+        itensPerson,moedas,life,ataque,defesa,lifeRegen,magia= market(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia)
 
     return itensPerson,moedas,life,ataque,defesa,lifeRegen,magia
 
