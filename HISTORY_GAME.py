@@ -8,7 +8,7 @@ def Game_History(nome):
     # Imprimindo a historia inicial do RPG
     print()
     print("||---------##---------##---------##---------||")
-    print("||    SEJA BEM-VINDO(A), ",nome,"!", sep="")
+    print(f"||    SEJA BEM-VINDO(A), {nome}!")
     print("||---------##---------##---------##---------||")  
     time.sleep(1)
     print("||   Você é um guerreiro que serve ao rei   ||")
