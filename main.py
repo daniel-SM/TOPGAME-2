@@ -1,55 +1,69 @@
-#-*-coding:utf8;-*-
-#qpy:3
-#qpy:console
+# Usado para randomizar o fortalecimento dos inimigos
+import random
+# Usado para dar intervalos ao imprimir mensagens
+import time
 
-##---------##----------##-----------##
-
-import random,time
-
-from DESEJO       import desejoErro
-from BATALHA_Nlog import batalhaNlog
-from HISTORY_GAME import Game_History
+# Importando funcao para mostrar a historia inicial
+from HISTORY_GAME   import Game_History
+# Importando funcao para consultar os jogos salvos
 from CONSULTA_JOGOS import consultaJogos
+# Importando funcao para gerenciar a batalha completa
+from BATALHA_Nlog   import batalhaNlog
+# Importando funcao para validar a entrada do usuario 
+from DESEJO         import desejoErro
 
+# Imprimindo o nome do jogo
 print('''
-||---------##---------##---------##--||
-||                                   ||
-||  ###### #####  #####              ||
-||    ##  ##  ### ##  ##             ||
-||    ##  ## # ## #####              ||
-||    ##   #####  ##                 ||
-||                                   ||
-||     ####    #### ###  ### #####   ||
-||    ##      ## ## ######## ###     ||
-||    ## ### ###### ## ## ## ##      ||
-||     #### ###  ## ##    ## #####   ||
-||                                   ||
-||--------##---------##---------##---||
+||---------##---------##---------##---------||
+||                                          ||
+||  ######   #####    #####                 ||
+||    ##    ##   ##   ##  ##                ||
+||    ##    ##   ##   #####                 ||
+||    ##     #####    ##                    ||
+||                                          ||
+||          ####    ####   ##    ##  #####  ||
+||         ##      ##  ##  ########  ###    ||
+||         ## ###  ######  ## ## ##  ##     ||
+||          ####   ##  ##  ##    ##  #####  ||
+||                                          ||
+||---------##---------##---------##---------||
 ''')
 time.sleep(2)
 
-iniciarZero = True
+# Abrindo arquivo com dados dos jogos salvos
+file = open("./Database/dadosGame.txt", "r")
 
-file = open("./Database/dadosGame.txt",'r')
+# Carregando informacao se existe jogo salvo
 jogoSalvo = eval(file.readline().rstrip())
-qtdJogos  = int(file.readline())
+# Carregando quantidade de jogos salvos
+qtdJogos  =  int(file.readline().rstrip())
+
+# Fechando arquivo
 file.close()
 
-if(jogoSalvo == True):
-    desejo = input("\nContinuar algum progresso salvo?\n(S: sim) ou (N: não): ")
+# Inicializando variavel para indicar se iniciou um novo jogo
+iniciarZero = True
+
+# Verificando se tem jogo salvo
+if (jogoSalvo == True):
+    # Perguntando se o jogador quer continuar algum progresso
+    desejo = input("\nS - sim\nN - não\nContinuar algum progresso salvo? ")
     desejo = desejoErro(desejo)
     
-    if(desejo == "s"):
-        
+    # Caso queira continuar progresso, faz busca dos jogos salvos
+    if (desejo == "s"):
+        # Funcao para buscar e imprimir informacao dos jogos salvos
         jogoSalvo = consultaJogos(qtdJogos)
         
         print("\nResgatando o progresso...\n")
         time.sleep(1)
 
-        file = open("./Database/Dados_Salvos/"+str(jogoSalvo),'r')
+        # Carregando as informacoes do jogo salvo escolhido
+        file = open("./Database/Dados_Salvos/"+str(jogoSalvo), "r")
         arquivo = file.readlines()
         file.close()
         
+        # Salvando as informacoes
         nome        = str(arquivo[1].rstrip())
         fase        = int(arquivo[2].rstrip())
         life        = int(arquivo[3].rstrip())
@@ -63,15 +77,22 @@ if(jogoSalvo == True):
         ataqueInim  = int(arquivo[11].rstrip())
         defesaInim  = int(arquivo[12].rstrip())
         aumentar    = False
-        iniciarZero = False
 
-if(iniciarZero == True):    
+        # Indicando que nao iniciou um novo jogo
+        iniciarZero = False
+# Fim do if
+
+# Verificando se iniciou um novo jogo
+if (iniciarZero == True):
+    # Obtendo o nome do jogador
     nome = input("\nNome: ")
     
-    while(nome == "" or nome == ' '):
-        print("Inválido!!!")
-        nome = input("\nNome: ")
-        
+    # Verificando o nome informado
+    while (nome == "" or nome.isspace()):
+        print("\nInválido!")
+        nome = input("Nome: ")
+    
+    # Definindo as stats iniciais do jogador
     fase        = 0
     life        = 100
     lifeRegen   = 30
@@ -85,35 +106,63 @@ if(iniciarZero == True):
     defesaInim  = 20
     aumentar    = True
 
-    # História do Jogo
+    # História Inicial do Jogo
     Game_History(nome)
+# Fim do if
 
+# Variavel de controle do loop
 fim = False
 
-while(fase < 15):
-    if(fim):
-        break
-
-    if(life > 0):
-        if(fase > 0) and (aumentar == True):
-            life+= lifeRegen
-            lifeInim+= random.choice([5,10])
-            ataqueInim+= random.choice([10,10,20])
-            defesaInim+= random.choice([10,10,20])
+while (fase < 15 or not fim):
+    # Verificando se o jogador ainda tem vida
+    if (life > 0):
+        # Verificando se nao esta na primeira fase 
+        # e se pode fortalecer os inimigos
+        if (fase > 0) and (aumentar == True):
+            # Fortalecendo as stats dos inimigos
+            life       += lifeRegen
+            lifeInim   += random.choice([5, 10])
+            ataqueInim += random.choice([10, 10, 20])
+            defesaInim += random.choice([10, 10, 20])
             
-            moedas+= 150+(50*(fase-1))
+            # Aumentando as moedas do jogador
+            moedas += 150 + (50 * (fase - 1))
         
-        itensPerson,moedas,ataque,defesa,magia,life,lifeRegen,fase,fim,aumentar = batalhaNlog(qtdJogos,nome,itensPerson,lifeRegen,life,lifeInim,magia,ataque,ataqueInim,defesa,defesaInim,moedas,jogoSalvo,fase)
-        
+        # Executando todas as funcionalidades relacionadas com batalha
+        itensPerson,
+        moedas,
+        ataque,
+        defesa,
+        magia,
+        life,
+        lifeRegen,
+        fase,
+        fim,
+        aumentar = batalhaNlog(
+            qtdJogos,
+            nome,
+            itensPerson,
+            lifeRegen,
+            life,
+            lifeInim,
+            magia,
+            ataque,
+            ataqueInim,
+            defesa,
+            defesaInim,
+            moedas,
+            jogoSalvo,
+            fase
+        )
     else:
+        # Caso o jogador nao tenha vida, encerra o jogo
         print("||----------------------------||")
-        print("||                            ||")
-        print("||  O JOGO ACABOU PRA VOCÊ!!  ||")
-        print("||                            ||")
+        print("||        VOCÊ MORREU!        ||")
+        print("||       O JOGO ACABOU!       ||")
         print("||----------------------------||")
-        
         break
-    
+    # Fim do if else
+
+    # Incrementando a fase
     fase += 1
-
-
+# Fim do while 
