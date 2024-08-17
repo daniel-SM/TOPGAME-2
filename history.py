@@ -2,7 +2,7 @@
 import time
 
 # Importando funcao para limpar o terminal
-from clear import limpar
+from clear import clearScreen
 
 def printInitialHistory(nome):
     # Imprimindo a historia inicial do RPG
@@ -42,5 +42,5 @@ def printInitialHistory(nome):
     input("\nEnter para continuar...")
 
     # Limpando o terminal apos a historia
-    limpar(100)
+    clearScreen(100)
 

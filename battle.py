@@ -1,5 +1,5 @@
 import time
-from clear import limpar
+from clear import clearScreen
 
 from market import market
 from fight import fight
@@ -22,7 +22,7 @@ def battleManager(
     jogoSalvo, 
     n
 ):
-    limpar(100)
+    clearScreen(100)
     
     print("||--------##--------##--------##----||")
     print("||             FASE ",n+1,"               ||",sep="")
@@ -72,15 +72,15 @@ def battleManager(
                 time.sleep(2)
             else:
                 acao= ""
-                limpar(10)
+                clearScreen(10)
         
         elif(acao == "2"):
             itensPerson,moedas,life,ataque,defesa,lifeRegen,magia= market(itensPerson,moedas,life,ataque,defesa,lifeRegen,magia)
             time.sleep(2)
-            limpar(10)
+            clearScreen(10)
         
         elif(acao == "3"):
-            limpar(10)
+            clearScreen(10)
             print("\n||--------------------||")
             print("||    VOCÊ            ||")
             print("||    Vida-->",life)
@@ -111,7 +111,7 @@ def battleManager(
                     qtdJogos += 1
                     saveToStorage(True,qtdJogos,jogoSalvo,"PAUSADO",nome,n,life,lifeRegen,ataque,defesa,magia,moedas,itensPerson,lifeInim,ataqueInim,defesaInim)
 
-            limpar(10)
+            clearScreen(10)
         
         elif(acao == "5"):
             desejo = input("\nQuer mesmo sair do jogo?\n(S: sim) ou (N: não): ")
@@ -134,7 +134,7 @@ def battleManager(
         else:
             print("\nInválido!")
             time.sleep(1)
-            limpar(10)
+            clearScreen(10)
         
         
     return itensPerson,moedas,ataque,defesa,magia,life,lifeRegen,n,fim,aumentar
