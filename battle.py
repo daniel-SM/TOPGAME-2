@@ -127,8 +127,6 @@ def battleManager(
                 print("||----------------------||")
                 time.sleep(1)
                 
-                file = open("storage/emulated/0/qpython/projects3/TOPGAME/storage/dados_Jogos.txt",'w')
-                
                 fim = True
                 return itensPerson,moedas,ataque,defesa,magia,life,lifeRegen,n,fim,aumentar
         else:
