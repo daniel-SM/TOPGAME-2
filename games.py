@@ -1,7 +1,7 @@
 def searchSavedGames(qtdJogos):
     arquivo = 1
     while(arquivo != 0) and (arquivo <= qtdJogos) and (qtdJogos > 0):
-        file = open("./Database/Dados_Salvos/"+str(arquivo),'r')
+        file = open("./storage/saved_games/"+str(arquivo),'r')
         
         print("\nN° do jogo salvo:",arquivo)
         print("Status:",file.readline().rstrip())

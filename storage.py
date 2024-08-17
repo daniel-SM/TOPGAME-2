@@ -16,7 +16,7 @@ def saveToStorage(
     ataqueInim, 
     defesaInim
 ):
-    file = open("./Database/Dados_Salvos/"+str(numJogo), 'w')
+    file = open("./storage/saved_games/"+str(numJogo), 'w')
     
     file.write(str(titulo) + "\n")
     file.write(str(nome) + "\n")
@@ -35,7 +35,7 @@ def saveToStorage(
     file.close()
 
     # Deixando progresso visível
-    file = open("./Database/dadosGame.txt", 'w')
+    file = open("./storage/game_info.txt", 'w')
     file.write(str(saving) + "\n")
     file.write(str(qtdJogos))
     file.close()

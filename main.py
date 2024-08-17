@@ -31,7 +31,7 @@ print('''
 time.sleep(2)
 
 # Abrindo arquivo com dados dos jogos salvos
-file = open("./Database/dadosGame.txt", "r")
+file = open("./storage/game_info.txt", "r")
 
 # Carregando informacao se existe jogo salvo
 jogoSalvo = eval(file.readline().rstrip())
@@ -59,7 +59,7 @@ if (jogoSalvo == True):
         time.sleep(1)
 
         # Carregando as informacoes do jogo salvo escolhido
-        file = open("./Database/Dados_Salvos/"+str(jogoSalvo), "r")
+        file = open("./storage/saved_games/"+str(jogoSalvo), "r")
         arquivo = file.readlines()
         file.close()
         
