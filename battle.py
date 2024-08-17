@@ -60,8 +60,8 @@ def battleManager(
         acao= input("\nAção: ")
 
         if(acao == "1"):
-            print("\nComeçar fight!")
-            desejo= input("\nQuer mesmo começar a fight?\n(S: sim) ou (N: não): ")
+            print("\nComeçar batalha!")
+            desejo= input("\nQuer mesmo começar a luta?\n(S: sim) ou (N: não): ")
             desejo= validateOption(desejo)
             if(desejo == "s"):
                 print("\n||--------------------||")
