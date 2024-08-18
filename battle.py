@@ -1,6 +1,6 @@
 import time
-from clear import clearScreen
 
+from clear import clearScreen
 from market import market
 from fight import fight
 from option import validateOption
