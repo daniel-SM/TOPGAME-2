@@ -6,15 +6,15 @@ import time
 # Importando funcao para mostrar a historia inicial
 from history import printInitialHistory
 # Importando funcao para consultar os jogos salvos
-from games   import searchSavedGames
+from games import searchSavedGames
 # Importando funcao para gerenciar a batalha completa
-from battle  import battleManager
+from battle import battleManager
 # Importando funcao para validar a entrada do usuario 
-from option  import validateOption
+from option import validateOption
 
 # Imprimindo o nome do jogo
 print('''
-||---------##---------##---------##---------||
+||------------------------------------------||
 ||                                          ||
 ||  ######   #####    #####                 ||
 ||    ##    ##   ##   ##  ##                ||
@@ -26,7 +26,7 @@ print('''
 ||         ## ###  ######  ## ## ##  ##     ||
 ||          ####   ##  ##  ##    ##  #####  ||
 ||                                          ||
-||---------##---------##---------##---------||
+||------------------------------------------||
 ''')
 time.sleep(2)
 
@@ -53,29 +53,24 @@ if (jogoSalvo == True):
     # Caso queira continuar progresso, faz busca dos jogos salvos
     if (desejo == "s"):
         # Funcao para buscar e imprimir informacao dos jogos salvos
-        jogoSalvo = searchSavedGames(qtdJogos)
+        gameInfo = searchSavedGames(qtdJogos)
         
         print("\nResgatando o progresso...\n")
         time.sleep(1)
 
-        # Carregando as informacoes do jogo salvo escolhido
-        file = open("./storage/saved_games/"+str(jogoSalvo), "r")
-        arquivo = file.readlines()
-        file.close()
-        
         # Salvando as informacoes
-        nome        = str(arquivo[1].rstrip())
-        fase        = int(arquivo[2].rstrip())
-        life        = int(arquivo[3].rstrip())
-        lifeRegen   = int(arquivo[4].rstrip())
-        ataque      = int(arquivo[5].rstrip())
-        defesa      = int(arquivo[6].rstrip())
-        magia       = int(arquivo[7].rstrip())
-        moedas      = int(arquivo[8].rstrip())
-        itensPerson = eval(arquivo[9].rstrip())
-        lifeInim    = int(arquivo[10].rstrip())
-        ataqueInim  = int(arquivo[11].rstrip())
-        defesaInim  = int(arquivo[12].rstrip())
+        nome        = gameInfo["name"]
+        fase        = gameInfo["phase"]
+        life        = gameInfo["life"]
+        lifeRegen   = gameInfo["regen"]
+        ataque      = gameInfo["attack"]
+        defesa      = gameInfo["defense"]
+        magia       = gameInfo["magic"]
+        moedas      = gameInfo["coins"]
+        itensPerson = gameInfo["items"]
+        lifeInim    = gameInfo["enemyLife"]
+        ataqueInim  = gameInfo["enemyAttack"]
+        defesaInim  = gameInfo["enemyDefense"]
         aumentar    = False
 
         # Indicando que nao iniciou um novo jogo
