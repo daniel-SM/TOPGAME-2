@@ -94,7 +94,9 @@ def battleManager(
             print("||    Ataque-->",ataqueInim)
             print("||    Defesa-->",defesaInim)
             print("||--------------------||")
-            time.sleep(4)
+            time.sleep(1)
+
+            input("Enter para continuar...")
     
         elif(acao == "4"):
             desejo = input("\nSalvar o progresso?\n(S: sim) ou (N: não): ")
