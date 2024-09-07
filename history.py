@@ -2,14 +2,15 @@
 import time
 
 # Importando funcao para limpar o terminal
-from clear import clearScreen
+from clear import clear_screen
 
-def printInitialHistory(nome):
+
+def initial_history(nome):
     # Imprimindo a historia inicial do RPG
     print()
     print("||---------##---------##---------##---------||")
     print(f"||    SEJA BEM-VINDO(A), {nome}!")
-    print("||---------##---------##---------##---------||")  
+    print("||---------##---------##---------##---------||")
     time.sleep(2)
     print("||   Você é um guerreiro que serve ao rei   ||")
     print("||   e nesse momento está defendendo seu    ||")
@@ -19,7 +20,7 @@ def printInitialHistory(nome):
     print("||   rei e o seu castelo!                   ||")
     time.sleep(2)
     print("||---------##---------##---------##---------||")
-    print("||                 BOA SORTE!               ||") 
+    print("||                 BOA SORTE!               ||")
     print("||---------##---------##---------##---------||")
     input("\nEnter para continuar...")
     print()
@@ -44,4 +45,4 @@ def printInitialHistory(nome):
     input("\nEnter para continuar...")
 
     # Limpando o terminal apos a historia
-    clearScreen(100)
+    clear_screen(100)

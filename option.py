@@ -1,7 +1,7 @@
-def validateOption(desejo):
-    desejo= desejo.lower()
-    while(desejo != "s" and desejo != "n"):
+def validate_option(option):
+    option = option.lower()
+    while option != "s" and option != "n":
         print("Inválido!")
-        desejo= input("(S - sim) ou (N - não): ")
-        desejo= desejo.lower()
-    return desejo
+        option = input("(S - sim) ou (N - não): ")
+        option = option.lower()
+    return option

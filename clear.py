@@ -1,3 +1,3 @@
-def clearScreen(x):
-    for i in range(0, x):
+def clear_screen(n):
+    for i in range(0, n):
         print("\n\n\n")
