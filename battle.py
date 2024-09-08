@@ -8,48 +8,48 @@ from storage import save_to_storage
 
 
 def battle_manager(
-    qtd_jogos,
-    nome,
-    itens_person,
-    life_regen,
-    life,
-    life_inim,
-    magia,
-    ataque,
-    ataque_inim,
-    defesa,
-    defesa_inim,
-    moedas,
-    jogo_salvo,
-    n,
+    saved_games_count,
+    player_name,
+    player_items,
+    player_life_regen,
+    player_life,
+    enemy_life,
+    player_magic,
+    player_attack,
+    enemy_attack,
+    player_defense,
+    enemy_defense,
+    coins,
+    has_saved_game,
+    phase,
 ):
     clear_screen(100)
 
     print("||--------##--------##--------##----||")
-    print("||             FASE ", n + 1, "               ||", sep="")
+    print("||             FASE ", phase + 1, "               ||", sep="")
     print("||--------##--------##--------##----||")
     time.sleep(1)
 
     print()
     print("||--------------------||")
     print("||    VOCÊ")
-    print("||    Vida -->", life)
-    print("||    Ataque -->", ataque)
-    print("||    Defesa -->", defesa)
-    print("||    Magia -->", magia)
-    print("||    Moedas -->", moedas)
+    print("||    Vida -->", player_life)
+    print("||    Ataque -->", player_attack)
+    print("||    Defesa -->", player_defense)
+    print("||    Magia -->", player_magic)
+    print("||    Moedas -->", coins)
     print("||--------------------||")
-    print("||    MONSTRO", n + 1)
-    print("||    Vida -->", life_inim)
-    print("||    Ataque -->", ataque_inim)
-    print("||    Defesa -->", defesa_inim)
+    print("||    MONSTRO", phase + 1)
+    print("||    Vida -->", enemy_life)
+    print("||    Ataque -->", enemy_attack)
+    print("||    Defesa -->", enemy_defense)
     print("||--------------------||")
     time.sleep(4)
 
-    aumentar = True
-    fim = False
-    acao = ""
-    while acao != "1":
+    increase_enemy_power = True
+    battle_ended = False
+    action = ""
+    while action != "1":
         print()
         print("||------------------------||")
         print("||   AÇÕES:               ||")
@@ -60,128 +60,135 @@ def battle_manager(
         print("||   5. Sair do Jogo      ||")
         print("||------------------------||")
 
-        acao = input("\nAção: ")
+        action = input("\nAção: ")
 
-        if acao == "1":
+        if action == "1":
             print("\nComeçar batalha!")
-            desejo = input("\nQuer mesmo começar a luta?\n(S: sim) ou (N: não): ")
-            desejo = validate_option(desejo)
-            if desejo == "s":
+            option = input("\nQuer mesmo começar a luta?\n(S: sim) ou (N: não): ")
+            option = validate_option(option)
+            if option == "s":
                 print()
                 print("||--------------------||")
                 print("||       BATALHA      ||")
                 print("||--------------------||")
                 print()
 
-                life,
-                magia,
-                moedas,
-                n,
-                aumentar = fight(
-                    life,
-                    life_inim,
-                    ataque,
-                    ataque_inim,
-                    defesa,
-                    defesa_inim,
-                    magia,
-                    moedas,
-                    n,
+                player_life,
+                player_magic,
+                coins,
+                phase,
+                increase_enemy_power = fight(
+                    player_life,
+                    enemy_life,
+                    player_attack,
+                    enemy_attack,
+                    player_defense,
+                    enemy_defense,
+                    player_magic,
+                    coins,
+                    phase,
                 )
                 time.sleep(2)
             else:
-                acao = ""
+                action = ""
                 clear_screen(10)
 
-        elif acao == "2":
-            itens_person,
-            moedas,
-            life,
-            ataque,
-            defesa,
-            life_regen,
-            magia = market(
-                itens_person, moedas, life, ataque, defesa, life_regen, magia
+        elif action == "2":
+            player_items,
+            coins,
+            player_life,
+            player_attack,
+            player_defense,
+            player_life_regen,
+            player_magic = market(
+                player_items,
+                coins,
+                player_life,
+                player_attack,
+                player_defense,
+                player_life_regen,
+                player_magic,
             )
             time.sleep(2)
             clear_screen(10)
 
-        elif acao == "3":
+        elif action == "3":
             clear_screen(10)
             print()
             print("||--------------------||")
             print("||    VOCÊ            ||")
-            print("||    Vida -->", life)
-            print("||    Ataque -->", ataque)
-            print("||    Defesa -->", defesa)
-            print("||    Magia -->", magia)
-            print("||    Moedas -->", moedas)
+            print("||    Vida -->", player_life)
+            print("||    Ataque -->", player_attack)
+            print("||    Defesa -->", player_defense)
+            print("||    Magia -->", player_magic)
+            print("||    Moedas -->", coins)
             print("||--------------------||")
-            print("||    MONSTRO", n + 1)
-            print("||    Vida -->", life_inim)
-            print("||    Ataque -->", ataque_inim)
-            print("||    Defesa -->", defesa_inim)
+            print("||    MONSTRO", phase + 1)
+            print("||    Vida -->", enemy_life)
+            print("||    Ataque -->", enemy_attack)
+            print("||    Defesa -->", enemy_defense)
             print("||--------------------||")
             time.sleep(1)
 
             input("Enter para continuar...")
 
-        elif acao == "4":
-            desejo = input("\nSalvar o progresso?\n(S: sim) ou (N: não): ")
-            desejo = validate_option(desejo)
+        elif action == "4":
+            option = input("\nSalvar o progresso?\n(S: sim) ou (N: não): ")
+            option = validate_option(option)
 
-            if desejo == "s":
+            if option == "s":
                 print("\nSalvando seu progresso...")
                 time.sleep(1)
 
-                if jogo_salvo:
+                if has_saved_game:
+                    # TODO: aqui gera o bug de salvar jogo com arquivo "True"
                     save_to_storage(
                         True,
-                        qtd_jogos,
-                        jogo_salvo,
+                        saved_games_count,
+                        has_saved_game,
                         "PAUSADO",
-                        nome,
-                        n,
-                        life,
-                        life_regen,
-                        ataque,
-                        defesa,
-                        magia,
-                        moedas,
-                        itens_person,
-                        life_inim,
-                        ataque_inim,
-                        defesa_inim,
+                        player_name,
+                        phase,
+                        player_life,
+                        player_life_regen,
+                        player_attack,
+                        player_defense,
+                        player_magic,
+                        coins,
+                        player_items,
+                        enemy_life,
+                        enemy_attack,
+                        enemy_defense,
                     )
                 else:
-                    jogo_salvo = qtd_jogos + 1
-                    qtd_jogos += 1
+                    has_saved_game = saved_games_count + 1
+                    saved_games_count += 1
                     save_to_storage(
                         True,
-                        qtd_jogos,
-                        jogo_salvo,
+                        saved_games_count,
+                        has_saved_game,
                         "PAUSADO",
-                        nome,
-                        n,
-                        life,
-                        life_regen,
-                        ataque,
-                        defesa,
-                        magia,
-                        moedas,
-                        itens_person,
-                        life_inim,
-                        ataque_inim,
-                        defesa_inim,
+                        player_name,
+                        phase,
+                        player_life,
+                        player_life_regen,
+                        player_attack,
+                        player_defense,
+                        player_magic,
+                        coins,
+                        player_items,
+                        enemy_life,
+                        enemy_attack,
+                        enemy_defense,
                     )
 
             clear_screen(10)
 
-        elif acao == "5":
-            desejo = input("\nQuer mesmo sair do jogo?\n(S: sim) ou (N: não): ")
-            desejo = validate_option(desejo)
+        elif action == "5":
+            option = input("\nQuer mesmo sair do jogo?\n(S: sim) ou (N: não): ")
+            option = validate_option(option)
 
-            if desejo == "s":
+            if option == "s":
                 print("\nSaindo do jogo...")
 
                 print()
@@ -192,18 +199,18 @@ def battle_manager(
                 print("||----------------------||")
                 time.sleep(1)
 
-                fim = True
+                battle_ended = True
                 return (
-                    itens_person,
-                    moedas,
-                    ataque,
-                    defesa,
-                    magia,
-                    life,
-                    life_regen,
-                    n,
-                    fim,
-                    aumentar,
+                    player_items,
+                    coins,
+                    player_attack,
+                    player_defense,
+                    player_magic,
+                    player_life,
+                    player_life_regen,
+                    phase,
+                    battle_ended,
+                    increase_enemy_power,
                 )
         else:
             print("\nInválido!")
@@ -211,14 +218,14 @@ def battle_manager(
             clear_screen(10)
 
     return (
-        itens_person,
-        moedas,
-        ataque,
-        defesa,
-        magia,
-        life,
-        life_regen,
-        n,
-        fim,
-        aumentar,
+        player_items,
+        coins,
+        player_attack,
+        player_defense,
+        player_magic,
+        player_life,
+        player_life_regen,
+        phase,
+        battle_ended,
+        increase_enemy_power,
     )

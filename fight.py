@@ -1,50 +1,64 @@
 import time
 import random
 
-from damage import calculate_attack
+from damage import calc_damage
 from option import validate_option
 from suspense import make_suspense
 
 
-def fight(life, life_inim, ataque, ataque_inim, defesa, defesa_inim, magia, moedas, i):
+def fight(
+    player_life,
+    enemy_life,
+    player_attack,
+    enemy_attack,
+    player_defense,
+    enemy_defense,
+    player_magic,
+    coins,
+    phase,
+):
 
-    if (ataque - defesa_inim <= 0) and (ataque_inim - defesa <= 0):
-        print("""
-        ||------------------------||
-        ||         EMPATE         ||
-        ||------------------------||
-        ||   Você e seu inimigo   ||
-        ||  tem ataque e defesa   ||
-        ||      equivalentes!     ||
-        ||------------------------||
-        """)
+    if (player_attack - enemy_defense <= 0) and (enemy_attack - player_defense <= 0):
+        print(
+            """
+            ||------------------------||
+            ||         EMPATE         ||
+            ||------------------------||
+            ||   Você e seu inimigo   ||
+            ||       tem poder        ||
+            ||     equivalentes!      ||
+            ||------------------------||
+            """
+        )
         time.sleep(1)
-        i -= 1
-        return life, magia, moedas, i, False
+        phase -= 1
+        return player_life, player_magic, coins, phase, False
 
-    jogs = 0
-    jogs_inim = 0
+    player_turn_counter = 0
+    enemy_turn_counter = 0
 
-    while (life > 0) and (life_inim > 0):
+    while (player_life > 0) and (enemy_life > 0):
+        who_plays_next = random.choice([1, 2])
 
-        sorteio = random.choice([1, 2])
+        if player_turn_counter > 1:
+            player_turn_counter = 0
+            enemy_turn_counter += 1
 
-        if jogs > 1:
-            jogs = 0
-            jogs_inim += 1
-            if jogs_inim > 1:
+            if enemy_turn_counter > 1:
                 print("\nSeu inimigo novamente!\n")
+
             print("\nSeu inimigo está atacando!")
             make_suspense(0.3)
-            life, fim = calculate_attack(1, life, ataque_inim, defesa)
-            if fim == True:
+
+            player_life, fight_completed = calc_damage(1, player_life, enemy_attack, player_defense)
+            if fight_completed == True:
                 break
 
-        if jogs_inim > 1:
-            jogs_inim = 0
-            jogs += 1
+        if enemy_turn_counter > 1:
+            enemy_turn_counter = 0
+            player_turn_counter += 1
 
-            if jogs > 1:
+            if player_turn_counter > 1:
                 print("\nVocê novamente!")
 
             print()
@@ -58,53 +72,58 @@ def fight(life, life_inim, ataque, ataque_inim, defesa, defesa_inim, magia, moed
             print("||   4. Fugir       ||")
             print("||------------------||")
 
-            acao = input("Ação: ")
+            action = input("Ação: ")
 
-            while acao not in ["1", "2", "3", "4"]:
+            while action not in ["1", "2", "3", "4"]:
                 print("Inválido!")
-                acao = input("Ação: ")
+                action = input("Ação: ")
 
-            if acao == "1":
+            if action == "1":
                 print("\nVocê está atacando!")
                 make_suspense(0.3)
-                life_inim, fim = calculate_attack(0, life_inim, ataque, defesa_inim)
-            elif acao == "2":
+
+                enemy_life, fight_completed = calc_damage(0, enemy_life, player_attack, enemy_defense)
+            elif action == "2":
                 print("\nVocê está atacando!")
-                print("Sua magia é", magia)
+                print("Sua magia é", player_magic)
                 make_suspense(0.3)
-                life_inim, fim = calculate_attack(
-                    0, life_inim, ataque, defesa_inim, magia
-                )
-                magia = 0
-            elif acao == "3":
-                sorteio = 2
-            elif acao == "4":
-                desejo = input("\nQuer mesmo fugir?\n(S: sim) ou (N: não): ")
-                desejo = validate_option(desejo)
-                if desejo == "s":
-                    i -= 1
+
+                enemy_life, fight_completed = calc_damage(0, enemy_life, player_attack, enemy_defense, player_magic)
+                player_magic = 0
+            elif action == "3":
+                who_plays_next = 2
+            elif action == "4":
+                option = input("\nQuer mesmo fugir?\n(S: sim) ou (N: não): ")
+                option = validate_option(option)
+
+                if option == "s":
+                    phase -= 1
+
                     print()
                     print("||---------------------------||")
                     print("||           FUGIU           ||")
                     print("||---------------------------||")
-                    print("||  Você fugiu da fight!   ||")
+                    print("||  Você fugiu da batalha!   ||")
                     print("||  Você perdeu 100 moedas!  ||")
                     print("||---------------------------||")
-                    if moedas > 100:
-                        moedas -= 100
+
+                    if coins > 100:
+                        coins -= 100
                     else:
-                        moedas = 0
-                    print("||  Você tem", moedas, "moedas")
+                        coins = 0
+                    print("||  Você tem", coins, "moedas")
                     print("||---------------------------||")
 
-                    return life, magia, moedas, i, True
-            if fim == True:
+                    return player_life, player_magic, coins, phase, True
+
+            if fight_completed == True:
                 break
 
-        if sorteio == 1:
-            jogs_inim = 0
-            jogs += 1
-            if jogs > 1:
+        if who_plays_next == 1:
+            enemy_turn_counter = 0
+            player_turn_counter += 1
+
+            if player_turn_counter > 1:
                 print("\nVocê novamente!")
 
             print()
@@ -118,58 +137,67 @@ def fight(life, life_inim, ataque, ataque_inim, defesa, defesa_inim, magia, moed
             print("||   4. Fugir       ||")
             print("||------------------||")
 
-            acao = input("\nAção: ")
+            action = input("\nAção: ")
 
-            while acao not in ["1", "2", "3", "4"]:
+            while action not in ["1", "2", "3", "4"]:
                 print("Inválido!")
-                acao = input("\nAção: ")
-            if acao == "1":
+                action = input("\nAção: ")
+
+            if action == "1":
                 print("\nVocê está atacando!")
                 make_suspense(0.3)
-                life_inim, fim = calculate_attack(0, life_inim, ataque, defesa_inim)
-            elif acao == "2":
+
+                enemy_life, fight_completed = calc_damage(0, enemy_life, player_attack, enemy_defense)
+            elif action == "2":
                 print("\nVocê está atacando!")
-                print("Sua magia é", magia)
+                print("Sua player_magic é", player_magic)
                 make_suspense(0.3)
-                life_inim, fim = calculate_attack(
-                    0, life_inim, ataque, defesa_inim, magia
-                )
-                magia = 0
-            elif acao == "3":
-                sorteio = 2
-                fim = False
-            elif acao == "4":
-                desejo = input("\nQuer mesmo fugir?\n(S - sim) ou (N - não): ")
-                desejo = validate_option(desejo)
-                if desejo == "s":
-                    i -= 1
+
+                enemy_life, fight_completed = calc_damage(0, enemy_life, player_attack, enemy_defense, player_magic)
+                player_magic = 0
+            elif action == "3":
+                who_plays_next = 2
+                fight_completed = False
+            elif action == "4":
+                option = input("\nQuer mesmo fugir?\n(S - sim) ou (N - não): ")
+                option = validate_option(option)
+
+                if option == "s":
+                    phase -= 1
+
                     print()
                     print("||---------------------------||")
                     print("||           FUGIU           ||")
                     print("||---------------------------||")
-                    print("||  Você fugiu da fight!   ||")
+                    print("||  Você fugiu da batalha!   ||")
                     print("||  Você perdeu 100 moedas!  ||")
                     print("||---------------------------||")
-                    if moedas > 100:
-                        moedas -= 100
+
+                    if coins > 100:
+                        coins -= 100
                     else:
-                        moedas = 0
-                    print("||  Você tem", moedas, "moedas")
+                        coins = 0
+
+                    print("||  Você tem", coins, "moedas")
                     print("||---------------------------||")
 
-                    return life, magia, moedas, i, True
-            if fim == True:
+                    return player_life, player_magic, coins, phase, True
+            if fight_completed == True:
                 break
 
-        if sorteio == 2:
-            jogs = 0
-            jogs_inim += 1
-            if jogs_inim > 1:
+        if who_plays_next == 2:
+            player_turn_counter = 0
+            enemy_turn_counter += 1
+
+            if enemy_turn_counter > 1:
                 print("\nSeu inimigo novamente!")
+            
             print("\nSeu inimigo está atacando!")
             make_suspense(0.3)
-            life, fim = calculate_attack(1, life, ataque_inim, defesa)
-            if fim:
+            
+            player_life, fight_completed = calc_damage(1, player_life, enemy_attack, player_defense)
+
+            if fight_completed:
                 break
 
-    return life, magia, moedas, i, True
+    return player_life, player_magic, coins, phase, True

@@ -1,13 +1,10 @@
 import time
 
 
-def show_purchased_items(itens_person):
-    for i in range(len(itens_person)):
-        print("")
-        print(itens_person[i][0], "-", itens_person[i][1])
-        print("Poder:", itens_person[i][2], "de", itens_person[i][4])
-        print("Valor:", itens_person[i][3], "moedas")
-        time.sleep(0.5)
-
+def show_player_items(player_items):
+    for item in player_items:
+        print()
+        print(item[0], "-", item[1])
+        print("Poder:", item[2], "de", item[4])
+        print("Valor:", item[3], "moedas")
         input("\nEnter para continuar...")
-        print("")

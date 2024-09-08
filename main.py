@@ -40,120 +40,120 @@ time.sleep(2)
 file = open("./storage/game_info.txt", "r")
 
 # Carregando informacao se existe jogo salvo
-jogo_salvo = eval(file.readline().rstrip())
+has_saved_game = eval(file.readline().rstrip())
 # Carregando quantidade de jogos salvos
-qtd_jogos = int(file.readline().rstrip())
+saved_games_count = int(file.readline().rstrip())
 
 # Fechando arquivo
 file.close()
 
 # Inicializando variavel para indicar se iniciou um novo jogo
-iniciar_do_zero = True
+start_from_save = False
 
 # Verificando se tem jogo salvo
-if jogo_salvo == True:
+if has_saved_game:
     # Perguntando se o jogador quer continuar algum progresso
-    desejo = input("\nS - sim\nN - não\nContinuar algum progresso salvo? ")
-    desejo = validate_option(desejo)
+    option = input("\nS - sim\nN - não\nContinuar algum progresso salvo? ")
+    option = validate_option(option)
 
     # Caso queira continuar progresso, faz busca dos jogos salvos
-    if desejo == "s":
+    if option == "s":
         # Funcao para buscar e imprimir informacao dos jogos salvos
-        game_info = search_saved_games(qtd_jogos)
+        game_info = search_saved_games(saved_games_count)
 
         print("\nResgatando o progresso...\n")
         time.sleep(1)
 
         # Salvando as informacoes
-        nome = game_info["name"]
-        fase = game_info["phase"]
-        life = game_info["life"]
-        lifeRegen = game_info["regen"]
-        ataque = game_info["attack"]
-        defesa = game_info["defense"]
-        magia = game_info["magic"]
-        moedas = game_info["coins"]
-        itensPerson = game_info["items"]
-        lifeInim = game_info["enemyLife"]
-        ataqueInim = game_info["enemyAttack"]
-        defesaInim = game_info["enemyDefense"]
-        aumentar = False
+        player_name = game_info["name"]
+        phase = game_info["phase"]
+        player_life = game_info["life"]
+        player_life_regen = game_info["regen"]
+        player_attack = game_info["attack"]
+        player_defense = game_info["defense"]
+        player_magic = game_info["magic"]
+        coins = game_info["coins"]
+        player_items = game_info["items"]
+        enemy_life = game_info["enemyLife"]
+        enemy_attack = game_info["enemyAttack"]
+        enemy_attack = game_info["enemyDefense"]
+        increase_enemy_power = False
 
         # Indicando que nao iniciou um novo jogo
-        iniciar_do_zero = False
+        start_from_save = True
 # Fim do if
 
 # Verificando se iniciou um novo jogo
-if iniciar_do_zero == True:
+if not start_from_save:
     # Obtendo o nome do jogador
-    nome = input("\nNome: ")
+    player_name = input("\nNome: ")
 
     # Verificando o nome informado
-    while nome == "" or nome.isspace():
+    while player_name == "" or player_name.isspace():
         print("\nInválido!")
-        nome = input("Nome: ")
+        player_name = input("Nome: ")
 
     # Definindo as stats iniciais do jogador
-    fase = 0
-    life = 100
-    lifeRegen = 30
-    ataque = 80
-    defesa = 40
-    magia = 0
-    moedas = 300
-    itensPerson = []
-    lifeInim = 70
-    ataqueInim = 50
-    defesaInim = 20
-    aumentar = True
+    phase = 0
+    player_life = 100
+    player_life_regen = 30
+    player_attack = 80
+    player_defense = 40
+    player_magic = 0
+    coins = 300
+    player_items = []
+    enemy_life = 70
+    enemy_attack = 50
+    enemy_attack = 20
+    increase_enemy_power = True
 
     # História Inicial do Jogo
-    initial_history(nome)
+    initial_history(player_name)
 # Fim do if
 
 # Variavel de controle do loop
-fim = False
+battle_ended = False
 
-while fase < 15 or not fim:
+while phase < 15 or not battle_ended:
     # Verificando se o jogador ainda tem vida
-    if life > 0:
+    if player_life > 0:
         # Verificando se nao esta na primeira fase
         # e se pode fortalecer os inimigos
-        if (fase > 0) and (aumentar == True):
+        if (phase > 0) and increase_enemy_power:
             # Fortalecendo as stats dos inimigos
-            life += lifeRegen
-            lifeInim += random.choice([5, 10])
-            ataqueInim += random.choice([10, 10, 20])
-            defesaInim += random.choice([10, 10, 20])
+            player_life += player_life_regen
+            enemy_life += random.choice([5, 10])
+            enemy_attack += random.choice([10, 10, 20])
+            enemy_attack += random.choice([10, 10, 20])
 
-            # Aumentando as moedas do jogador
-            moedas += 150 + (50 * (fase - 1))
+            # Aumentando as coins do jogador
+            coins += 150 + (50 * (phase - 1))
 
         # Executando todas as funcionalidades relacionadas com batalha
-        itensPerson,
-        moedas,
-        ataque,
-        defesa,
-        magia,
-        life,
-        lifeRegen,
-        fase,
-        fim,
-        aumentar = battle_manager(
-            qtd_jogos,
-            nome,
-            itensPerson,
-            lifeRegen,
-            life,
-            lifeInim,
-            magia,
-            ataque,
-            ataqueInim,
-            defesa,
-            defesaInim,
-            moedas,
-            jogo_salvo,
-            fase,
+        player_items,
+        coins,
+        player_attack,
+        player_defense,
+        player_magic,
+        player_life,
+        player_life_regen,
+        phase,
+        battle_ended,
+        increase_enemy_power = battle_manager(
+            saved_games_count,
+            player_name,
+            player_items,
+            player_life_regen,
+            player_life,
+            enemy_life,
+            player_magic,
+            player_attack,
+            enemy_attack,
+            player_defense,
+            enemy_attack,
+            coins,
+            has_saved_game,
+            phase,
         )
     else:
         # Caso o jogador nao tenha vida, encerra o jogo
@@ -165,5 +165,5 @@ while fase < 15 or not fim:
     # Fim do if else
 
     # Incrementando a fase
-    fase += 1
+    phase += 1
 # Fim do while

@@ -1,31 +1,30 @@
-from search_player_items import searchItems
+from update_player_stats import update_stat_value
 
 
-def sell_items(itens_person, moedas):
-    item = input("\nNº do item: ")
+def sell_items(player_items, coins):
+    item_code = input("\nCódigo do item: ")
 
-    aux = True
+    item_found = False
     i = 0
-    while i < len(itens_person):
-        if item == itens_person[i][0]:
-            aux = False
+    while i < len(player_items):
+        if item_code == player_items[i][0]:
+            item_found = True
 
-            moedas += itens_person[i][3]
-            texto = itens_person[i][4]
-            tipo = itens_person[i][5]
+            coins += player_items[i][3]
+            item_description = player_items[i][4]
+            item_type = player_items[i][5]
 
             print("Venda efetuada!")
-            print("Você ganhou", itens_person[i][3], "moedas")
-            print("Você tem", moedas, "moedas")
+            print("Você ganhou", player_items[i][3], "moedas")
+            print("Você tem", coins, "moedas")
 
-            itens_person.pop(i)
+            player_items.pop(i)
 
-            poder = searchItems(itens_person, texto, tipo)
-
+            new_stat_value = update_stat_value(player_items, item_description, item_type)
         i += 1
 
-    if aux:
+    if not item_found:
         print("Item não encontrado!")
-        itens_person, moedas, poder = sell_items(itens_person, moedas)
+        player_items, coins, new_stat_value = sell_items(player_items, coins)
 
-    return itens_person, moedas, poder, tipo
+    return player_items, coins, new_stat_value, item_type

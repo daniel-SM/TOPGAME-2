@@ -1,4 +1,4 @@
-attack_items = [
+ATTACK_ITEMS = [
     ["001", "ARMA", 350, 2000],
     ["011", "ARMA", 340, 1800],
     ["021", "ARMA", 330, 1700],
@@ -27,7 +27,7 @@ attack_items = [
     ["251", "ARMA", 100, 200],
 ]
 
-defense_items = [
+DEFENSE_ITEMS = [
     ["001", "ESCUDO", 300, 2700],
     ["011", "ESCUDO", 290, 2600],
     ["021", "ESCUDO", 280, 2500],
@@ -56,7 +56,7 @@ defense_items = [
     ["251", "ESCUDO", 50, 200],
 ]
 
-potion_items = [
+POTION_ITEMS = [
     ["001", "POÇÃO", 100, 200],
     ["011", "POÇÃO", 90, 180],
     ["021", "POÇÃO", 80, 160],
@@ -70,7 +70,7 @@ potion_items = [
     ["101", "POÇÃO", 0, 0],
 ]
 
-regen_items = [
+REGEN_ITEMS = [
     ["001", "ARMADURA", 150, 1300],
     ["011", "ARMADURA", 130, 1100],
     ["021", "ARMADURA", 110, 900],
@@ -80,7 +80,7 @@ regen_items = [
     ["061", "ARMADURA", 30, 100],
 ]
 
-magic_items = [
+MAGIC_ITEMS = [
     ["001", "MAGIA", 150, 3100],
     ["011", "MAGIA", 140, 2800],
     ["021", "MAGIA", 130, 2500],

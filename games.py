@@ -1,13 +1,13 @@
 # Funcao para obter os jogos salvos da pasta saved_games
-def search_saved_games(games_amount):
+def search_saved_games(saved_games_count):
     # Os arquivos estao nomeados numericamente na ordem que foram criados
     # Iniciamos com valor 1
     count = 1
     # Criando lista parar guardar as informacoes dos jogos salvos
-    games = []
+    saved_games = []
     # Percorrendo os jogos salvos
     # Verificando se ainda tem jogos salvos para mostrar
-    while count <= games_amount:
+    while count <= saved_games_count:
         # Lendo as informacoes do arquivo atual
         file = open(f"./storage/saved_games/{count}", "r")
 
@@ -37,24 +37,24 @@ def search_saved_games(games_amount):
         }
 
         # Adicionar as informacoes na lista de jogos salvos
-        games.append(info)
+        saved_games.append(info)
 
         # Imprimindo as informacoes do jogo atual
         # Definindo a largura do quadro
-        largura = 40
+        width = 40
         print()
-        print(f"||{'-'*(largura-4)}||")
-        print(f"|| Código:       {info['code']   :>{largura-20}} ||")
-        print(f"|| Status:       {info['status'] :>{largura-20}} ||")
-        print(f"|| Nome:         {info['name']   :>{largura-20}} ||")
-        print(f"|| Fase:         {info['phase']  :>{largura-20}} ||")
-        print(f"|| Vida:         {info['life']   :>{largura-20}} ||")
-        print(f"|| Ataque:       {info['attack'] :>{largura-20}} ||")
-        print(f"|| Defesa:       {info['defense']:>{largura-20}} ||")
-        print(f"|| Regeneração:  {info['regen']  :>{largura-20}} ||")
-        print(f"|| Magia:        {info['magic']  :>{largura-20}} ||")
-        print(f"|| Moedas:       {info['coins']  :>{largura-20}} ||")
-        print(f"||{'-'*(largura-4)}||")
+        print(f"||{'-'*(width-4)}||")
+        print(f"|| Código:       {info['code']   :>{width-20}} ||")
+        print(f"|| Status:       {info['status'] :>{width-20}} ||")
+        print(f"|| Nome:         {info['name']   :>{width-20}} ||")
+        print(f"|| Fase:         {info['phase']  :>{width-20}} ||")
+        print(f"|| Vida:         {info['life']   :>{width-20}} ||")
+        print(f"|| Ataque:       {info['attack'] :>{width-20}} ||")
+        print(f"|| Defesa:       {info['defense']:>{width-20}} ||")
+        print(f"|| Regeneração:  {info['regen']  :>{width-20}} ||")
+        print(f"|| Magia:        {info['magic']  :>{width-20}} ||")
+        print(f"|| Moedas:       {info['coins']  :>{width-20}} ||")
+        print(f"||{'-'*(width-4)}||")
 
         # Fechando arquivo
         file.close()
@@ -66,15 +66,15 @@ def search_saved_games(games_amount):
     # Fim do while
 
     # Salvando a quantidade de jogos salvos
-    games_amount = len(games)
+    saved_games_count = len(saved_games)
 
     # Recebendo o codigo do jogo salvo para ser carregado
     code = input("\nCódigo do jogo salvo: ")
 
     # Verificando se o valor informado
-    while (not code.isnumeric()) and int(code) in range(games_amount):
+    while (not code.isnumeric()) and int(code) in range(saved_games_count):
         print("\nInválido!")
         code = input("Código do jogo salvo: ")
 
     # Retornando as informacoes do jogo escolhido
-    return games[int(code) - 1]
+    return saved_games[int(code) - 1]

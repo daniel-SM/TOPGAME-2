@@ -3,24 +3,34 @@ import time
 from clear import clear_screen
 from option import validate_option
 from show_items import show_items
-from show_player_items import show_purchased_items
+from show_player_items import show_player_items
 from buy import buy_items
 from sell import sell_items
-from items import attack_items, defense_items, potion_items, regen_items, magic_items
+from items import ATTACK_ITEMS, DEFENSE_ITEMS, POTION_ITEMS, REGEN_ITEMS, MAGIC_ITEMS
 
 
-def market(itens_person, moedas, life, ataque, defesa, life_regen, magia):
+def market(
+    player_items,
+    coins,
+    player_life,
+    player_attack,
+    player_defense,
+    player_life_regen,
+    player_magic,
+):
     clear_screen(100)
-    print("\n||-------##-------##------##------||")
+    print()
+    print("||-------##-------##------##------||")
     print("||      BEM-VINDO AO MERCADO      ||")
     print("||-------##-------##------##------||")
     time.sleep(1)
 
-    print("||      Você tem", moedas, "moedas.")
+    print("||      Você tem", coins, "moedas.")
     print("||--------------------------------||")
     time.sleep(1)
 
-    print("\n||--------------------------||")
+    print()
+    print("||--------------------------||")
     print("||   LOJAS                  ||")
     print("||   1. Loja de Armas       ||")
     print("||   2. Loja de Escudos     ||")
@@ -31,129 +41,201 @@ def market(itens_person, moedas, life, ataque, defesa, life_regen, magia):
     print("||   7. Sair                ||")
     print("||--------------------------||")
 
-    loja = input("\nNumº da loja: ")
+    store_code = input("\nNúmero da loja: ")
 
-    while loja not in ["1", "2", "3", "4", "5", "6", "7"]:
+    while store_code not in ["1", "2", "3", "4", "5", "6", "7"]:
         print("Inválido!")
-        loja = input("Numº da loja: ")
+        store_code = input("Número da loja: ")
 
     clear_screen(10)
 
-    if loja == "1":
+    if store_code == "1":
         print("||--------------------||")
         print("||    LOJA DE ARMAS   ||")
-        print("||--------------------||\n")
+        print("||--------------------||")
+        print()
 
-        show_items(attack_items, "ataque")
-        desejo = input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo = validate_option(desejo)
-        if desejo == "s":
-            itens_person, moedas, ataque = buy_items(
-                itens_person, attack_items, moedas, ataque, "ataque", 0, True
+        show_items(ATTACK_ITEMS, "ataque")
+        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option = validate_option(option)
+
+        if option == "s":
+            player_items, coins, player_attack = buy_items(
+                player_items, ATTACK_ITEMS, coins, player_attack, "ataque", 0, True
             )
 
-    elif loja == "2":
+    elif store_code == "2":
         print("||--------------------||")
         print("||  LOJA DE ESCUDOS   ||")
         print("||--------------------||\n")
 
-        show_items(defense_items, "defesa")
-        desejo = input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo = validate_option(desejo)
-        if desejo == "s":
-            itens_person, moedas, defesa = buy_items(
-                itens_person, defense_items, moedas, defesa, "defesa", 1, True
+        show_items(DEFENSE_ITEMS, "defesa")
+        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option = validate_option(option)
+
+        if option == "s":
+            player_items, coins, player_defense = buy_items(
+                player_items, DEFENSE_ITEMS, coins, player_defense, "defesa", 1, True
             )
 
-    elif loja == "3":
+    elif store_code == "3":
         print("||--------------------||")
         print("||   LOJA DE POÇÕES   ||")
         print("||--------------------||\n")
 
-        show_items(potion_items, "vida a mais")
-        desejo = input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo = validate_option(desejo)
-        if desejo == "s":
-            poder = 0
-            itens_person, moedas, poder = buy_items(
-                itens_person, potion_items, moedas, poder, "vida a mais"
-            )
-            life += poder
+        show_items(POTION_ITEMS, "vida a mais")
 
-    elif loja == "4":
+        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option = validate_option(option)
+
+        if option == "s":
+            potion_value = 0
+            player_items, coins, potion_value = buy_items(
+                player_items, POTION_ITEMS, coins, potion_value, "vida a mais"
+            )
+            player_life += potion_value
+
+    elif store_code == "4":
         print("||---------------------||")
         print("||  LOJA DE ARMADURAS  ||")
         print("||---------------------||\n")
 
-        show_items(regen_items, "vida p/ fase")
-        desejo = input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo = validate_option(desejo)
-        if desejo == "s":
-            itens_person, moedas, life_regen = buy_items(
-                itens_person, regen_items, moedas, life_regen, "vida p/ fase", 2, True
+        show_items(REGEN_ITEMS, "vida p/ fase")
+        
+        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option = validate_option(option)
+        
+        if option == "s":
+            player_items, coins, player_life_regen = buy_items(
+                player_items,
+                REGEN_ITEMS,
+                coins,
+                player_life_regen,
+                "vida p/ fase",
+                2,
+                True,
             )
 
-    elif loja == "5":
+    elif store_code == "5":
         print("||--------------------||")
         print("||   LOJA DE MAGIAS   ||")
         print("||--------------------||\n ")
 
-        show_items(magic_items, "ataque extra")
-        desejo = input("\nComprar algum item?\n(S: sim) ou (N: não): ")
-        desejo = validate_option(desejo)
-        if desejo == "s":
-            poder = 0
-            itens_person, moedas, poder = buy_items(
-                itens_person, magic_items, moedas, poder, "ataque extra"
+        show_items(MAGIC_ITEMS, "ataque extra")
+        
+        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option = validate_option(option)
+        
+        if option == "s":
+            magic_value = 0
+            player_items, coins, magic_value = buy_items(
+                player_items, MAGIC_ITEMS, coins, magic_value, "ataque extra"
             )
-            magia += poder
+            player_magic += magic_value
 
-    elif loja == "6":
+    elif store_code == "6":
         print("||--------------------||")
         print("||    VENDER ITENS    ||")
         print("||--------------------||\n")
 
-        if len(itens_person) > 0:
-            show_purchased_items(itens_person)
-            desejo = input("\nVender algum item seu?\n(S: sim) ou (N: não): ")
-            desejo = validate_option(desejo)
-            if desejo == "s":
-                itens_person, moedas, poder, tipo = sell_items(itens_person, moedas)
-                if tipo == 0:
-                    ataque = poder
-                elif tipo == 1:
-                    defesa = poder
-                elif tipo == 2:
-                    life_regen = poder
+        if len(player_items) > 0:
+            show_player_items(player_items)
+        
+            option = input("\nVender algum item seu?\n(S: sim) ou (N: não): ")
+            option = validate_option(option)
+        
+            if option == "s":
+                player_items, coins, new_stat_value, sold_item_type = sell_items(player_items, coins)
+                if sold_item_type == 0:
+                    player_attack = new_stat_value
+                if sold_item_type == 1:
+                    player_defense = new_stat_value
+                if sold_item_type == 2:
+                    player_life_regen = new_stat_value
         else:
-            print("\nVOCÊ NÃO TEM ITENS!!!\n")
-            desejo = input("Sair do mercado?\n(S: sim) ou (N: não): ")
-            desejo = validate_option(desejo)
-            if desejo == "s":
-                return itens_person, moedas, life, ataque, defesa, life_regen, magia
+            print("\nVOCÊ NÃO TEM ITENS!\n")
+            option = input("Sair do mercado?\n(S: sim) ou (N: não): ")
+            option = validate_option(option)
+        
+            if option == "s":
+                return (
+                    player_items,
+                    coins,
+                    player_life,
+                    player_attack,
+                    player_defense,
+                    player_life_regen,
+                    player_magic,
+                )
 
-    elif loja == "7":
+    elif store_code == "7":
         print("||--------------------||")
         print("||        SAIR        ||")
         print("||--------------------||\n")
 
         print("Sair do mercado!\n")
-        desejo = input("Quer mesmo sair?\n(S: sim) ou (N: não): ")
-        desejo = validate_option(desejo)
-        if desejo == "s":
+        
+        option = input("Quer mesmo sair?\n(S: sim) ou (N: não): ")
+        option = validate_option(option)
+        
+        if option == "s":
             print("\nSaindo do mercado...")
-            return itens_person, moedas, life, ataque, defesa, life_regen, magia
+            return (
+                player_items,
+                coins,
+                player_life,
+                player_attack,
+                player_defense,
+                player_life_regen,
+                player_magic,
+            )
     else:
         print("Inválido!")
         clear_screen(100)
-        itens_person, moedas, life, ataque, defesa, life_regen, magia = market(
-            itens_person, moedas, life, ataque, defesa, life_regen, magia
+        (
+            player_items,
+            coins,
+            player_life,
+            player_attack,
+            player_defense,
+            player_life_regen,
+            player_magic,
+        ) = market(
+            player_items,
+            coins,
+            player_life,
+            player_attack,
+            player_defense,
+            player_life_regen,
+            player_magic,
         )
 
-    if desejo == "n":
+    if option == "n":
         clear_screen(100)
-        itens_person, moedas, life, ataque, defesa, life_regen, magia = market(
-            itens_person, moedas, life, ataque, defesa, life_regen, magia
+        (
+            player_items,
+            coins,
+            player_life,
+            player_attack,
+            player_defense,
+            player_life_regen,
+            player_magic,
+        ) = market(
+            player_items,
+            coins,
+            player_life,
+            player_attack,
+            player_defense,
+            player_life_regen,
+            player_magic,
         )
 
-    return itens_person, moedas, life, ataque, defesa, life_regen, magia
+    return (
+        player_items,
+        coins,
+        player_life,
+        player_attack,
+        player_defense,
+        player_life_regen,
+        player_magic,
+    )
