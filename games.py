@@ -31,9 +31,9 @@ def search_saved_games(saved_games_count):
             "magic": int(lines[7]),
             "coins": int(lines[8]),
             "items": eval(lines[9]),  # Transformando em lista
-            "enemyLife": int(lines[10]),
-            "enemyAttack": int(lines[10]),
-            "enemyDefense": int(lines[10]),
+            "enemy_life": int(lines[10]),
+            "enemy_attack": int(lines[10]),
+            "enemy_defense": int(lines[10]),
         }
 
         # Adicionar as informacoes na lista de jogos salvos

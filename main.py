@@ -74,9 +74,9 @@ if has_saved_game:
         player_magic = game_info["magic"]
         coins = game_info["coins"]
         player_items = game_info["items"]
-        enemy_life = game_info["enemyLife"]
-        enemy_attack = game_info["enemyAttack"]
-        enemy_attack = game_info["enemyDefense"]
+        enemy_life = game_info["enemy_life"]
+        enemy_attack = game_info["enemy_attack"]
+        enemy_attack = game_info["enemy_defense"]
         increase_enemy_power = False
 
         # Indicando que nao iniciou um novo jogo
