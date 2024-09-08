@@ -1,8 +1,5 @@
 def save_to_storage(
-    has_saved_game,
     saved_games_count,
-    game_number,
-    title,
     player_name,
     phase,
     player_life,
@@ -16,10 +13,10 @@ def save_to_storage(
     enemy_attack,
     enemy_defense,
 ):
+    saved_games_count += 1
+    
+    file = open("./storage/saved_games/" + str(saved_games_count), "w")
 
-    file = open("./storage/saved_games/" + str(game_number), "w")
-
-    file.write(str(title) + "\n")
     file.write(str(player_name) + "\n")
     file.write(str(phase) + "\n")
     file.write(str(player_life) + "\n")
@@ -37,8 +34,5 @@ def save_to_storage(
 
     # Deixando progresso visível
     file = open("./storage/game_info.txt", "w")
-
-    file.write(str(has_saved_game) + "\n")
     file.write(str(saved_games_count))
-
     file.close()

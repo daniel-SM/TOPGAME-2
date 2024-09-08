@@ -140,47 +140,21 @@ def battle_manager(
                 print("\nSalvando seu progresso...")
                 time.sleep(1)
 
-                if has_saved_game:
-                    # TODO: aqui gera o bug de salvar jogo com arquivo "True"
-                    save_to_storage(
-                        True,
-                        saved_games_count,
-                        has_saved_game,
-                        "PAUSADO",
-                        player_name,
-                        phase,
-                        player_life,
-                        player_life_regen,
-                        player_attack,
-                        player_defense,
-                        player_magic,
-                        coins,
-                        player_items,
-                        enemy_life,
-                        enemy_attack,
-                        enemy_defense,
-                    )
-                else:
-                    has_saved_game = saved_games_count + 1
-                    saved_games_count += 1
-                    save_to_storage(
-                        True,
-                        saved_games_count,
-                        has_saved_game,
-                        "PAUSADO",
-                        player_name,
-                        phase,
-                        player_life,
-                        player_life_regen,
-                        player_attack,
-                        player_defense,
-                        player_magic,
-                        coins,
-                        player_items,
-                        enemy_life,
-                        enemy_attack,
-                        enemy_defense,
-                    )
+                save_to_storage(
+                    saved_games_count,
+                    player_name,
+                    phase,
+                    player_life,
+                    player_life_regen,
+                    player_attack,
+                    player_defense,
+                    player_magic,
+                    coins,
+                    player_items,
+                    enemy_life,
+                    enemy_attack,
+                    enemy_defense,
+                )
 
             clear_screen(10)
 
