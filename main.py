@@ -39,9 +39,7 @@ time.sleep(2)
 # Abrindo arquivo com dados dos jogos salvos
 file = open("./storage/game_info.txt", "r")
 
-# Carregando informacao se existe jogo salvo
-has_saved_game = eval(file.readline().rstrip())
-# Carregando quantidade de jogos salvos
+# Carregando informacao sobre quantidade de jogos salvos
 saved_games_count = int(file.readline().rstrip())
 
 # Fechando arquivo
@@ -51,7 +49,7 @@ file.close()
 start_from_save = False
 
 # Verificando se tem jogo salvo
-if has_saved_game:
+if saved_games_count > 0:
     # Perguntando se o jogador quer continuar algum progresso
     option = input("\nS - sim\nN - não\nContinuar algum progresso salvo? ")
     option = validate_option(option)

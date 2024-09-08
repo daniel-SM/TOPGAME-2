@@ -1,22 +1,17 @@
 # Funcao para obter os jogos salvos da pasta saved_games
 def search_saved_games(saved_games_count):
     # Os arquivos estao nomeados numericamente na ordem que foram criados
-    # Iniciamos com valor 1
+    # Iniciando com valor 1
     count = 1
-    # Criando lista parar guardar as informacoes dos jogos salvos
+    # Criando lista parar guardar as informacoes de cada jogo salvo
     saved_games = []
-    # Percorrendo os jogos salvos
-    # Verificando se ainda tem jogos salvos para mostrar
+    # Loop para ler informancoes dos jogos salvos
     while count <= saved_games_count:
-        # Lendo as informacoes do arquivo atual
+        # Lendo as informacoes do jogo atual
         file = open(f"./storage/saved_games/{count}", "r")
 
         # Carregando as linhas do arquivo
-        lines = file.readlines()
-
-        # Percorrendo as linhas e removendo os caracteres '\n'
-        for i in range(len(lines)):
-            lines[i] = lines[i].rstrip()
+        lines = file.read().splitlines()
 
         # Criando dicionario com as informacoes do jogo salvo
         info = {
@@ -35,7 +30,6 @@ def search_saved_games(saved_games_count):
             "enemy_attack": int(lines[10]),
             "enemy_defense": int(lines[10]),
         }
-
         # Adicionar as informacoes na lista de jogos salvos
         saved_games.append(info)
 
@@ -65,16 +59,13 @@ def search_saved_games(saved_games_count):
         input("\nEnter para continuar...")
     # Fim do while
 
-    # Salvando a quantidade de jogos salvos
-    saved_games_count = len(saved_games)
-
     # Recebendo o codigo do jogo salvo para ser carregado
-    code = input("\nCódigo do jogo salvo: ")
+    game_code = input("\nCódigo do jogo salvo: ")
 
     # Verificando se o valor informado
-    while (not code.isnumeric()) and int(code) in range(saved_games_count):
+    while (not game_code.isnumeric()) and (int(game_code) in range(1, saved_games_count)):
         print("\nInválido!")
-        code = input("Código do jogo salvo: ")
+        game_code = input("Código do jogo salvo: ")
 
     # Retornando as informacoes do jogo escolhido
-    return saved_games[int(code) - 1]
+    return saved_games[int(game_code) - 1]
