@@ -7,7 +7,7 @@
 [6]  = Defesa
 [7]  = Magia
 [8]  = Moedas
-[9] = Itens
+[9]  = Itens
 [10] = Vida Inimigo
 [11] = Ataque Inimigo
 [12] = Defesa Inimigo
