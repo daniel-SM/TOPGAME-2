@@ -19,17 +19,13 @@ def fight(
 ):
 
     if (player_attack - enemy_defense <= 0) and (enemy_attack - player_defense <= 0):
-        print(
-            """
-            ||------------------------||
-            ||         EMPATE         ||
-            ||------------------------||
-            ||   Você e seu inimigo   ||
-            ||       tem poder        ||
-            ||     equivalentes!      ||
-            ||------------------------||
-            """
-        )
+        print("||------------------------||")
+        print("||         EMPATE         ||")
+        print("||------------------------||")
+        print("||   Você e seu inimigo   ||")
+        print("||       tem poder        ||")
+        print("||     equivalentes!      ||")
+        print("||------------------------||")
         time.sleep(1)
         phase -= 1
         return player_life, player_magic, coins, phase, False
