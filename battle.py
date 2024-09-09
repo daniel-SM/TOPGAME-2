@@ -20,7 +20,6 @@ def battle_manager(
     player_defense,
     enemy_defense,
     coins,
-    has_saved_game,
     phase,
 ):
     clear_screen(100)

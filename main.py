@@ -150,8 +150,7 @@ while phase < 15 or not battle_ended:
             player_defense,
             enemy_attack,
             coins,
-            has_saved_game,
-            phase,
+            phase
         )
     else:
         # Caso o jogador nao tenha vida, encerra o jogo
