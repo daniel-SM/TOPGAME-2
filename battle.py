@@ -22,7 +22,7 @@ def battle_manager(
     coins,
     phase,
 ):
-    clear_screen(100)
+    clear_screen()
 
     print("||--------##--------##--------##----||")
     print("||             FASE ", phase + 1, "               ||", sep="")
@@ -90,7 +90,7 @@ def battle_manager(
                 time.sleep(2)
             else:
                 action = ""
-                clear_screen(10)
+                clear_screen()
 
         elif action == "2":
             player_items,
@@ -109,10 +109,10 @@ def battle_manager(
                 player_magic,
             )
             time.sleep(2)
-            clear_screen(10)
+            clear_screen()
 
         elif action == "3":
-            clear_screen(10)
+            clear_screen()
             print()
             print("||--------------------||")
             print("||    VOCÊ            ||")
@@ -130,7 +130,7 @@ def battle_manager(
             time.sleep(1)
 
             input("\nEnter para continuar...")
-            clear_screen(10)
+            clear_screen()
 
         elif action == "4":
             option = input("\nSalvar o progresso?\n(S: sim) ou (N: não): ")
@@ -156,7 +156,7 @@ def battle_manager(
                     enemy_defense,
                 )
 
-            clear_screen(10)
+            clear_screen()
 
         elif action == "5":
             option = input("\nQuer mesmo sair do jogo?\n(S: sim) ou (N: não): ")
@@ -189,7 +189,7 @@ def battle_manager(
         else:
             print("\nInválido!")
             time.sleep(1)
-            clear_screen(10)
+            clear_screen()
 
     return (
         player_items,

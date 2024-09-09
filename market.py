@@ -18,10 +18,12 @@ def market(
     player_life_regen,
     player_magic,
 ):
-    clear_screen(100)
+    clear_screen()
     print()
     print("||-------##-------##------##------||")
+    print("||                                ||")
     print("||      BEM-VINDO AO MERCADO      ||")
+    print("||                                ||")
     print("||-------##-------##------##------||")
     time.sleep(1)
 
@@ -47,7 +49,7 @@ def market(
         print("Inválido!")
         store_code = input("Número da loja: ")
 
-    clear_screen(10)
+    clear_screen()
 
     if store_code == "1":
         print("||--------------------||")
@@ -191,7 +193,7 @@ def market(
             )
     else:
         print("Inválido!")
-        clear_screen(100)
+        clear_screen()
         (
             player_items,
             coins,
@@ -211,7 +213,7 @@ def market(
         )
 
     if option == "n":
-        clear_screen(100)
+        clear_screen()
         (
             player_items,
             coins,

@@ -45,4 +45,4 @@ def initial_history(nome):
     input("\nEnter para continuar...")
 
     # Limpando o terminal apos a historia
-    clear_screen(100)
+    clear_screen()
