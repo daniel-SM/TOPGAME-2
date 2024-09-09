@@ -74,7 +74,7 @@ if saved_games_count > 0:
         player_items = game_info["items"]
         enemy_life = game_info["enemy_life"]
         enemy_attack = game_info["enemy_attack"]
-        enemy_attack = game_info["enemy_defense"]
+        enemy_defense = game_info["enemy_defense"]
         increase_enemy_power = False
 
         # Indicando que nao iniciou um novo jogo
@@ -102,7 +102,7 @@ if not start_from_save:
     player_items = []
     enemy_life = 70
     enemy_attack = 50
-    enemy_attack = 20
+    enemy_defense = 20
     increase_enemy_power = True
 
     # História Inicial do Jogo
@@ -122,7 +122,7 @@ while phase < 15 or not battle_ended:
             player_life += player_life_regen
             enemy_life += random.choice([5, 10])
             enemy_attack += random.choice([10, 10, 20])
-            enemy_attack += random.choice([10, 10, 20])
+            enemy_defense += random.choice([10, 10, 20])
 
             # Aumentando as coins do jogador
             coins += 150 + (50 * (phase - 1))
@@ -148,7 +148,7 @@ while phase < 15 or not battle_ended:
             player_attack,
             enemy_attack,
             player_defense,
-            enemy_attack,
+            enemy_defense,
             coins,
             phase
         )
