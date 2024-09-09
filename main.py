@@ -154,10 +154,14 @@ while phase < 15 or not battle_ended:
         )
     else:
         # Caso o jogador nao tenha vida, encerra o jogo
-        print("||----------------------------||")
-        print("||        VOCÊ MORREU!        ||")
-        print("||       O JOGO ACABOU!       ||")
-        print("||----------------------------||")
+        # Definindo largura do quadro de exibição
+        width = 40
+        print()
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'VOCÊ MORREU!':^{width-4}}||")
+        print(f"||{'O JOGO ACABOU!':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||")
+
         break
     # Fim do if else
 
