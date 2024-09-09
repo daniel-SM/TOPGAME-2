@@ -6,8 +6,13 @@ def calc_damage(current_attacker, life_value, attack_value,
                 defense_value, magic_value=0):
     fight_completed = False
 
-    damage_divisor = random.choice(population=[1, 2, 5, 10], weights=[1, 4, 6, 1])
-    damage_multiplier = random.choice(population=[0, 1], weights=[1, 19])
+    # Sorteando possíveis divisores com pesos
+    random_result = random.choices(population=[1, 2, 5, 10], weights=[1, 4, 6, 1])
+    damage_divisor = random_result[0]
+
+    # Sorteando possíveis multiplicadores com pesos
+    random_result = random.choices(population=[0, 1], weights=[1, 19])
+    damage_multiplier = random_result[0]
 
     attack_vs_defense = attack_value - defense_value
 
