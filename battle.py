@@ -129,7 +129,8 @@ def battle_manager(
             print("||--------------------||")
             time.sleep(1)
 
-            input("Enter para continuar...")
+            input("\nEnter para continuar...")
+            clear_screen(10)
 
         elif action == "4":
             option = input("\nSalvar o progresso?\n(S: sim) ou (N: não): ")
