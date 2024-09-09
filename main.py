@@ -18,7 +18,7 @@ from option import validate_option
 
 # Imprimindo o nome do jogo
 print(
-    """
+"""
 ||------------------------------------------||
 ||                                          ||
 ||  ######   #####    #####                 ||
@@ -40,7 +40,7 @@ time.sleep(2)
 file = open("./storage/game_info.txt", "r")
 
 # Carregando informacao sobre quantidade de jogos salvos
-saved_games_count = int(file.readline().rstrip())
+saved_games_count = int(file.readline().strip())
 
 # Fechando arquivo
 file.close()
@@ -57,24 +57,24 @@ if saved_games_count > 0:
     # Caso queira continuar progresso, faz busca dos jogos salvos
     if option == "s":
         # Funcao para buscar e imprimir informacao dos jogos salvos
-        game_info = search_saved_games(saved_games_count)
+        saved_game_info = search_saved_games(saved_games_count)
 
         print("\nResgatando o progresso...\n")
         time.sleep(1)
 
         # Salvando as informacoes
-        player_name = game_info["name"]
-        phase = game_info["phase"]
-        player_life = game_info["life"]
-        player_life_regen = game_info["regen"]
-        player_attack = game_info["attack"]
-        player_defense = game_info["defense"]
-        player_magic = game_info["magic"]
-        coins = game_info["coins"]
-        player_items = game_info["items"]
-        enemy_life = game_info["enemy_life"]
-        enemy_attack = game_info["enemy_attack"]
-        enemy_defense = game_info["enemy_defense"]
+        player_name = saved_game_info["name"]
+        phase = saved_game_info["phase"]
+        player_life = saved_game_info["life"]
+        player_life_regen = saved_game_info["regen"]
+        player_attack = saved_game_info["attack"]
+        player_defense = saved_game_info["defense"]
+        player_magic = saved_game_info["magic"]
+        coins = saved_game_info["coins"]
+        player_items = saved_game_info["items"]
+        enemy_life = saved_game_info["enemy_life"]
+        enemy_attack = saved_game_info["enemy_attack"]
+        enemy_defense = saved_game_info["enemy_defense"]
         increase_enemy_power = False
 
         # Indicando que nao iniciou um novo jogo

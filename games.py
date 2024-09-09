@@ -5,7 +5,8 @@ def search_saved_games(saved_games_count):
     count = 1
     # Criando lista parar guardar as informacoes de cada jogo salvo
     saved_games = []
-    # Loop para ler informancoes dos jogos salvos
+
+    # Loop para ler informacoes dos jogos salvos
     while count <= saved_games_count:
         # Lendo as informacoes do jogo atual
         file = open(f"./storage/saved_games/{count}", "r")
@@ -16,19 +17,18 @@ def search_saved_games(saved_games_count):
         # Criando dicionario com as informacoes do jogo salvo
         info = {
             "code": count,
-            "status": lines[0],
-            "name": lines[1],
-            "phase": int(lines[2]),
-            "life": int(lines[3]),
-            "attack": int(lines[4]),
-            "defense": int(lines[5]),
-            "regen": int(lines[6]),
-            "magic": int(lines[7]),
-            "coins": int(lines[8]),
-            "items": eval(lines[9]),  # Transformando em lista
-            "enemy_life": int(lines[10]),
+            "name": lines[0],
+            "phase": int(lines[1]),
+            "life": int(lines[2]),
+            "attack": int(lines[3]),
+            "defense": int(lines[4]),
+            "regen": int(lines[5]),
+            "magic": int(lines[6]),
+            "coins": int(lines[7]),
+            "items": eval(lines[8]),  # Transformando em lista
+            "enemy_life": int(lines[9]),
             "enemy_attack": int(lines[10]),
-            "enemy_defense": int(lines[10]),
+            "enemy_defense": int(lines[11]),
         }
         # Adicionar as informacoes na lista de jogos salvos
         saved_games.append(info)
@@ -39,7 +39,6 @@ def search_saved_games(saved_games_count):
         print()
         print(f"||{'-'*(width-4)}||")
         print(f"|| Código:       {info['code']   :>{width-20}} ||")
-        print(f"|| Status:       {info['status'] :>{width-20}} ||")
         print(f"|| Nome:         {info['name']   :>{width-20}} ||")
         print(f"|| Fase:         {info['phase']  :>{width-20}} ||")
         print(f"|| Vida:         {info['life']   :>{width-20}} ||")
