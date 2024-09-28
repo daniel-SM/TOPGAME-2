@@ -32,7 +32,6 @@ def battle_manager(
     print(f"||{'-'*(width-4)}||")
     time.sleep(1)
 
-    print(f"||{'-'*(width-4)}||")
     print(f"||{'VOCÊ':^{width-4}}||")
     print(f"|| Vida     {player_life    :>{width-15}} ||")
     print(f"|| Ataque   {player_attack  :>{width-15}} ||")
@@ -53,7 +52,7 @@ def battle_manager(
     while action != "1":
         print()
         print(f"||{'-'*(width-4)}||")
-        print(f"||{' ' * 10}{'AÇÕES':<{width-14}}||")
+        print(f"||{'AÇÕES':^{width-4}}||")
         print(f"||{' ' * 10}{'1. Começar Batalha':<{width-14}}||")
         print(f"||{' ' * 10}{'2. Ir pro Mercado':<{width-14}}||")
         print(f"||{' ' * 10}{'3. Seu Status':<{width-14}}||")
@@ -117,7 +116,6 @@ def battle_manager(
         elif action == "3":
             clear_screen()
 
-            print()
             print(f"||{'-'*(width-4)}||")
             print(f"||{'VOCÊ':^{width-4}}||")
             print(f"|| Vida     {player_life    :>{width-15}} ||")
@@ -190,6 +188,7 @@ def battle_manager(
                     battle_ended,
                     increase_enemy_power,
                 )
+
         else:
             print("\nInválido!")
             time.sleep(1)

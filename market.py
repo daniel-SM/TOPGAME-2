@@ -197,9 +197,11 @@ def market(
                 player_life_regen,
                 player_magic,
             )
+
     else:
         print("Inválido!")
         clear_screen()
+
         (
             player_items,
             coins,
