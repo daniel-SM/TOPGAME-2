@@ -22,10 +22,10 @@ def fight(
 
     if (player_attack - enemy_defense <= 0) and (enemy_attack - player_defense <= 0):
         print(f"||{'-'*(width-4)}||")
-        print(f"||{'EMPATE':^(width-4)}||")
+        print(f"||{'EMPATE':^{width-4}}||")
         print(f"||{'-'*(width-4)}||")
-        print(f"||{'Seu inimigo e você':^(width-4)}||")
-        print(f"||{'tem poder equivalentes!':^(width-4)}||")
+        print(f"||{'Seu inimigo e você':^{width-4}}||")
+        print(f"||{'tem poder equivalentes!':^{width-4}}||")
         print(f"||{'-'*(width-4)}||")
         time.sleep(1)
         phase -= 1
@@ -64,14 +64,14 @@ def fight(
             print(f"||{'-'*(width-4)}||")
             print(f"||{'SUA VEZ':^{width-4}}||")
             print(f"||{'-'*(width-4)}||")
-            print(f"||{' ' * 8}{'AÇÕES':<{width-12}}||")
-            print(f"||{' ' * 8}{'1. Atacar':<{width-12}}||")
-            print(f"||{' ' * 8}{'2. Usar Magia':<{width-12}}||")
-            print(f"||{' ' * 8}{'3. Defender':<{width-12}}||")
-            print(f"||{' ' * 8}{'4. Fugir':<{width-12}}||")
+            print(f"||{' ' * 10}{'AÇÕES':<{width-14}}||")
+            print(f"||{' ' * 10}{'1. Atacar':<{width-14}}||")
+            print(f"||{' ' * 10}{'2. Usar Magia':<{width-14}}||")
+            print(f"||{' ' * 10}{'3. Defender':<{width-14}}||")
+            print(f"||{' ' * 10}{'4. Fugir':<{width-14}}||")
             print(f"||{'-'*(width-4)}||")
 
-            action = input("Ação: ")
+            action = input("\nAção: ")
 
             while action not in ["1", "2", "3", "4"]:
                 print("Inválido!")
@@ -134,11 +134,11 @@ def fight(
             print(f"||{'-'*(width-4)}||")
             print(f"||{'SUA VEZ':^{width-4}}||")
             print(f"||{'-'*(width-4)}||")
-            print(f"||{' ' * 8}{'AÇÕES':<{width-12}}||")
-            print(f"||{' ' * 8}{'1. Atacar':<{width-12}}||")
-            print(f"||{' ' * 8}{'2. Usar Magia':<{width-12}}||")
-            print(f"||{' ' * 8}{'3. Defender':<{width-12}}||")
-            print(f"||{' ' * 8}{'4. Fugir':<{width-12}}||")
+            print(f"||{' ' * 10}{'AÇÕES':<{width-14}}||")
+            print(f"||{' ' * 10}{'1. Atacar':<{width-14}}||")
+            print(f"||{' ' * 10}{'2. Usar Magia':<{width-14}}||")
+            print(f"||{' ' * 10}{'3. Defender':<{width-14}}||")
+            print(f"||{' ' * 10}{'4. Fugir':<{width-14}}||")
             print(f"||{'-'*(width-4)}||")
 
             action = input("\nAção: ")

@@ -53,12 +53,12 @@ def battle_manager(
     while action != "1":
         print()
         print(f"||{'-'*(width-4)}||")
-        print(f"||{' ' * 8}{'AÇÕES':<{width-12}}||")
-        print(f"||{' ' * 8}{'1. Começar Batalha':<{width-12}}||")
-        print(f"||{' ' * 8}{'2. Ir pro Mercado':<{width-12}}||")
-        print(f"||{' ' * 8}{'3. Seu Status':<{width-12}}||")
-        print(f"||{' ' * 8}{'4. Salvar Progresso':<{width-12}}||")
-        print(f"||{' ' * 8}{'5. Sair do Jogo':<{width-12}}||")
+        print(f"||{' ' * 10}{'AÇÕES':<{width-14}}||")
+        print(f"||{' ' * 10}{'1. Começar Batalha':<{width-14}}||")
+        print(f"||{' ' * 10}{'2. Ir pro Mercado':<{width-14}}||")
+        print(f"||{' ' * 10}{'3. Seu Status':<{width-14}}||")
+        print(f"||{' ' * 10}{'4. Salvar Progresso':<{width-14}}||")
+        print(f"||{' ' * 10}{'5. Sair do Jogo':<{width-14}}||")
         print(f"||{'-'*(width-4)}||")
 
         action = input("\nAção: ")
@@ -74,7 +74,6 @@ def battle_manager(
                 print(f"||{'BATALHA':^{width-4}}||")
                 print(f"||{' '*(width-4)}||")
                 print(f"||{'-'*(width-4)}||")
-                print()
 
                 player_life,
                 player_magic,
@@ -112,7 +111,7 @@ def battle_manager(
                 player_life_regen,
                 player_magic,
             )
-            time.sleep(2)
+            time.sleep(1)
             clear_screen()
 
         elif action == "3":
