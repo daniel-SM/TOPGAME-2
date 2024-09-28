@@ -37,7 +37,7 @@ print(f"||{'-'*(width-4)}||")
 time.sleep(2)
 
 # Abrindo arquivo com dados dos jogos salvos
-file = open("./storage/game_info.txt", "r")
+file = open("./storage/games_count.txt", "r")
 
 # Carregando informacao sobre quantidade de jogos salvos
 saved_games_count = int(file.readline().strip())

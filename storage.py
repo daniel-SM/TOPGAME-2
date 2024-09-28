@@ -33,6 +33,6 @@ def save_to_storage(
     file.close()
 
     # Deixando progresso visível
-    file = open("./storage/game_info.txt", "w")
+    file = open("./storage/games_count.txt", "w")
     file.write(str(saved_games_count))
     file.close()
