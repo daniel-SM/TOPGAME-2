@@ -131,7 +131,7 @@ def battle_manager(
             print(f"||{'-'*(width-4)}||")
             time.sleep(1)
 
-            input("\nEnter para continuar...")
+            input("\nEnter para continuar... ")
             clear_screen()
 
         elif action == "4":

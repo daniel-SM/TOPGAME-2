@@ -14,4 +14,4 @@ def show_items(store_items, item_description):
         print(f"|| Valor:  {item[3] :>{width-14}} ||")
         print(f"||{'-'*(width-4)}||")
 
-        input("\nEnter para continuar...")
+        input("\nEnter para continuar... ")

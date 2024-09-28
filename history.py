@@ -32,7 +32,7 @@ def initial_history(nome):
     print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
 
-    input("\nEnter para continuar...")
+    input("\nEnter para continuar... ")
     print()
     print(f"||{'-'*(width-4)}||")
     print(f"||{' '*(width-4)}||")
@@ -57,7 +57,7 @@ def initial_history(nome):
     print(f"||{'DEPRESSA!':^{width-4}}||")
     print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
-    input("\nEnter para continuar...")
+    input("\nEnter para continuar... ")
 
     # Limpando o terminal apos a historia
     clear_screen()

@@ -57,7 +57,7 @@ def search_saved_games(saved_games_count):
 
         # nao imprime mensagem se for o ultimo 
         if (count <= saved_games_count):
-            input("\nEnter para continuar...")
+            input("\nEnter para continuar... ")
 
     # Fim do while
 
