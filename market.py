@@ -19,29 +19,33 @@ def market(
     player_magic,
 ):
     clear_screen()
-    print()
-    print("||-------##-------##------##------||")
-    print("||                                ||")
-    print("||      BEM-VINDO AO MERCADO      ||")
-    print("||                                ||")
-    print("||-------##-------##------##------||")
-    time.sleep(1)
 
-    print("||      Você tem", coins, "moedas.")
-    print("||--------------------------------||")
-    time.sleep(1)
+    # Definindo o tamanho da largura do quadro
+    width = 40
 
     print()
-    print("||--------------------------||")
-    print("||   LOJAS                  ||")
-    print("||   1. Loja de Armas       ||")
-    print("||   2. Loja de Escudos     ||")
-    print("||   3. Loja de Poções      ||")
-    print("||   4. Loja de Armaduras   ||")
-    print("||   5. Loja de Magias      ||")
-    print("||   6. Vender Itens        ||")
-    print("||   7. Sair                ||")
-    print("||--------------------------||")
+    print(f"||{'-'*(width-4)}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'BEM-VINDO AO MERCADO':^{width-4}}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'-'*(width-4)}||")
+    time.sleep(1)
+
+    print(f"||{f'Você tem {coins} moedas':^{width-4}}||")
+    print(f"||{'-'*(width-4)}||")
+    time.sleep(1)
+
+    print()
+    print(f"||{'-'*(width-4)}||")
+    print(f"||{' ' * 8}{'LOJAS':<{width-12}}||")
+    print(f"||{' ' * 8}{'1. Loja de Armas':<{width-12}}||")
+    print(f"||{' ' * 8}{'2. Loja de Escudos':<{width-12}}||")
+    print(f"||{' ' * 8}{'3. Loja de Poções':<{width-12}}||")
+    print(f"||{' ' * 8}{'4. Loja de Armaduras':<{width-12}}||")
+    print(f"||{' ' * 8}{'5. Loja de Magias':<{width-12}}||")
+    print(f"||{' ' * 8}{'6. Vender Itens':<{width-12}}||")
+    print(f"||{' ' * 8}{'7. Sair':<{width-12}}||")
+    print(f"||{'-'*(width-4)}||")
 
     store_code = input("\nNúmero da loja: ")
 
@@ -52,9 +56,9 @@ def market(
     clear_screen()
 
     if store_code == "1":
-        print("||--------------------||")
-        print("||    LOJA DE ARMAS   ||")
-        print("||--------------------||")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'LOJA DE ARMAS':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||")
         print()
 
         show_items(ATTACK_ITEMS, "ataque")
@@ -67,9 +71,9 @@ def market(
             )
 
     elif store_code == "2":
-        print("||--------------------||")
-        print("||  LOJA DE ESCUDOS   ||")
-        print("||--------------------||\n")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'LOJA DE ESCUDOS':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||")
 
         show_items(DEFENSE_ITEMS, "defesa")
         option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
@@ -81,9 +85,9 @@ def market(
             )
 
     elif store_code == "3":
-        print("||--------------------||")
-        print("||   LOJA DE POÇÕES   ||")
-        print("||--------------------||\n")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'LOJA DE POCÕES':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||")
 
         show_items(POTION_ITEMS, "vida a mais")
 
@@ -98,15 +102,15 @@ def market(
             player_life += potion_value
 
     elif store_code == "4":
-        print("||---------------------||")
-        print("||  LOJA DE ARMADURAS  ||")
-        print("||---------------------||\n")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'LOJA DE ARMADURAS':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||")
 
         show_items(REGEN_ITEMS, "vida p/ fase")
-        
+
         option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
         option = validate_option(option)
-        
+
         if option == "s":
             player_items, coins, player_life_regen = buy_items(
                 player_items,
@@ -119,15 +123,15 @@ def market(
             )
 
     elif store_code == "5":
-        print("||--------------------||")
-        print("||   LOJA DE MAGIAS   ||")
-        print("||--------------------||\n ")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'LOJA DE MAGIAS':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||\n ")
 
         show_items(MAGIC_ITEMS, "ataque extra")
-        
+
         option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
         option = validate_option(option)
-        
+
         if option == "s":
             magic_value = 0
             player_items, coins, magic_value = buy_items(
@@ -136,18 +140,20 @@ def market(
             player_magic += magic_value
 
     elif store_code == "6":
-        print("||--------------------||")
-        print("||    VENDER ITENS    ||")
-        print("||--------------------||\n")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'VENDER ITENS':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||\n")
 
         if len(player_items) > 0:
             show_player_items(player_items)
-        
-            option = input("\nVender algum item seu?\n(S: sim) ou (N: não): ")
+
+            option = input("\nS - sim\nN - não\nVender algum item seu? ")
             option = validate_option(option)
-        
+
             if option == "s":
-                player_items, coins, new_stat_value, sold_item_type = sell_items(player_items, coins)
+                player_items, coins, new_stat_value, sold_item_type = sell_items(
+                    player_items, coins
+                )
                 if sold_item_type == 0:
                     player_attack = new_stat_value
                 if sold_item_type == 1:
@@ -156,9 +162,9 @@ def market(
                     player_life_regen = new_stat_value
         else:
             print("\nVOCÊ NÃO TEM ITENS!\n")
-            option = input("Sair do mercado?\n(S: sim) ou (N: não): ")
+            option = input("\nS - sim\nN - não\nSair do mercado? ")
             option = validate_option(option)
-        
+
             if option == "s":
                 return (
                     player_items,
@@ -171,15 +177,15 @@ def market(
                 )
 
     elif store_code == "7":
-        print("||--------------------||")
-        print("||        SAIR        ||")
-        print("||--------------------||\n")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'SAIR':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||\n")
 
         print("Sair do mercado!\n")
-        
-        option = input("Quer mesmo sair?\n(S: sim) ou (N: não): ")
+
+        option = input("\nS - sim\nN - não\nQuer mesmo sair? ")
         option = validate_option(option)
-        
+
         if option == "s":
             print("\nSaindo do mercado...")
             return (
@@ -214,6 +220,7 @@ def market(
 
     if option == "n":
         clear_screen()
+
         (
             player_items,
             coins,

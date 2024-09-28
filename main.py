@@ -16,24 +16,24 @@ from battle import battle_manager
 # Importando funcao para validar a entrada do usuario
 from option import validate_option
 
+# Definindo a largura do quadro
+width = 40
+
 # Imprimindo o nome do jogo
-print(
-"""
-||------------------------------------------||
-||                                          ||
-||  ######   #####    #####                 ||
-||    ##    ##   ##   ##  ##                ||
-||    ##    ##   ##   #####                 ||
-||    ##     #####    ##                    ||
-||                                          ||
-||          ####    ####   ##    ##  #####  ||
-||         ##      ##  ##  ########  ###    ||
-||         ## ###  ######  ## ## ##  ##     ||
-||          ####   ##  ##  ##    ##  #####  ||
-||                                          ||
-||------------------------------------------||
-"""
-)
+print(f"||{'-'*(width-4)}||")
+print(f"||{' '*(width-4)}||")
+print(f"||  {'######   #####    ##### ':<{width-6}}||")
+print(f"||  {'  ##    ##   ##   ##  ##':<{width-6}}||")
+print(f"||  {'  ##    ##   ##   ##### ':<{width-6}}||")
+print(f"||  {'  ##     #####    ##    ':<{width-6}}||")
+print(f"||{' '*(width-4)}||")
+print(f"||{' ####    ####   ##    ##  #####':>{width-6}}  ||")
+print(f"||{'##      ##  ##  ########  ###  ':>{width-6}}  ||")
+print(f"||{'## ###  ######  ## ## ##  ##   ':>{width-6}}  ||")
+print(f"||{' ####   ##  ##  ##    ##  #####':>{width-6}}  ||")
+print(f"||{' '*(width-4)}||")
+print(f"||{'-'*(width-4)}||")
+
 time.sleep(2)
 
 # Abrindo arquivo com dados dos jogos salvos

@@ -1,47 +1,62 @@
-# Usado para gerar intervalos entre as mensagens
+# usado para gerar intervalos entre as mensagens
 import time
 
-# Importando funcao para limpar o terminal
+# importando funcao para limpar o terminal
 from clear import clear_screen
 
 
+# imprime a historia inicial do jogo
 def initial_history(nome):
-    # Imprimindo a historia inicial do RPG
+    # definindo largura dos quadro exibido
+    width = 40
     print()
-    print("||---------##---------##---------##---------||")
-    print(f"||    SEJA BEM-VINDO(A), {nome}!")
-    print("||---------##---------##---------##---------||")
+    print(f"||{'-'*(width-4)}||")
+    print(f"||{f'SEJA BEM-VINDO (A), {nome}!':^{width-4}}||")
+    print(f"||{'-'*(width-4)}||")
     time.sleep(2)
-    print("||   Você é um guerreiro que serve ao rei   ||")
-    print("||   e nesse momento está defendendo seu    ||")
-    print("||   reino de um ataque de criaturas e      ||")
-    print("||   monstros!                              ||")
-    print("||   Derrote todas as criaturas e salve o   ||")
-    print("||   rei e o seu castelo!                   ||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'Você é um guerreiro que serve':^{width-4}}||")
+    print(f"||{'ao rei e nesse momento está':^{width-4}}||")
+    print(f"||{'defendendo seu reino de um':^{width-4}}||")
+    print(f"||{'ataque de criaturas e monstros!':^{width-4}}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'-'*(width-4)}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'Derrote todas as criaturas':^{width-4}}||")
+    print(f"||{'e salve o rei e seu castelo!':^{width-4}}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'-'*(width-4)}||")
     time.sleep(2)
-    print("||---------##---------##---------##---------||")
-    print("||                 BOA SORTE!               ||")
-    print("||---------##---------##---------##---------||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'BOA SORTE!':^{width-4}}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'-'*(width-4)}||")
+
     input("\nEnter para continuar...")
     print()
-    print("||---------##---------##---------##---------||")
-    print("||                                          ||")
-    print("||         ####    ####   ##    ##          ||")
-    print("||         ## ##  ##  ##  ## ## ##          ||")
-    print("||         ####   ##  ##  ###  ###          ||")
-    print("||         ##      ####   ##    ##          ||")
-    print("||                                          ||")
-    print("||---------##---------##---------##---------||")
+    print(f"||{'-'*(width-4)}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'####    ####   ##    ##':^{width-4}}||")
+    print(f"||{'## ##  ##  ##  ## ## ##':^{width-4}}||")
+    print(f"||{'####   ##  ##  ###  ###':^{width-4}}||")
+    print(f"||{'##      ####   ##    ##':^{width-4}}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'-'*(width-4)}||")
     time.sleep(2)
-    print("||   Os monstros destruiram o portão sul    ||")
-    print("||   do reino! Monstros perigosos se        ||")
-    print("||   aproximam do castelo do rei!           ||")
-    print("||   Corra nessa direção e impeça que os    ||")
-    print("||   monstros avançem contra o rei!         ||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'Os monstros destruiram':^{width-4}}||")
+    print(f"||{' o portão sul do reino!':^{width-4}}||")
+    print(f"||{'Monstros perigosos se aproximam':^{width-4}}||")
+    print(f"||{'do castelo do rei!':^{width-4}}||")
+    print(f"||{'Vá nessa direção e impeça que os':^{width-4}}||")
+    print(f"||{'monstros avançem contra o rei!':^{width-4}}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'-'*(width-4)}||")
     time.sleep(2)
-    print("||---------##---------##---------##---------||")
-    print("||                 DEPRESSA!                ||")
-    print("||---------##---------##---------##---------||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'DEPRESSA!':^{width-4}}||")
+    print(f"||{' '*(width-4)}||")
+    print(f"||{'-'*(width-4)}||")
     input("\nEnter para continuar...")
 
     # Limpando o terminal apos a historia

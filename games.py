@@ -55,7 +55,10 @@ def search_saved_games(saved_games_count):
         # Incrementando para ler proximo jogo salvo
         count += 1
 
-        input("\nEnter para continuar...")
+        # nao imprime mensagem se for o ultimo 
+        if (count <= saved_games_count):
+            input("\nEnter para continuar...")
+
     # Fim do while
 
     # Recebendo o codigo do jogo salvo para ser carregado

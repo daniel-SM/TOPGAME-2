@@ -17,15 +17,16 @@ def fight(
     coins,
     phase,
 ):
+    # Definindo o tamanho da largura do quadro
+    width = 40
 
     if (player_attack - enemy_defense <= 0) and (enemy_attack - player_defense <= 0):
-        print("||------------------------||")
-        print("||         EMPATE         ||")
-        print("||------------------------||")
-        print("||   Você e seu inimigo   ||")
-        print("||       tem poder        ||")
-        print("||     equivalentes!      ||")
-        print("||------------------------||")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'EMPATE':^(width-4)}||")
+        print(f"||{'-'*(width-4)}||")
+        print(f"||{'Seu inimigo e você':^(width-4)}||")
+        print(f"||{'tem poder equivalentes!':^(width-4)}||")
+        print(f"||{'-'*(width-4)}||")
         time.sleep(1)
         phase -= 1
         return player_life, player_magic, coins, phase, False
@@ -46,7 +47,9 @@ def fight(
             print("\nSeu inimigo está atacando!")
             make_suspense(0.3)
 
-            player_life, fight_completed = calc_damage(1, player_life, enemy_attack, player_defense)
+            player_life, fight_completed = calc_damage(
+                1, player_life, enemy_attack, player_defense
+            )
             if fight_completed == True:
                 break
 
@@ -58,15 +61,15 @@ def fight(
                 print("\nVocê novamente!")
 
             print()
-            print("||------------------||")
-            print("||     Sua vez!     ||")
-            print("||------------------||")
-            print("||   AÇÕES:         ||")
-            print("||   1. Atacar      ||")
-            print("||   2. Usar Magia  ||")
-            print("||   3. Defender    ||")
-            print("||   4. Fugir       ||")
-            print("||------------------||")
+            print(f"||{'-'*(width-4)}||")
+            print(f"||{'SUA VEZ':^{width-4}}||")
+            print(f"||{'-'*(width-4)}||")
+            print(f"||{' ' * 8}{'AÇÕES':<{width-12}}||")
+            print(f"||{' ' * 8}{'1. Atacar':<{width-12}}||")
+            print(f"||{' ' * 8}{'2. Usar Magia':<{width-12}}||")
+            print(f"||{' ' * 8}{'3. Defender':<{width-12}}||")
+            print(f"||{' ' * 8}{'4. Fugir':<{width-12}}||")
+            print(f"||{'-'*(width-4)}||")
 
             action = input("Ação: ")
 
@@ -78,37 +81,42 @@ def fight(
                 print("\nVocê está atacando!")
                 make_suspense(0.3)
 
-                enemy_life, fight_completed = calc_damage(0, enemy_life, player_attack, enemy_defense)
+                enemy_life, fight_completed = calc_damage(
+                    0, enemy_life, player_attack, enemy_defense
+                )
             elif action == "2":
                 print("\nVocê está atacando!")
                 print("Sua magia é", player_magic)
                 make_suspense(0.3)
 
-                enemy_life, fight_completed = calc_damage(0, enemy_life, player_attack, enemy_defense, player_magic)
+                enemy_life, fight_completed = calc_damage(
+                    0, enemy_life, player_attack, enemy_defense, player_magic
+                )
                 player_magic = 0
             elif action == "3":
                 who_plays_next = 2
             elif action == "4":
-                option = input("\nQuer mesmo fugir?\n(S: sim) ou (N: não): ")
+                option = input("\nS - sim\nN - não\nQuer mesmo fugir? ")
                 option = validate_option(option)
 
                 if option == "s":
                     phase -= 1
 
                     print()
-                    print("||---------------------------||")
-                    print("||           FUGIU           ||")
-                    print("||---------------------------||")
-                    print("||  Você fugiu da batalha!   ||")
-                    print("||  Você perdeu 100 moedas!  ||")
-                    print("||---------------------------||")
+                    print(f"||{'-'*(width-4)}||")
+                    print(f"||{'FUGIU':^{width-4}}||")
+                    print(f"||{'-'*(width-4)}||")
+                    print(f"||{'Você fugiu da batalha!':^{width-4}}||")
+                    print(f"||{'Você perdeu 100 moedas!':^{width-4}}||")
+                    print(f"||{'-'*(width-4)}||")
 
                     if coins > 100:
                         coins -= 100
                     else:
                         coins = 0
-                    print("||  Você tem", coins, "moedas")
-                    print("||---------------------------||")
+
+                    print(f"||{f'Você tem {coins} moedas':^{width-4}}||")
+                    print(f"||{'-'*(width-4)}||")
 
                     return player_life, player_magic, coins, phase, True
 
@@ -123,15 +131,15 @@ def fight(
                 print("\nVocê novamente!")
 
             print()
-            print("||------------------||")
-            print("||     Sua vez!     ||")
-            print("||------------------||")
-            print("||   AÇÕES:         ||")
-            print("||   1. Atacar      ||")
-            print("||   2. Usar Magia  ||")
-            print("||   3. Defender    ||")
-            print("||   4. Fugir       ||")
-            print("||------------------||")
+            print(f"||{'-'*(width-4)}||")
+            print(f"||{'SUA VEZ':^{width-4}}||")
+            print(f"||{'-'*(width-4)}||")
+            print(f"||{' ' * 8}{'AÇÕES':<{width-12}}||")
+            print(f"||{' ' * 8}{'1. Atacar':<{width-12}}||")
+            print(f"||{' ' * 8}{'2. Usar Magia':<{width-12}}||")
+            print(f"||{' ' * 8}{'3. Defender':<{width-12}}||")
+            print(f"||{' ' * 8}{'4. Fugir':<{width-12}}||")
+            print(f"||{'-'*(width-4)}||")
 
             action = input("\nAção: ")
 
@@ -143,39 +151,43 @@ def fight(
                 print("\nVocê está atacando!")
                 make_suspense(0.3)
 
-                enemy_life, fight_completed = calc_damage(0, enemy_life, player_attack, enemy_defense)
+                enemy_life, fight_completed = calc_damage(
+                    0, enemy_life, player_attack, enemy_defense
+                )
             elif action == "2":
                 print("\nVocê está atacando!")
-                print("Sua player_magic é", player_magic)
+                print("Sua magia é", player_magic)
                 make_suspense(0.3)
 
-                enemy_life, fight_completed = calc_damage(0, enemy_life, player_attack, enemy_defense, player_magic)
+                enemy_life, fight_completed = calc_damage(
+                    0, enemy_life, player_attack, enemy_defense, player_magic
+                )
                 player_magic = 0
             elif action == "3":
                 who_plays_next = 2
                 fight_completed = False
             elif action == "4":
-                option = input("\nQuer mesmo fugir?\n(S - sim) ou (N - não): ")
+                option = input("\nS - sim\nN - não\nQuer mesmo fugir? ")
                 option = validate_option(option)
 
                 if option == "s":
                     phase -= 1
 
                     print()
-                    print("||---------------------------||")
-                    print("||           FUGIU           ||")
-                    print("||---------------------------||")
-                    print("||  Você fugiu da batalha!   ||")
-                    print("||  Você perdeu 100 moedas!  ||")
-                    print("||---------------------------||")
+                    print(f"||{'-'*(width-4)}||")
+                    print(f"||{'FUGIU':^{width-4}}||")
+                    print(f"||{'-'*(width-4)}||")
+                    print(f"||{'Você fugiu da batalha!':^{width-4}}||")
+                    print(f"||{'Você perdeu 100 moedas!':^{width-4}}||")
+                    print(f"||{'-'*(width-4)}||")
 
                     if coins > 100:
                         coins -= 100
                     else:
                         coins = 0
 
-                    print("||  Você tem", coins, "moedas")
-                    print("||---------------------------||")
+                    print(f"||{f'Você tem {coins} moedas':^{width-4}}||")
+                    print(f"||{'-'*(width-4)}||")
 
                     return player_life, player_magic, coins, phase, True
             if fight_completed == True:
@@ -187,11 +199,13 @@ def fight(
 
             if enemy_turn_counter > 1:
                 print("\nSeu inimigo novamente!")
-            
+
             print("\nSeu inimigo está atacando!")
             make_suspense(0.3)
-            
-            player_life, fight_completed = calc_damage(1, player_life, enemy_attack, player_defense)
+
+            player_life, fight_completed = calc_damage(
+                1, player_life, enemy_attack, player_defense
+            )
 
             if fight_completed:
                 break
