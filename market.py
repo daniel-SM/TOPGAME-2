@@ -37,7 +37,7 @@ def market(
 
     print()
     print(f"||{'-'*(width-4)}||")
-    print(f"||{' ' * 10}{'LOJAS':<{width-14}}||")
+    print(f"||{'LOJAS':^{width-4}}||")
     print(f"||{' ' * 10}{'1. Loja de Armas':<{width-14}}||")
     print(f"||{' ' * 10}{'2. Loja de Escudos':<{width-14}}||")
     print(f"||{' ' * 10}{'3. Loja de Poções':<{width-14}}||")
@@ -181,7 +181,7 @@ def market(
         print(f"||{'SAIR':^{width-4}}||")
         print(f"||{'-'*(width-4)}||\n")
 
-        print("Sair do mercado!\n")
+        print("Sair do mercado!")
 
         option = input("\nS - sim\nN - não\nQuer mesmo sair? ")
         option = validate_option(option)
