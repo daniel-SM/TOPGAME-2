@@ -1,4 +1,3 @@
-[0]  = Titulo
 [1]  = Nome
 [2]  = Fase
 [3]  = Vida
