@@ -1,3 +1,4 @@
+# Funcao para validar opcao digitada
 def validate_option(option):
     option = option.lower()
 
