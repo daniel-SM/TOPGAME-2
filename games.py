@@ -1,18 +1,34 @@
-# Funcao para obter os jogos salvos da pasta saved_games
+from clear import clear_screen  # Importando para limpar a tela
+from option import validate_option  # Importando para validar opcao digitada
+
+
+# Funcao para obter os jogos salvos
 def search_saved_games(saved_games_count):
-    # Os arquivos estao nomeados numericamente na ordem que foram criados
-    # Iniciando com valor 1
+    # Limpando a tela
+    clear_screen()
+
+    # Definindo a largura do quadro
+    width = 40
+
+    # Iniciando contagem com valor 1
     count = 1
+
+    # OBS: Os arquivos estao nomeados numericamente na ordem que foram criados
     # Criando lista parar guardar as informacoes de cada jogo salvo
     saved_games = []
 
+    # Imprimindo a quantidade de jogos salvos
+    print(f"||{'-'*(width-4)}||")
+    print(f"||{f'Você tem {saved_games_count} jogo(s) salvo(s)!':^{width-4}}||")
+    print(f"||{'-'*(width-4)}||")
+    input("\nEnter para continuar... ")
+
     # Loop para ler informacoes dos jogos salvos
     while count <= saved_games_count:
-        # Lendo as informacoes do jogo atual
+        # Carregando as informacoes do jogo atual
         file = open(f"./storage/saved_games/{count}", "r")
-
-        # Carregando as linhas do arquivo
         lines = file.read().splitlines()
+        file.close()
 
         # Criando dicionario com as informacoes do jogo salvo
         info = {
@@ -30,42 +46,47 @@ def search_saved_games(saved_games_count):
             "enemy_attack": int(lines[10]),
             "enemy_defense": int(lines[11]),
         }
-        # Adicionar as informacoes na lista de jogos salvos
-        saved_games.append(info)
 
         # Imprimindo as informacoes do jogo atual
-        # Definindo a largura do quadro
-        width = 40
         print()
         print(f"||{'-'*(width-4)}||")
-        print(f"|| Código:       {info['code']   :>{width-20}} ||")
-        print(f"|| Nome:         {info['name']   :>{width-20}} ||")
-        print(f"|| Fase:         {info['phase']  :>{width-20}} ||")
-        print(f"|| Vida:         {info['life']   :>{width-20}} ||")
-        print(f"|| Ataque:       {info['attack'] :>{width-20}} ||")
-        print(f"|| Defesa:       {info['defense']:>{width-20}} ||")
-        print(f"|| Regeneração:  {info['regen']  :>{width-20}} ||")
-        print(f"|| Magia:        {info['magic']  :>{width-20}} ||")
-        print(f"|| Moedas:       {info['coins']  :>{width-20}} ||")
+        print(f"||{f'JOGO {count}':^{width-4}}||")
+        print(f"||{'-'*(width-4)}||")
+        print(f"|| Código:       {info['code']    :>{width-20}} ||")
+        print(f"|| Nome:         {info['name']    :>{width-20}} ||")
+        print(f"|| Fase:         {info['phase']   :>{width-20}} ||")
+        print(f"|| Vida:         {info['life']    :>{width-20}} ||")
+        print(f"|| Ataque:       {info['attack']  :>{width-20}} ||")
+        print(f"|| Defesa:       {info['defense'] :>{width-20}} ||")
+        print(f"|| Regeneração:  {info['regen']   :>{width-20}} ||")
+        print(f"|| Magia:        {info['magic']   :>{width-20}} ||")
+        print(f"|| Moedas:       {info['coins']   :>{width-20}} ||")
         print(f"||{'-'*(width-4)}||")
 
-        # Fechando arquivo
-        file.close()
+        # Adicionar as informacoes na lista de jogos salvos
+        saved_games.append(info)
 
         # Incrementando para ler proximo jogo salvo
         count += 1
 
-        # nao imprime mensagem se for o ultimo 
-        if (count <= saved_games_count):
+        # Nao imprime mensagem se for o ultimo
+        if count <= saved_games_count:
             input("\nEnter para continuar... ")
-
     # Fim do while
 
-    # Recebendo o codigo do jogo salvo para ser carregado
+    # Confirmando se deseja continuar
+    option = input("\nS- sim\nN - não\nContinuar algum progresso? ")
+    option = validate_option(option)
+
+    # Caso nao deseje continuar
+    if option == "n":
+        return None
+
+    # Recebendo o codigo do jogo a ser carregado
     game_code = input("\nCódigo do jogo salvo: ")
 
     # Verificando se o valor informado
-    while (not game_code.isnumeric()) and (int(game_code) in range(1, saved_games_count)):
+    while not game_code.isnumeric() and int(game_code) in range(1, saved_games_count):
         print("\nInválido!")
         game_code = input("Código do jogo salvo: ")
 

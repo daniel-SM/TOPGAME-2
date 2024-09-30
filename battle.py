@@ -24,7 +24,7 @@ def battle_manager(
 ):
     clear_screen()
 
-    # Definindo a largura dos quadros 
+    # Definindo a largura dos quadros
     width = 40
 
     print(f"||{'-'*(width-4)}||")
@@ -47,7 +47,7 @@ def battle_manager(
     time.sleep(1)
 
     increase_enemy_power = True
-    battle_ended = False
+    game_ended = False
     action = ""
     while action != "1":
         print()
@@ -175,7 +175,7 @@ def battle_manager(
                 print(f"||{'-'*(width-4)}||")
                 time.sleep(1)
 
-                battle_ended = True
+                game_ended = True
                 return (
                     player_items,
                     coins,
@@ -185,7 +185,7 @@ def battle_manager(
                     player_life,
                     player_life_regen,
                     phase,
-                    battle_ended,
+                    game_ended,
                     increase_enemy_power,
                 )
 
@@ -203,6 +203,6 @@ def battle_manager(
         player_life,
         player_life_regen,
         phase,
-        battle_ended,
+        game_ended,
         increase_enemy_power,
     )

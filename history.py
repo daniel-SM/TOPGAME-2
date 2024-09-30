@@ -6,12 +6,12 @@ from clear import clear_screen
 
 
 # imprime a historia inicial do jogo
-def initial_history(nome):
+def initial_history():
     # definindo largura dos quadro exibido
     width = 40
     print()
     print(f"||{'-'*(width-4)}||")
-    print(f"||{f'SEJA BEM-VINDO (A), {nome}!':^{width-4}}||")
+    print(f"||{'SEJA BEM-VINDO(A)!':^{width-4}}||")
     print(f"||{'-'*(width-4)}||")
     time.sleep(2)
     print(f"||{' '*(width-4)}||")
@@ -27,9 +27,7 @@ def initial_history(nome):
     print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
     time.sleep(2)
-    print(f"||{' '*(width-4)}||")
     print(f"||{'BOA SORTE!':^{width-4}}||")
-    print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
 
     input("\nEnter para continuar... ")
@@ -53,9 +51,7 @@ def initial_history(nome):
     print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
     time.sleep(2)
-    print(f"||{' '*(width-4)}||")
     print(f"||{'DEPRESSA!':^{width-4}}||")
-    print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
     input("\nEnter para continuar... ")
 
