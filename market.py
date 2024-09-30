@@ -47,11 +47,11 @@ def market(
     print(f"||{' ' * 10}{'7. Sair':<{width-14}}||")
     print(f"||{'-'*(width-4)}||")
 
-    store_code = input("\nNúmero da loja: ")
+    store_code = input("\nLoja: ")
 
     while store_code not in ["1", "2", "3", "4", "5", "6", "7"]:
         print("Inválido!")
-        store_code = input("Número da loja: ")
+        store_code = input("Loja: ")
 
     clear_screen()
 
