@@ -21,6 +21,7 @@ def fight(
     width = 40
 
     if (player_attack - enemy_defense <= 0) and (enemy_attack - player_defense <= 0):
+        print()
         print(f"||{'-'*(width-4)}||")
         print(f"||{'EMPATE':^{width-4}}||")
         print(f"||{'-'*(width-4)}||")
