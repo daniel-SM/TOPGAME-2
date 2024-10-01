@@ -26,7 +26,7 @@ def search_saved_games(saved_games_count):
     # Loop para ler informacoes dos jogos salvos
     while count <= saved_games_count:
         # Carregando as informacoes do jogo atual
-        file = open(f"./storage/saved_games/{count}", "r")
+        file = open(f"./.storage/{count}", "r")
         lines = file.read().splitlines()
         file.close()
 

@@ -47,7 +47,7 @@ start_new_game = False
 game_ended = False
 
 # Carregando informacao sobre quantidade de jogos salvos
-file = open("./storage/games_count.txt", "r")
+file = open("./.storage/games_count.txt", "r")
 saved_games_count = int(file.readline().strip())
 file.close()
 
