@@ -1,19 +1,19 @@
-# usado para gerar intervalos entre as mensagens
-import time
+import time  # Usado para gerar intervalos entre as mensagens
 
-# importando funcao para limpar o terminal
-from clear import clear_screen
+from clear import clear_screen  # Importando funcao para limpar o terminal
 
 
-# imprime a historia inicial do jogo
+# Imprime a historia inicial do jogo
 def initial_history():
-    # definindo largura dos quadro exibido
+    # Definindo largura dos quadro exibido
     width = 40
+
     print()
     print(f"||{'-'*(width-4)}||")
     print(f"||{'SEJA BEM-VINDO(A)!':^{width-4}}||")
     print(f"||{'-'*(width-4)}||")
     time.sleep(2)
+
     print(f"||{' '*(width-4)}||")
     print(f"||{'Você é um guerreiro que serve':^{width-4}}||")
     print(f"||{'ao rei e nesse momento está':^{width-4}}||")
@@ -27,10 +27,12 @@ def initial_history():
     print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
     time.sleep(2)
+
     print(f"||{'BOA SORTE!':^{width-4}}||")
     print(f"||{'-'*(width-4)}||")
 
     input("\nEnter para continuar... ")
+
     print()
     print(f"||{'-'*(width-4)}||")
     print(f"||{' '*(width-4)}||")
@@ -41,6 +43,7 @@ def initial_history():
     print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
     time.sleep(2)
+
     print(f"||{' '*(width-4)}||")
     print(f"||{'Os monstros destruiram':^{width-4}}||")
     print(f"||{' o portão sul do reino!':^{width-4}}||")
@@ -51,6 +54,7 @@ def initial_history():
     print(f"||{' '*(width-4)}||")
     print(f"||{'-'*(width-4)}||")
     time.sleep(2)
+
     print(f"||{'DEPRESSA!':^{width-4}}||")
     print(f"||{'-'*(width-4)}||")
     input("\nEnter para continuar... ")

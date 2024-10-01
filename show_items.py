@@ -1,6 +1,3 @@
-import time
-
-
 def show_items(store_items, item_description):
     # Definindo o tamanho da largura do quadro
     width = 40

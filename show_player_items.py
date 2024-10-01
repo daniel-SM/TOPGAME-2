@@ -1,6 +1,3 @@
-import time
-
-
 def show_player_items(player_items):
     for item in player_items:
         print()

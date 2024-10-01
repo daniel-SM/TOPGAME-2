@@ -1,9 +1,11 @@
 import random
+
 from suspense import make_suspense
 
 
-def calc_damage(current_attacker, life_value, attack_value, 
-                defense_value, magic_value=0):
+def calc_damage(
+    current_attacker, life_value, attack_value, defense_value, magic_value=0
+):
     fight_completed = False
 
     # Sorteando possíveis divisores com pesos

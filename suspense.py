@@ -1,7 +1,7 @@
-import time
+from time import sleep
 
 
 def make_suspense(suspense_time):
-    for i in range(3):
+    for _ in range(3):
         print(".")
-        time.sleep(suspense_time)
+        sleep(suspense_time)

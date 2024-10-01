@@ -1,8 +1,8 @@
 import time
 
-from clear import clear_screen
 from market import market
 from fight import fight
+from clear import clear_screen
 from option import validate_option
 from storage import save_to_storage
 
