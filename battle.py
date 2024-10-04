@@ -25,25 +25,25 @@ def battle_manager(
     clear_screen()
 
     # Definindo a largura dos quadros
-    width = 40
+    WIDTH = 40
 
-    print(f"||{'-'*(width-4)}||")
-    print(f"||{f'FASE {phase + 1}':^{width-4}}||")
-    print(f"||{'-'*(width-4)}||")
+    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{f'FASE {phase + 1}':^{WIDTH-4}}||")
+    print(f"||{'-'*(WIDTH-4)}||")
     time.sleep(1)
 
-    print(f"||{'VOCÊ':^{width-4}}||")
-    print(f"|| Vida     {player_life    :>{width-15}} ||")
-    print(f"|| Ataque   {player_attack  :>{width-15}} ||")
-    print(f"|| Defesa   {player_defense :>{width-15}} ||")
-    print(f"|| Magia    {player_magic   :>{width-15}} ||")
-    print(f"|| Moedas   {coins          :>{width-15}} ||")
-    print(f"||{'-'*(width-4)}||")
-    print(f"||{'INIMIGO':^{width-4}}||")
-    print(f"|| Vida     {enemy_life     :>{width-15}} ||")
-    print(f"|| Ataque   {enemy_attack   :>{width-15}} ||")
-    print(f"|| Defesa   {enemy_defense  :>{width-15}} ||")
-    print(f"||{'-'*(width-4)}||")
+    print(f"||{'VOCÊ':^{WIDTH-4}}||")
+    print(f"|| Vida     {player_life    :>{WIDTH-15}} ||")
+    print(f"|| Ataque   {player_attack  :>{WIDTH-15}} ||")
+    print(f"|| Defesa   {player_defense :>{WIDTH-15}} ||")
+    print(f"|| Magia    {player_magic   :>{WIDTH-15}} ||")
+    print(f"|| Moedas   {coins          :>{WIDTH-15}} ||")
+    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{'INIMIGO':^{WIDTH-4}}||")
+    print(f"|| Vida     {enemy_life     :>{WIDTH-15}} ||")
+    print(f"|| Ataque   {enemy_attack   :>{WIDTH-15}} ||")
+    print(f"|| Defesa   {enemy_defense  :>{WIDTH-15}} ||")
+    print(f"||{'-'*(WIDTH-4)}||")
     time.sleep(1)
 
     increase_enemy_power = True
@@ -51,14 +51,14 @@ def battle_manager(
     action = ""
     while action != "1":
         print()
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'AÇÕES':^{width-4}}||")
-        print(f"||{' ' * 10}{'1. Começar Batalha':<{width-14}}||")
-        print(f"||{' ' * 10}{'2. Ir pro Mercado':<{width-14}}||")
-        print(f"||{' ' * 10}{'3. Seu Status':<{width-14}}||")
-        print(f"||{' ' * 10}{'4. Salvar Progresso':<{width-14}}||")
-        print(f"||{' ' * 10}{'5. Sair do Jogo':<{width-14}}||")
-        print(f"||{'-'*(width-4)}||")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'AÇÕES':^{WIDTH-4}}||")
+        print(f"||{' ' * 10}{'1. Começar Batalha':<{WIDTH-14}}||")
+        print(f"||{' ' * 10}{'2. Ir pro Mercado':<{WIDTH-14}}||")
+        print(f"||{' ' * 10}{'3. Seu Status':<{WIDTH-14}}||")
+        print(f"||{' ' * 10}{'4. Salvar Progresso':<{WIDTH-14}}||")
+        print(f"||{' ' * 10}{'5. Sair do Jogo':<{WIDTH-14}}||")
+        print(f"||{'-'*(WIDTH-4)}||")
 
         action = input("\nAção: ")
 
@@ -68,11 +68,11 @@ def battle_manager(
             option = validate_option(option)
             if option == "s":
                 print()
-                print(f"||{'-'*(width-4)}||")
-                print(f"||{' '*(width-4)}||")
-                print(f"||{'BATALHA':^{width-4}}||")
-                print(f"||{' '*(width-4)}||")
-                print(f"||{'-'*(width-4)}||")
+                print(f"||{'-'*(WIDTH-4)}||")
+                print(f"||{' '*(WIDTH-4)}||")
+                print(f"||{'BATALHA':^{WIDTH-4}}||")
+                print(f"||{' '*(WIDTH-4)}||")
+                print(f"||{'-'*(WIDTH-4)}||")
 
                 player_life,
                 player_magic,
@@ -116,19 +116,19 @@ def battle_manager(
         elif action == "3":
             clear_screen()
 
-            print(f"||{'-'*(width-4)}||")
-            print(f"||{'VOCÊ':^{width-4}}||")
-            print(f"|| Vida     {player_life    :>{width-15}} ||")
-            print(f"|| Ataque   {player_attack  :>{width-15}} ||")
-            print(f"|| Defesa   {player_defense :>{width-15}} ||")
-            print(f"|| Magia    {player_magic   :>{width-15}} ||")
-            print(f"|| Moedas   {coins          :>{width-15}} ||")
-            print(f"||{'-'*(width-4)}||")
-            print(f"||{'INIMIGO':^{width-4}}||")
-            print(f"|| Vida     {enemy_life     :>{width-15}} ||")
-            print(f"|| Ataque   {enemy_attack   :>{width-15}} ||")
-            print(f"|| Defesa   {enemy_defense  :>{width-15}} ||")
-            print(f"||{'-'*(width-4)}||")
+            print(f"||{'-'*(WIDTH-4)}||")
+            print(f"||{'VOCÊ':^{WIDTH-4}}||")
+            print(f"|| Vida     {player_life    :>{WIDTH-15}} ||")
+            print(f"|| Ataque   {player_attack  :>{WIDTH-15}} ||")
+            print(f"|| Defesa   {player_defense :>{WIDTH-15}} ||")
+            print(f"|| Magia    {player_magic   :>{WIDTH-15}} ||")
+            print(f"|| Moedas   {coins          :>{WIDTH-15}} ||")
+            print(f"||{'-'*(WIDTH-4)}||")
+            print(f"||{'INIMIGO':^{WIDTH-4}}||")
+            print(f"|| Vida     {enemy_life     :>{WIDTH-15}} ||")
+            print(f"|| Ataque   {enemy_attack   :>{WIDTH-15}} ||")
+            print(f"|| Defesa   {enemy_defense  :>{WIDTH-15}} ||")
+            print(f"||{'-'*(WIDTH-4)}||")
             time.sleep(1)
 
             input("\nEnter para continuar... ")
@@ -168,11 +168,11 @@ def battle_manager(
                 print("\nSaindo do jogo...")
 
                 print()
-                print(f"||{'-'*(width-4)}||")
-                print(f"||{' '*(width-4)}||")
-                print(f"||{'VOCÊ SAIU DO JOGO!':^{width-4}}||")
-                print(f"||{' '*(width-4)}||")
-                print(f"||{'-'*(width-4)}||")
+                print(f"||{'-'*(WIDTH-4)}||")
+                print(f"||{' '*(WIDTH-4)}||")
+                print(f"||{'VOCÊ SAIU DO JOGO!':^{WIDTH-4}}||")
+                print(f"||{' '*(WIDTH-4)}||")
+                print(f"||{'-'*(WIDTH-4)}||")
                 time.sleep(1)
 
                 game_ended = True

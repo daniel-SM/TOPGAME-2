@@ -7,22 +7,22 @@ from games import search_saved_games  # Importando para buscar os jogos salvos
 from battle import battle_manager  # Importando para gerenciar a batalha
 
 # Definindo a largura do quadro
-width = 40
+WIDTH = 40
 
 # Imprimindo o nome do jogo
-print(f"||{'-'*(width-4)}||")
-print(f"||{' '*(width-4)}||")
-print(f"|| {'######   #####    ##### ':<{width-5}}||")
-print(f"|| {'  ##    ##   ##   ##  ##':<{width-5}}||")
-print(f"|| {'  ##    ##   ##   ##### ':<{width-5}}||")
-print(f"|| {'  ##     #####    ##    ':<{width-5}}||")
-print(f"||{' '*(width-4)}||")
-print(f"||{' ####    ####   ##    ##  #####':>{width-5}} ||")
-print(f"||{'##      ##  ##  ########  ###  ':>{width-5}} ||")
-print(f"||{'## ###  ######  ## ## ##  ##   ':>{width-5}} ||")
-print(f"||{' ####   ##  ##  ##    ##  #####':>{width-5}} ||")
-print(f"||{' '*(width-4)}||")
-print(f"||{'-'*(width-4)}||")
+print(f"||{'-'*(WIDTH-4)}||")
+print(f"||{' '*(WIDTH-4)}||")
+print(f"|| {'######   #####    ##### ':<{WIDTH-5}}||")
+print(f"|| {'  ##    ##   ##   ##  ##':<{WIDTH-5}}||")
+print(f"|| {'  ##    ##   ##   ##### ':<{WIDTH-5}}||")
+print(f"|| {'  ##     #####    ##    ':<{WIDTH-5}}||")
+print(f"||{' '*(WIDTH-4)}||")
+print(f"||{' ####    ####   ##    ##  #####':>{WIDTH-5}} ||")
+print(f"||{'##      ##  ##  ########  ###  ':>{WIDTH-5}} ||")
+print(f"||{'## ###  ######  ## ## ##  ##   ':>{WIDTH-5}} ||")
+print(f"||{' ####   ##  ##  ##    ##  #####':>{WIDTH-5}} ||")
+print(f"||{' '*(WIDTH-4)}||")
+print(f"||{'-'*(WIDTH-4)}||")
 sleep(2)
 
 # Definindo os dados iniciais do jogo
@@ -55,13 +55,13 @@ file.close()
 if saved_games_count > 0:
     # Imprimindo menu inicial
     print()
-    print(f"||{'-'*(width-4)}||")
-    print(f"||{'MENU INICIAL':^{width-4}}||")
-    print(f"||{'-'*(width-4)}||")
-    print(f"||{'1. Novo Jogo':^{width-4}}||")
-    print(f"||{'2. Continuar Progresso':^{width-4}}||")
-    print(f"||{'3. Sair':^{width-4}}||")
-    print(f"||{'-'*(width-4)}||")
+    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{'MENU INICIAL':^{WIDTH-4}}||")
+    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{'1. Novo Jogo':^{WIDTH-4}}||")
+    print(f"||{'2. Continuar Progresso':^{WIDTH-4}}||")
+    print(f"||{'3. Sair':^{WIDTH-4}}||")
+    print(f"||{'-'*(WIDTH-4)}||")
 
     # Recebendo escolha do jogador
     option = input("\nOpção: ")
@@ -117,11 +117,11 @@ if saved_games_count > 0:
 
         # Imprimindo mensagem ao sair do jogo
         print()
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{' '*(width-4)}||")
-        print(f"||{'VOCÊ SAIU DO JOGO!':^{width-4}}||")
-        print(f"||{' '*(width-4)}||")
-        print(f"||{'-'*(width-4)}||")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{' '*(WIDTH-4)}||")
+        print(f"||{'VOCÊ SAIU DO JOGO!':^{WIDTH-4}}||")
+        print(f"||{' '*(WIDTH-4)}||")
+        print(f"||{'-'*(WIDTH-4)}||")
         sleep(1)
 
     # Limpando a tela
@@ -190,10 +190,10 @@ while not game_ended:
 
         # Imprimindo mensagem de fim de jogo
         print()
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'VOCÊ MORREU!':^{width-4}}||")
-        print(f"||{'O JOGO ACABOU!':^{width-4}}||")
-        print(f"||{'-'*(width-4)}||")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'VOCÊ MORREU!':^{WIDTH-4}}||")
+        print(f"||{'O JOGO ACABOU!':^{WIDTH-4}}||")
+        print(f"||{'-'*(WIDTH-4)}||")
     # Fim do if else
 
     # Incrementando a fase

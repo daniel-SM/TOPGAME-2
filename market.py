@@ -21,31 +21,31 @@ def market(
     clear_screen()
 
     # Definindo o tamanho da largura do quadro
-    width = 40
+    WIDTH = 40
 
     print()
-    print(f"||{'-'*(width-4)}||")
-    print(f"||{' '*(width-4)}||")
-    print(f"||{'BEM-VINDO AO MERCADO':^{width-4}}||")
-    print(f"||{' '*(width-4)}||")
-    print(f"||{'-'*(width-4)}||")
+    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{' '*(WIDTH-4)}||")
+    print(f"||{'BEM-VINDO AO MERCADO':^{WIDTH-4}}||")
+    print(f"||{' '*(WIDTH-4)}||")
+    print(f"||{'-'*(WIDTH-4)}||")
     time.sleep(1)
 
-    print(f"||{f'Você tem {coins} moedas':^{width-4}}||")
-    print(f"||{'-'*(width-4)}||")
+    print(f"||{f'Você tem {coins} moedas':^{WIDTH-4}}||")
+    print(f"||{'-'*(WIDTH-4)}||")
     time.sleep(1)
 
     print()
-    print(f"||{'-'*(width-4)}||")
-    print(f"||{'LOJAS':^{width-4}}||")
-    print(f"||{' ' * 10}{'1. Loja de Armas':<{width-14}}||")
-    print(f"||{' ' * 10}{'2. Loja de Escudos':<{width-14}}||")
-    print(f"||{' ' * 10}{'3. Loja de Poções':<{width-14}}||")
-    print(f"||{' ' * 10}{'4. Loja de Armaduras':<{width-14}}||")
-    print(f"||{' ' * 10}{'5. Loja de Magias':<{width-14}}||")
-    print(f"||{' ' * 10}{'6. Vender Itens':<{width-14}}||")
-    print(f"||{' ' * 10}{'7. Sair':<{width-14}}||")
-    print(f"||{'-'*(width-4)}||")
+    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{'LOJAS':^{WIDTH-4}}||")
+    print(f"||{' ' * 10}{'1. Loja de Armas':<{WIDTH-14}}||")
+    print(f"||{' ' * 10}{'2. Loja de Escudos':<{WIDTH-14}}||")
+    print(f"||{' ' * 10}{'3. Loja de Poções':<{WIDTH-14}}||")
+    print(f"||{' ' * 10}{'4. Loja de Armaduras':<{WIDTH-14}}||")
+    print(f"||{' ' * 10}{'5. Loja de Magias':<{WIDTH-14}}||")
+    print(f"||{' ' * 10}{'6. Vender Itens':<{WIDTH-14}}||")
+    print(f"||{' ' * 10}{'7. Sair':<{WIDTH-14}}||")
+    print(f"||{'-'*(WIDTH-4)}||")
 
     store_code = input("\nLoja: ")
 
@@ -56,9 +56,9 @@ def market(
     clear_screen()
 
     if store_code == "1":
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'LOJA DE ARMAS':^{width-4}}||")
-        print(f"||{'-'*(width-4)}||")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'LOJA DE ARMAS':^{WIDTH-4}}||")
+        print(f"||{'-'*(WIDTH-4)}||")
         print()
 
         show_items(ATTACK_ITEMS, "ataque")
@@ -71,9 +71,9 @@ def market(
             )
 
     elif store_code == "2":
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'LOJA DE ESCUDOS':^{width-4}}||")
-        print(f"||{'-'*(width-4)}||")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'LOJA DE ESCUDOS':^{WIDTH-4}}||")
+        print(f"||{'-'*(WIDTH-4)}||")
 
         show_items(DEFENSE_ITEMS, "defesa")
         option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
@@ -85,9 +85,9 @@ def market(
             )
 
     elif store_code == "3":
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'LOJA DE POCÕES':^{width-4}}||")
-        print(f"||{'-'*(width-4)}||")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'LOJA DE POCÕES':^{WIDTH-4}}||")
+        print(f"||{'-'*(WIDTH-4)}||")
 
         show_items(POTION_ITEMS, "vida a mais")
 
@@ -102,9 +102,9 @@ def market(
             player_life += potion_value
 
     elif store_code == "4":
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'LOJA DE ARMADURAS':^{width-4}}||")
-        print(f"||{'-'*(width-4)}||")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'LOJA DE ARMADURAS':^{WIDTH-4}}||")
+        print(f"||{'-'*(WIDTH-4)}||")
 
         show_items(REGEN_ITEMS, "vida p/ fase")
 
@@ -123,9 +123,9 @@ def market(
             )
 
     elif store_code == "5":
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'LOJA DE MAGIAS':^{width-4}}||")
-        print(f"||{'-'*(width-4)}||\n ")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'LOJA DE MAGIAS':^{WIDTH-4}}||")
+        print(f"||{'-'*(WIDTH-4)}||\n ")
 
         show_items(MAGIC_ITEMS, "ataque extra")
 
@@ -140,9 +140,9 @@ def market(
             player_magic += magic_value
 
     elif store_code == "6":
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'VENDER ITENS':^{width-4}}||")
-        print(f"||{'-'*(width-4)}||\n")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'VENDER ITENS':^{WIDTH-4}}||")
+        print(f"||{'-'*(WIDTH-4)}||\n")
 
         if len(player_items) > 0:
             show_player_items(player_items)
@@ -177,9 +177,9 @@ def market(
                 )
 
     elif store_code == "7":
-        print(f"||{'-'*(width-4)}||")
-        print(f"||{'SAIR':^{width-4}}||")
-        print(f"||{'-'*(width-4)}||\n")
+        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'SAIR':^{WIDTH-4}}||")
+        print(f"||{'-'*(WIDTH-4)}||\n")
 
         print("Sair do mercado!")
 
