@@ -4,22 +4,37 @@ from suspense import make_suspense
 
 
 def calc_damage(
-    current_attacker, life_value, attack_value, defense_value, magic_value=0
-):
-    fight_completed = False
+    current_attacker: int,
+    life_value: int,
+    attack_value: int,
+    defense_value: int,
+    magic_value: int = 0,
+) -> tuple[
+    int,  # player_life
+    bool,  # fight_completed
+]:
+
+    # iniciando variavel de controle da luta
+    fight_completed: bool = False
 
     # Sorteando possíveis divisores com pesos
-    random_result = random.choices(population=[1, 2, 5, 10], weights=[1, 4, 6, 1])
-    damage_divisor = random_result[0]
+    random_result: list[int] = random.choices(
+        population=[1, 2, 5, 10], weights=[1, 4, 6, 1]
+    )
+    damage_divisor: int = random_result[0]
 
     # Sorteando possíveis multiplicadores com pesos
-    random_result = random.choices(population=[0, 1], weights=[1, 19])
-    damage_multiplier = random_result[0]
+    random_result: list[int] = random.choices(population=[0, 1], weights=[1, 19])
+    damage_multiplier: int = random_result[0]
 
-    attack_vs_defense = attack_value - defense_value
+    attack_vs_defense: int = attack_value - defense_value
 
     if attack_vs_defense > 0:
-        damage = (attack_vs_defense // damage_divisor) * damage_multiplier + magic_value
+        # calculando o dano causado
+        damage: int = (attack_vs_defense // damage_divisor) * damage_multiplier
+        # adicionando dano de magica
+        damage += magic_value
+        # subtraindo o valor do dano
         life_value -= damage
 
         if damage > 0:
@@ -52,7 +67,7 @@ def calc_damage(
                 print("Sua vida atual é", life_value)
                 make_suspense(0.6)
     elif magic_value > 0:
-        damage = magic_value
+        damage: int = magic_value
         life_value -= damage
 
         if damage > 0:

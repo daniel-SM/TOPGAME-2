@@ -7,7 +7,7 @@ from games import search_saved_games  # Importando para buscar os jogos salvos
 from battle import battle_manager  # Importando para gerenciar a batalha
 
 # Definindo a largura do quadro
-WIDTH = 40
+WIDTH: int = 40
 
 # Imprimindo o nome do jogo
 print(f"||{'-'*(WIDTH-4)}||")
@@ -26,29 +26,30 @@ print(f"||{'-'*(WIDTH-4)}||")
 sleep(2)
 
 # Definindo os dados iniciais do jogo
-player_name = ""
-phase = 0
-player_life = 100
-player_life_regen = 30
-player_attack = 80
-player_defense = 40
-player_magic = 0
-coins = 300
-player_items = []
-enemy_life = 70
-enemy_attack = 50
-enemy_defense = 20
-increase_enemy_power = True
+player_name: str = ""
+phase: int = 0
+player_life: int = 100
+player_life_regen: int = 30
+player_attack: int = 80
+player_defense: int = 40
+player_magic: int = 0
+coins: int = 300
+player_items: list[tuple[str, str, int, int, str, int]] = []
+enemy_life: int = 70
+enemy_attack: int = 50
+enemy_defense: int = 20
+increase_enemy_power: bool = True
 
 # Variavel para indicar se deve iniciar um novo jogo
-start_new_game = False
+start_new_game: bool = False
 
 # Variavel de controle do loop principal
-game_ended = False
+game_ended: bool = False
 
 # Carregando informacao sobre quantidade de jogos salvos
-file = open("./.storage/games_count.txt", "r")
-saved_games_count = int(file.readline().strip())
+
+file = open("./.storage/games_count", "r")
+saved_games_count: int = int(file.readline().strip())
 file.close()
 
 # Verificando se tem jogo salvo
@@ -64,7 +65,7 @@ if saved_games_count > 0:
     print(f"||{'-'*(WIDTH-4)}||")
 
     # Recebendo escolha do jogador
-    option = input("\nOpção: ")
+    option: str = input("\nOpção: ")
 
     # Validando escolha do jogador
     while option not in ["1", "2", "3"]:
@@ -78,7 +79,7 @@ if saved_games_count > 0:
     # Caso queira continuar progresso
     elif option == "2":
         # Funcao para buscar e imprimir informacao dos jogos salvos
-        saved_game_info = search_saved_games(saved_games_count)
+        saved_game_info: (dict[str, str | int] | None) = search_saved_games(saved_games_count)
 
         # Caso nao tenha continuado nenhum progresso
         if saved_game_info == None:

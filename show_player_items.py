@@ -1,4 +1,15 @@
-def show_player_items(player_items):
+def show_player_items(
+    player_items: list[
+        tuple[
+            str,  # code
+            str,  # type description
+            int,  # stat
+            int,  # selling price
+            str,  # stat description
+            int,  # type code
+        ]
+    ]
+) -> None:
     for item in player_items:
         print()
         print(item[0], "-", item[1])

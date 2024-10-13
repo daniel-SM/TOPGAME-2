@@ -3,19 +3,21 @@ from option import validate_option  # Importando para validar opcao digitada
 
 
 # Funcao para obter os jogos salvos
-def search_saved_games(saved_games_count):
+def search_saved_games(
+    saved_games_count: int,
+) -> dict[str, (str | int)] | None:
     # Limpando a tela
     clear_screen()
 
     # Definindo a largura do quadro
-    WIDTH = 40
+    WIDTH: int = 40
 
     # Iniciando contagem com valor 1
-    count = 1
+    count: int = 1
 
     # OBS: Os arquivos estao nomeados numericamente na ordem que foram criados
     # Criando lista parar guardar as informacoes de cada jogo salvo
-    saved_games = []
+    saved_games: list[dict[str, str | int]] = []
 
     # Imprimindo a quantidade de jogos salvos
     print(f"||{'-'*(WIDTH-4)}||")
@@ -27,11 +29,11 @@ def search_saved_games(saved_games_count):
     while count <= saved_games_count:
         # Carregando as informacoes do jogo atual
         file = open(f"./.storage/{count}", "r")
-        lines = file.read().splitlines()
+        lines: list[str] = file.read().splitlines()
         file.close()
 
         # Criando dicionario com as informacoes do jogo salvo
-        info = {
+        info: dict[str, str | int] = {
             "code": count,
             "name": lines[0],
             "phase": int(lines[1]),
@@ -75,7 +77,7 @@ def search_saved_games(saved_games_count):
     # Fim do while
 
     # Confirmando se deseja continuar
-    option = input("\nS- sim\nN - não\nContinuar algum progresso? ")
+    option: str = input("\nS- sim\nN - não\nContinuar algum progresso? ")
     option = validate_option(option)
 
     # Caso nao deseje continuar
@@ -83,7 +85,7 @@ def search_saved_games(saved_games_count):
         return None
 
     # Recebendo o codigo do jogo a ser carregado
-    game_code = input("\nCódigo do jogo salvo: ")
+    game_code: str = input("\nCódigo do jogo salvo: ")
 
     # Verificando se o valor informado
     while not game_code.isnumeric() and int(game_code) in range(1, saved_games_count):

@@ -1,8 +1,18 @@
-def show_items(store_items, item_description):
+def show_items(
+    store_inventory: list[
+        tuple[
+            str,  # code
+            str,  # type
+            int,  # stat
+            int,  # price
+        ]
+    ],
+    item_description: str,
+) -> None:
     # Definindo o tamanho da largura do quadro
     WIDTH = 40
 
-    for item in store_items:
+    for item in store_inventory:
         print()
         print(f"||{'-'*(WIDTH-4)}||")
         print(f"|| Código: {item[0] :>{WIDTH-14}} ||")

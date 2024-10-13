@@ -1,6 +1,15 @@
-def update_stat_value(player_items, item_description, item_type):
-    item_found = False
-    stat_value = 0
+# Importando para definir tipo dos parametros
+from typing import Literal
+
+
+# Funcao para atualizar o stat de um item vendido
+def update_stat_value(
+    player_items: list[tuple[str, str, int, int, str, int]],
+    item_description: str,
+    item_type: Literal[0, 1, 2],
+) -> int:
+    item_found: bool = False
+    stat_value: int = 0
 
     # Buscando algum item que tenha mesmo tipo do item vendido
     for item in player_items:

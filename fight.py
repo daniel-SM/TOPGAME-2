@@ -7,18 +7,24 @@ from suspense import make_suspense
 
 
 def fight(
-    player_life,
-    enemy_life,
-    player_attack,
-    enemy_attack,
-    player_defense,
-    enemy_defense,
-    player_magic,
-    coins,
-    phase,
-):
+    player_life: int,
+    enemy_life: int,
+    player_attack: int,
+    enemy_attack: int,
+    player_defense: int,
+    enemy_defense: int,
+    player_magic: int,
+    coins: int,
+    phase: int,
+) -> tuple[
+    int,  # player_life
+    int,  # player_magic
+    int,  # coins
+    int,  # phase
+    bool,  # increase_enemy_power
+]:
     # Definindo o tamanho da largura do quadro
-    WIDTH = 40
+    WIDTH: int = 40
 
     if (player_attack - enemy_defense <= 0) and (enemy_attack - player_defense <= 0):
         print()
@@ -32,11 +38,14 @@ def fight(
         phase -= 1
         return player_life, player_magic, coins, phase, False
 
-    player_turn_counter = 0
-    enemy_turn_counter = 0
+    player_turn_counter: int = 0
+    enemy_turn_counter: int = 0
 
     while (player_life > 0) and (enemy_life > 0):
-        who_plays_next = random.choice([1, 2])
+        # iniciando variavel de controle do fim da luta
+        fight_completed: bool = False
+
+        who_plays_next: int = random.choice([1, 2])
 
         if player_turn_counter > 1:
             player_turn_counter = 0
@@ -72,7 +81,7 @@ def fight(
             print(f"||{' ' * 10}{'4. Fugir':<{WIDTH-14}}||")
             print(f"||{'-'*(WIDTH-4)}||")
 
-            action = input("\nAção: ")
+            action: str = input("\nAção: ")
 
             while action not in ["1", "2", "3", "4"]:
                 print("Inválido!")
@@ -97,7 +106,7 @@ def fight(
             elif action == "3":
                 who_plays_next = 2
             elif action == "4":
-                option = input("\nS - sim\nN - não\nQuer mesmo fugir? ")
+                option: str = input("\nS - sim\nN - não\nQuer mesmo fugir? ")
                 option = validate_option(option)
 
                 if option == "s":
@@ -142,7 +151,7 @@ def fight(
             print(f"||{' ' * 10}{'4. Fugir':<{WIDTH-14}}||")
             print(f"||{'-'*(WIDTH-4)}||")
 
-            action = input("\nAção: ")
+            action: str = input("\nAção: ")
 
             while action not in ["1", "2", "3", "4"]:
                 print("Inválido!")
@@ -168,7 +177,7 @@ def fight(
                 who_plays_next = 2
                 fight_completed = False
             elif action == "4":
-                option = input("\nS - sim\nN - não\nQuer mesmo fugir? ")
+                option: str = input("\nS - sim\nN - não\nQuer mesmo fugir? ")
                 option = validate_option(option)
 
                 if option == "s":

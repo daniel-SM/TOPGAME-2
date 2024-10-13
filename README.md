@@ -8,7 +8,6 @@ Um simples RPG, feito em python. Sem interfaces apenas sobre o terminal.
     - novo jogo
     - salvos
     - sair
-
 - menu principal
     - batalha
         - atacar

@@ -10,18 +10,26 @@ from items import ATTACK_ITEMS, DEFENSE_ITEMS, POTION_ITEMS, REGEN_ITEMS, MAGIC_
 
 
 def market(
-    player_items,
-    coins,
-    player_life,
-    player_attack,
-    player_defense,
-    player_life_regen,
-    player_magic,
-):
+    player_items: list[tuple[str, str, int, int, str, int]],
+    coins: int,
+    player_life: int,
+    player_attack: int,
+    player_defense: int,
+    player_life_regen: int,
+    player_magic: int,
+) -> tuple[
+    list[tuple[str, str, int, int, str, int]],  # player_items
+    int,  # coins
+    int,  # player_life
+    int,  # player_attack
+    int,  # player_defense
+    int,  # player_life_regen
+    int,  # player_magic
+]:
     clear_screen()
 
     # Definindo o tamanho da largura do quadro
-    WIDTH = 40
+    WIDTH: int = 40
 
     print()
     print(f"||{'-'*(WIDTH-4)}||")
@@ -47,7 +55,7 @@ def market(
     print(f"||{' ' * 10}{'7. Sair':<{WIDTH-14}}||")
     print(f"||{'-'*(WIDTH-4)}||")
 
-    store_code = input("\nLoja: ")
+    store_code: str = input("\nLoja: ")
 
     while store_code not in ["1", "2", "3", "4", "5", "6", "7"]:
         print("Inválido!")
@@ -62,7 +70,7 @@ def market(
         print()
 
         show_items(ATTACK_ITEMS, "ataque")
-        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option: str = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
         option = validate_option(option)
 
         if option == "s":
@@ -76,7 +84,7 @@ def market(
         print(f"||{'-'*(WIDTH-4)}||")
 
         show_items(DEFENSE_ITEMS, "defesa")
-        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option: str = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
         option = validate_option(option)
 
         if option == "s":
@@ -91,11 +99,11 @@ def market(
 
         show_items(POTION_ITEMS, "vida a mais")
 
-        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option: str = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
         option = validate_option(option)
 
         if option == "s":
-            potion_value = 0
+            potion_value: int = 0
             player_items, coins, potion_value = buy_items(
                 player_items, POTION_ITEMS, coins, potion_value, "vida a mais"
             )
@@ -108,7 +116,7 @@ def market(
 
         show_items(REGEN_ITEMS, "vida p/ fase")
 
-        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option: str = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
         option = validate_option(option)
 
         if option == "s":
@@ -129,11 +137,11 @@ def market(
 
         show_items(MAGIC_ITEMS, "ataque extra")
 
-        option = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
+        option: str = input("\nS - sim\nN - não\nDeseja comprar algum item? ")
         option = validate_option(option)
 
         if option == "s":
-            magic_value = 0
+            magic_value: int = 0
             player_items, coins, magic_value = buy_items(
                 player_items, MAGIC_ITEMS, coins, magic_value, "ataque extra"
             )
@@ -147,7 +155,7 @@ def market(
         if len(player_items) > 0:
             show_player_items(player_items)
 
-            option = input("\nS - sim\nN - não\nVender algum item seu? ")
+            option: str = input("\nS - sim\nN - não\nVender algum item seu? ")
             option = validate_option(option)
 
             if option == "s":
@@ -162,7 +170,7 @@ def market(
                     player_life_regen = new_stat_value
         else:
             print("\nVOCÊ NÃO TEM ITENS!\n")
-            option = input("\nS - sim\nN - não\nSair do mercado? ")
+            option: str = input("\nS - sim\nN - não\nSair do mercado? ")
             option = validate_option(option)
 
             if option == "s":
@@ -183,7 +191,7 @@ def market(
 
         print("Sair do mercado!")
 
-        option = input("\nS - sim\nN - não\nQuer mesmo sair? ")
+        option: str = input("\nS - sim\nN - não\nQuer mesmo sair? ")
         option = validate_option(option)
 
         if option == "s":

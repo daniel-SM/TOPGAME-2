@@ -8,24 +8,38 @@ from storage import save_to_storage
 
 
 def battle_manager(
-    saved_games_count,
-    player_name,
-    player_items,
-    player_life_regen,
-    player_life,
-    enemy_life,
-    player_magic,
-    player_attack,
-    enemy_attack,
-    player_defense,
-    enemy_defense,
-    coins,
-    phase,
-):
+    saved_games_count: int,
+    player_name: str,
+    player_items: list[tuple[str, str, int, int, str, int]],
+    player_life_regen: int,
+    player_life: int,
+    enemy_life: int,
+    player_magic: int,
+    player_attack: int,
+    enemy_attack: int,
+    player_defense: int,
+    enemy_defense: int,
+    coins: int,
+    phase: int,
+) -> list[
+    tuple[
+        list[tuple[str, str, int, int, str, int]],  # player_items
+        int,  # coins
+        int,  # player_attack
+        int,  # player_defense
+        int,  # player_magic
+        int,  # player_life
+        int,  # player_life_regen
+        int,  # phase
+        bool,  # game_ended
+        bool,  # increase_enemy_power
+    ]
+]:
+
     clear_screen()
 
     # Definindo a largura dos quadros
-    WIDTH = 40
+    WIDTH: int = 40
 
     print(f"||{'-'*(WIDTH-4)}||")
     print(f"||{f'FASE {phase + 1}':^{WIDTH-4}}||")
@@ -46,9 +60,9 @@ def battle_manager(
     print(f"||{'-'*(WIDTH-4)}||")
     time.sleep(1)
 
-    increase_enemy_power = True
-    game_ended = False
-    action = ""
+    increase_enemy_power: bool = True
+    game_ended: bool = False
+    action: str = ""
     while action != "1":
         print()
         print(f"||{'-'*(WIDTH-4)}||")
@@ -64,7 +78,7 @@ def battle_manager(
 
         if action == "1":
             print("\nComeçar batalha!")
-            option = input("\nS - sim\nN - não\nQuer mesmo começar a luta? ")
+            option: str = input("\nS - sim\nN - não\nQuer mesmo começar a luta? ")
             option = validate_option(option)
             if option == "s":
                 print()
@@ -74,11 +88,13 @@ def battle_manager(
                 print(f"||{' '*(WIDTH-4)}||")
                 print(f"||{'-'*(WIDTH-4)}||")
 
-                player_life,
-                player_magic,
-                coins,
-                phase,
-                increase_enemy_power = fight(
+                (
+                    player_life,
+                    player_magic,
+                    coins,
+                    phase,
+                    increase_enemy_power,
+                ) = fight(
                     player_life,
                     enemy_life,
                     player_attack,
@@ -95,13 +111,15 @@ def battle_manager(
                 clear_screen()
 
         elif action == "2":
-            player_items,
-            coins,
-            player_life,
-            player_attack,
-            player_defense,
-            player_life_regen,
-            player_magic = market(
+            (
+                player_items,
+                coins,
+                player_life,
+                player_attack,
+                player_defense,
+                player_life_regen,
+                player_magic,
+            ) = market(
                 player_items,
                 coins,
                 player_life,
@@ -135,7 +153,7 @@ def battle_manager(
             clear_screen()
 
         elif action == "4":
-            option = input("\nS - sim\nN - não\nSalvar o progresso? ")
+            option: str = input("\nS - sim\nN - não\nSalvar o progresso? ")
             option = validate_option(option)
 
             if option == "s":
@@ -161,7 +179,7 @@ def battle_manager(
             clear_screen()
 
         elif action == "5":
-            option = input("\nS - sim\nN - não\nQuer mesmo sair do jogo? ")
+            option: str = input("\nS - sim\nN - não\nQuer mesmo sair do jogo? ")
             option = validate_option(option)
 
             if option == "s":

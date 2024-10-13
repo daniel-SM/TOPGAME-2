@@ -1,18 +1,19 @@
+# Funcao para salvar os dados do jogo em arquivo
 def save_to_storage(
-    saved_games_count,
-    player_name,
-    phase,
-    player_life,
-    player_life_regen,
-    player_attack,
-    player_defense,
-    player_magic,
-    coins,
-    player_items,
-    enemy_life,
-    enemy_attack,
-    enemy_defense,
-):
+    saved_games_count: int,
+    player_name: str,
+    phase: int,
+    player_life: int,
+    player_life_regen: int,
+    player_attack: int,
+    player_defense: int,
+    player_magic: int,
+    coins: int,
+    player_items: list[tuple[str, str, int, int, str, int]],
+    enemy_life: int,
+    enemy_attack: int,
+    enemy_defense: int,
+) -> None:
     saved_games_count += 1
 
     file = open("./.storage/" + str(saved_games_count), "w")
@@ -33,6 +34,6 @@ def save_to_storage(
     file.close()
 
     # Deixando progresso visível
-    file = open("./.storage/games_count.txt", "w")
+    file = open("./.storage/games_count", "w")
     file.write(str(saved_games_count))
     file.close()
