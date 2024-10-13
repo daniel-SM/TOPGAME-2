@@ -160,7 +160,7 @@ def battle_manager(
                 print("\nSalvando seu progresso...")
                 time.sleep(1)
 
-                save_to_storage(
+                saved_games_count = save_to_storage(
                     saved_games_count,
                     player_name,
                     phase,

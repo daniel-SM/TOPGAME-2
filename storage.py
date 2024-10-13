@@ -13,7 +13,7 @@ def save_to_storage(
     enemy_life: int,
     enemy_attack: int,
     enemy_defense: int,
-) -> None:
+) -> int:
     saved_games_count += 1
 
     file = open("./.storage/" + str(saved_games_count), "w")
@@ -37,3 +37,5 @@ def save_to_storage(
     file = open("./.storage/games_count", "w")
     file.write(str(saved_games_count))
     file.close()
+
+    return saved_games_count
