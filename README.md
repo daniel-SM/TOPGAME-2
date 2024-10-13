@@ -28,7 +28,7 @@ Um simples RPG, feito em python. Sem interfaces apenas sobre o terminal.
 ### Arquivos
 - main.py
     - clear.py
-    - history.py
+    - story.py
     - games.py
         - clear.py
         - option.py

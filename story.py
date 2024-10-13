@@ -4,7 +4,7 @@ from clear import clear_screen  # Importando funcao para limpar o terminal
 
 
 # Imprime a historia inicial do jogo
-def initial_history() -> None:
+def initial_story() -> None:
     # Definindo largura dos quadro exibido
     WIDTH: int = 40
 

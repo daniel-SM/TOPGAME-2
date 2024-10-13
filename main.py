@@ -2,7 +2,7 @@ from random import choice  # Usado para sortear o fortalecimento dos inimigos
 from time import sleep  # Usado para dar intervalos ao imprimir mensagens
 
 from clear import clear_screen  # Importando para limpar tela
-from history import initial_history  # Importando para mostrar a historia inicial
+from story import initial_story  # Importando para mostrar a historia inicial
 from games import search_saved_games  # Importando para buscar os jogos salvos
 from battle import battle_manager  # Importando para gerenciar a batalha
 
@@ -79,7 +79,9 @@ if saved_games_count > 0:
     # Caso queira continuar progresso
     elif option == "2":
         # Funcao para buscar e imprimir informacao dos jogos salvos
-        saved_game_info: (dict[str, str | int] | None) = search_saved_games(saved_games_count)
+        saved_game_info: dict[str, str | int] | None = search_saved_games(
+            saved_games_count
+        )
 
         # Caso nao tenha continuado nenhum progresso
         if saved_game_info == None:
@@ -140,7 +142,7 @@ if start_new_game:
         player_name = input("Nome: ")
 
     # História Inicial do Jogo
-    initial_history()
+    initial_story()
 # Fim do if
 
 # Loop principal do jogo
