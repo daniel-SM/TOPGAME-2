@@ -1,10 +1,10 @@
 from random import choice  # Usado para sortear o fortalecimento dos inimigos
 from time import sleep  # Usado para dar intervalos ao imprimir mensagens
 
-from clear import clear_screen  # Importando para limpar tela
-from story import initial_story  # Importando para mostrar a historia inicial
-from games import search_saved_games  # Importando para buscar os jogos salvos
-from battle import battle_manager  # Importando para gerenciar a batalha
+from utils.clear import clear_screen  # Importando para limpar tela
+from utils.story import initial_story  # Importando para mostrar a historia inicial
+from storage.games import search_saved_games  # Importando para buscar os jogos salvos
+from battle.battle import battle_manager  # Importando para gerenciar a batalha
 
 
 def main():

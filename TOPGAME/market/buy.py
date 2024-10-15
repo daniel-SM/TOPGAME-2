@@ -1,6 +1,7 @@
-import time
+from time import sleep
 
 
+# funcao para realizar a compra de um item de alguma loja
 def buy_items(
     player_items: list[tuple[str, str, int, int, str, int]],
     store_inventory: list[tuple[str, str, int, int]],
@@ -10,7 +11,7 @@ def buy_items(
     item_type: int | None = None,
     is_inventory_item: bool = False,
 ) -> tuple[
-    list[tuple[str, str, int, int, str, int]],  # player_items  
+    list[tuple[str, str, int, int, str, int]],  # player_items
     int,  # coins
     int,  # current_stat_value
 ]:
@@ -83,7 +84,7 @@ def buy_items(
                 print("\nMoedas insuficientes!\n")
                 print("Não é possível comprar novos itens!")
                 print("Saindo do mercado...")
-                time.sleep(1)
+                sleep(1)
                 break
 
     if not item_found:

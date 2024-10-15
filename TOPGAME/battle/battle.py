@@ -1,10 +1,10 @@
-import time
+from time import sleep
 
-from market import market
+from market.market import market
 from fight import fight
-from clear import clear_screen
-from option import validate_option
-from storage import save_to_storage
+from storage.storage import save_to_storage
+from ..utils.clear import clear_screen
+from ..utils.option import validate_option
 
 
 def battle_manager(
@@ -44,7 +44,7 @@ def battle_manager(
     print(f"||{'-'*(WIDTH-4)}||")
     print(f"||{f'FASE {phase + 1}':^{WIDTH-4}}||")
     print(f"||{'-'*(WIDTH-4)}||")
-    time.sleep(1)
+    sleep(1)
 
     print(f"||{'VOCÊ':^{WIDTH-4}}||")
     print(f"|| Vida     {player_life    :>{WIDTH-15}} ||")
@@ -58,7 +58,7 @@ def battle_manager(
     print(f"|| Ataque   {enemy_attack   :>{WIDTH-15}} ||")
     print(f"|| Defesa   {enemy_defense  :>{WIDTH-15}} ||")
     print(f"||{'-'*(WIDTH-4)}||")
-    time.sleep(1)
+    sleep(1)
 
     increase_enemy_power: bool = True
     game_ended: bool = False
@@ -105,7 +105,7 @@ def battle_manager(
                     coins,
                     phase,
                 )
-                time.sleep(2)
+                sleep(2)
             else:
                 action = ""
                 clear_screen()
@@ -128,7 +128,7 @@ def battle_manager(
                 player_life_regen,
                 player_magic,
             )
-            time.sleep(1)
+            sleep(1)
             clear_screen()
 
         elif action == "3":
@@ -147,7 +147,7 @@ def battle_manager(
             print(f"|| Ataque   {enemy_attack   :>{WIDTH-15}} ||")
             print(f"|| Defesa   {enemy_defense  :>{WIDTH-15}} ||")
             print(f"||{'-'*(WIDTH-4)}||")
-            time.sleep(1)
+            sleep(1)
 
             input("\nEnter para continuar... ")
             clear_screen()
@@ -158,7 +158,7 @@ def battle_manager(
 
             if option == "s":
                 print("\nSalvando seu progresso...")
-                time.sleep(1)
+                sleep(1)
 
                 saved_games_count = save_to_storage(
                     saved_games_count,
@@ -176,6 +176,9 @@ def battle_manager(
                     enemy_defense,
                 )
 
+            print("\nProgresso salvo com sucesso!\n")
+            sleep(1)
+
             clear_screen()
 
         elif action == "5":
@@ -191,7 +194,7 @@ def battle_manager(
                 print(f"||{'VOCÊ SAIU DO JOGO!':^{WIDTH-4}}||")
                 print(f"||{' '*(WIDTH-4)}||")
                 print(f"||{'-'*(WIDTH-4)}||")
-                time.sleep(1)
+                sleep(1)
 
                 game_ended = True
                 return (
@@ -209,7 +212,7 @@ def battle_manager(
 
         else:
             print("\nInválido!")
-            time.sleep(1)
+            sleep(1)
             clear_screen()
 
     return (

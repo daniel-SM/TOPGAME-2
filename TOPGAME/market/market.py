@@ -1,7 +1,7 @@
 import time
 
-from clear import clear_screen
-from option import validate_option
+from ..utils.clear import clear_screen
+from ..utils.option import validate_option
 from show_items import show_items
 from show_player_items import show_player_items
 from buy import buy_items
@@ -28,7 +28,7 @@ def market(
 ]:
     clear_screen()
 
-    # Definindo o tamanho da largura do quadro
+    # definindo o tamanho da largura do quadro
     WIDTH: int = 40
 
     print()
