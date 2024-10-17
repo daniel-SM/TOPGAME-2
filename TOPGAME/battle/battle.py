@@ -1,10 +1,10 @@
 from time import sleep
 
+from .fight import fight
 from market.market import market
-from fight import fight
 from storage.storage import save_to_storage
-from ..utils.clear import clear_screen
-from ..utils.option import validate_option
+from utils.clear import clear_screen
+from utils.option import validate_option
 
 
 def battle_manager(

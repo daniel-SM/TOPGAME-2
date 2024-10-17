@@ -1,5 +1,5 @@
-from ..utils.clear import clear_screen  # Importando para limpar a tela
-from ..utils.option import validate_option  # Importando para validar opcao digitada
+from utils.clear import clear_screen  # Importando para limpar a tela
+from utils.option import validate_option  # Importando para validar opcao digitada
 
 
 # Funcao para obter os jogos salvos

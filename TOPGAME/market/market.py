@@ -1,12 +1,12 @@
 import time
 
-from ..utils.clear import clear_screen
-from ..utils.option import validate_option
-from show_items import show_items
-from show_player_items import show_player_items
-from buy import buy_items
-from sell import sell_items
-from items import ATTACK_ITEMS, DEFENSE_ITEMS, POTION_ITEMS, REGEN_ITEMS, MAGIC_ITEMS
+from utils.clear import clear_screen
+from utils.option import validate_option
+from .show_items import show_items
+from .show_player_items import show_player_items
+from .buy import buy_items
+from .sell import sell_items
+from .items import ATTACK_ITEMS, DEFENSE_ITEMS, POTION_ITEMS, REGEN_ITEMS, MAGIC_ITEMS
 
 
 def market(

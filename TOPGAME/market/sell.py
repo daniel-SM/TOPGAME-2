@@ -1,4 +1,4 @@
-from update_player_stats import update_stat_value
+from .update_player_stats import update_stat_value
 
 
 def sell_items(

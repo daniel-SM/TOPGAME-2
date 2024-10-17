@@ -1,6 +1,6 @@
 import time  # Usado para gerar intervalos entre as mensagens
 
-from clear import clear_screen  # Importando funcao para limpar o terminal
+from .clear import clear_screen  # Importando funcao para limpar o terminal
 
 
 # Imprime a historia inicial do jogo

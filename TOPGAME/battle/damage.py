@@ -1,6 +1,6 @@
 import random
 
-from ..utils.suspense import make_suspense
+from utils.suspense import make_suspense
 
 
 def calc_damage(

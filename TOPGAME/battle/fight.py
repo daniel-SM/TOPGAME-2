@@ -1,9 +1,9 @@
 import time
 import random
 
-from damage import calc_damage
-from ..utils.option import validate_option
-from ..utils.suspense import make_suspense
+from .damage import calc_damage
+from utils.option import validate_option
+from utils.suspense import make_suspense
 
 
 def fight(
