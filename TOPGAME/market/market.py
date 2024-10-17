@@ -1,6 +1,6 @@
 import time
 
-from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
+from constants import FRAME_WIDTH  # Importando constante com tamanho dos quadros
 from utils.clear import clear_screen
 from utils.option import validate_option
 from .show_items import show_items

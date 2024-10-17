@@ -1,4 +1,4 @@
-from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
+from constants import FRAME_WIDTH  # Importando constante com tamanho dos quadros
 
 
 # funcao que exibe os itens do inventario da loja

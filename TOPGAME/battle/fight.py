@@ -1,7 +1,7 @@
 import time
 import random
 
-from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
+from constants import FRAME_WIDTH  # Importando constante com tamanho dos quadros
 from .damage import calc_damage
 from utils.option import validate_option
 from utils.suspense import make_suspense

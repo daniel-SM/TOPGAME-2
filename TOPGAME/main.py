@@ -1,7 +1,7 @@
 from random import choice  # Usado para sortear o fortalecimento dos inimigos
 from time import sleep  # Usado para dar intervalos ao imprimir mensagens
 
-from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
+from constants import FRAME_WIDTH  # Importando constante com tamanho dos quadros
 from utils.clear import clear_screen  # Importando para limpar tela
 from utils.story import initial_story  # Importando para mostrar a historia inicial
 from storage.games import search_saved_games  # Importando para buscar os jogos salvos

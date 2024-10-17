@@ -1,6 +1,6 @@
 import time  # Usado para gerar intervalos entre as mensagens
 
-from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
+from constants import FRAME_WIDTH  # Importando constante com tamanho dos quadros
 from .clear import clear_screen  # Importando funcao para limpar o terminal
 
 

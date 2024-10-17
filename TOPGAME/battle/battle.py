@@ -1,6 +1,6 @@
 from time import sleep
 
-from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
+from constants import FRAME_WIDTH  # Importando constante com tamanho dos quadros
 from .fight import fight
 from market.market import market
 from storage.storage import save_to_storage

@@ -1,4 +1,4 @@
-from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
+from constants import FRAME_WIDTH  # Importando constante com tamanho dos quadros
 from utils.clear import clear_screen  # Importando para limpar a tela
 from utils.option import validate_option  # Importando para validar opcao digitada
 
