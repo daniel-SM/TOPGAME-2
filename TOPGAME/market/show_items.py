@@ -1,3 +1,6 @@
+from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
+
+
 # funcao que exibe os itens do inventario da loja
 def show_items(
     store_inventory: list[
@@ -10,17 +13,15 @@ def show_items(
     ],
     item_description: str,  # descricao do tipo de atributo, como "dano", "defesa"
 ) -> None:
-    # definindo o tamanho da largura do quadro
-    WIDTH = 40
 
     # loop para exibir cada item no inventario da loja
     for item in store_inventory:
         # exibindo as informacoes no formato de tabela
         print()
-        print(f"||{'-'*(WIDTH-4)}||")
-        print(f"|| Código: {item[0] :>{WIDTH-14}} ||")
-        print(f"|| Tipo:   {item[1] :>{WIDTH-14}} ||")
-        print(f"|| Poder:  {f'{item[2]} de {item_description}' :>{WIDTH-14}} ||")
-        print(f"|| Valor:  {item[3] :>{WIDTH-14}} ||")
-        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
+        print(f"|| Código: {item[0] :>{FRAME_WIDTH-14}} ||")
+        print(f"|| Tipo:   {item[1] :>{FRAME_WIDTH-14}} ||")
+        print(f"|| Poder:  {f'{item[2]} de {item_description}' :>{FRAME_WIDTH-14}} ||")
+        print(f"|| Valor:  {item[3] :>{FRAME_WIDTH-14}} ||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
         input("\nEnter para continuar... ")

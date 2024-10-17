@@ -1,5 +1,6 @@
 from time import sleep
 
+from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
 from .fight import fight
 from market.market import market
 from storage.storage import save_to_storage
@@ -38,26 +39,23 @@ def battle_manager(
 
     clear_screen()
 
-    # Definindo a largura dos quadros
-    WIDTH: int = 40
-
-    print(f"||{'-'*(WIDTH-4)}||")
-    print(f"||{f'FASE {phase + 1}':^{WIDTH-4}}||")
-    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{'-'*(FRAME_WIDTH-4)}||")
+    print(f"||{f'FASE {phase + 1}':^{FRAME_WIDTH-4}}||")
+    print(f"||{'-'*(FRAME_WIDTH-4)}||")
     sleep(1)
 
-    print(f"||{'VOCÊ':^{WIDTH-4}}||")
-    print(f"|| Vida     {player_life    :>{WIDTH-15}} ||")
-    print(f"|| Ataque   {player_attack  :>{WIDTH-15}} ||")
-    print(f"|| Defesa   {player_defense :>{WIDTH-15}} ||")
-    print(f"|| Magia    {player_magic   :>{WIDTH-15}} ||")
-    print(f"|| Moedas   {coins          :>{WIDTH-15}} ||")
-    print(f"||{'-'*(WIDTH-4)}||")
-    print(f"||{'INIMIGO':^{WIDTH-4}}||")
-    print(f"|| Vida     {enemy_life     :>{WIDTH-15}} ||")
-    print(f"|| Ataque   {enemy_attack   :>{WIDTH-15}} ||")
-    print(f"|| Defesa   {enemy_defense  :>{WIDTH-15}} ||")
-    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{'VOCÊ':^{FRAME_WIDTH-4}}||")
+    print(f"|| Vida     {player_life    :>{FRAME_WIDTH-15}} ||")
+    print(f"|| Ataque   {player_attack  :>{FRAME_WIDTH-15}} ||")
+    print(f"|| Defesa   {player_defense :>{FRAME_WIDTH-15}} ||")
+    print(f"|| Magia    {player_magic   :>{FRAME_WIDTH-15}} ||")
+    print(f"|| Moedas   {coins          :>{FRAME_WIDTH-15}} ||")
+    print(f"||{'-'*(FRAME_WIDTH-4)}||")
+    print(f"||{'INIMIGO':^{FRAME_WIDTH-4}}||")
+    print(f"|| Vida     {enemy_life     :>{FRAME_WIDTH-15}} ||")
+    print(f"|| Ataque   {enemy_attack   :>{FRAME_WIDTH-15}} ||")
+    print(f"|| Defesa   {enemy_defense  :>{FRAME_WIDTH-15}} ||")
+    print(f"||{'-'*(FRAME_WIDTH-4)}||")
     sleep(1)
 
     increase_enemy_power: bool = True
@@ -65,14 +63,14 @@ def battle_manager(
     action: str = ""
     while action != "1":
         print()
-        print(f"||{'-'*(WIDTH-4)}||")
-        print(f"||{'AÇÕES':^{WIDTH-4}}||")
-        print(f"||{' ' * 10}{'1. Começar Batalha':<{WIDTH-14}}||")
-        print(f"||{' ' * 10}{'2. Ir pro Mercado':<{WIDTH-14}}||")
-        print(f"||{' ' * 10}{'3. Seu Status':<{WIDTH-14}}||")
-        print(f"||{' ' * 10}{'4. Salvar Progresso':<{WIDTH-14}}||")
-        print(f"||{' ' * 10}{'5. Sair do Jogo':<{WIDTH-14}}||")
-        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
+        print(f"||{'AÇÕES':^{FRAME_WIDTH-4}}||")
+        print(f"||{' ' * 10}{'1. Começar Batalha':<{FRAME_WIDTH-14}}||")
+        print(f"||{' ' * 10}{'2. Ir pro Mercado':<{FRAME_WIDTH-14}}||")
+        print(f"||{' ' * 10}{'3. Seu Status':<{FRAME_WIDTH-14}}||")
+        print(f"||{' ' * 10}{'4. Salvar Progresso':<{FRAME_WIDTH-14}}||")
+        print(f"||{' ' * 10}{'5. Sair do Jogo':<{FRAME_WIDTH-14}}||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
         action = input("\nAção: ")
 
@@ -82,11 +80,11 @@ def battle_manager(
             option = validate_option(option)
             if option == "s":
                 print()
-                print(f"||{'-'*(WIDTH-4)}||")
-                print(f"||{' '*(WIDTH-4)}||")
-                print(f"||{'BATALHA':^{WIDTH-4}}||")
-                print(f"||{' '*(WIDTH-4)}||")
-                print(f"||{'-'*(WIDTH-4)}||")
+                print(f"||{'-'*(FRAME_WIDTH-4)}||")
+                print(f"||{' '*(FRAME_WIDTH-4)}||")
+                print(f"||{'BATALHA':^{FRAME_WIDTH-4}}||")
+                print(f"||{' '*(FRAME_WIDTH-4)}||")
+                print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
                 (
                     player_life,
@@ -134,19 +132,19 @@ def battle_manager(
         elif action == "3":
             clear_screen()
 
-            print(f"||{'-'*(WIDTH-4)}||")
-            print(f"||{'VOCÊ':^{WIDTH-4}}||")
-            print(f"|| Vida     {player_life    :>{WIDTH-15}} ||")
-            print(f"|| Ataque   {player_attack  :>{WIDTH-15}} ||")
-            print(f"|| Defesa   {player_defense :>{WIDTH-15}} ||")
-            print(f"|| Magia    {player_magic   :>{WIDTH-15}} ||")
-            print(f"|| Moedas   {coins          :>{WIDTH-15}} ||")
-            print(f"||{'-'*(WIDTH-4)}||")
-            print(f"||{'INIMIGO':^{WIDTH-4}}||")
-            print(f"|| Vida     {enemy_life     :>{WIDTH-15}} ||")
-            print(f"|| Ataque   {enemy_attack   :>{WIDTH-15}} ||")
-            print(f"|| Defesa   {enemy_defense  :>{WIDTH-15}} ||")
-            print(f"||{'-'*(WIDTH-4)}||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
+            print(f"||{'VOCÊ':^{FRAME_WIDTH-4}}||")
+            print(f"|| Vida     {player_life    :>{FRAME_WIDTH-15}} ||")
+            print(f"|| Ataque   {player_attack  :>{FRAME_WIDTH-15}} ||")
+            print(f"|| Defesa   {player_defense :>{FRAME_WIDTH-15}} ||")
+            print(f"|| Magia    {player_magic   :>{FRAME_WIDTH-15}} ||")
+            print(f"|| Moedas   {coins          :>{FRAME_WIDTH-15}} ||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
+            print(f"||{'INIMIGO':^{FRAME_WIDTH-4}}||")
+            print(f"|| Vida     {enemy_life     :>{FRAME_WIDTH-15}} ||")
+            print(f"|| Ataque   {enemy_attack   :>{FRAME_WIDTH-15}} ||")
+            print(f"|| Defesa   {enemy_defense  :>{FRAME_WIDTH-15}} ||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
             sleep(1)
 
             input("\nEnter para continuar... ")
@@ -189,11 +187,11 @@ def battle_manager(
                 print("\nSaindo do jogo...")
 
                 print()
-                print(f"||{'-'*(WIDTH-4)}||")
-                print(f"||{' '*(WIDTH-4)}||")
-                print(f"||{'VOCÊ SAIU DO JOGO!':^{WIDTH-4}}||")
-                print(f"||{' '*(WIDTH-4)}||")
-                print(f"||{'-'*(WIDTH-4)}||")
+                print(f"||{'-'*(FRAME_WIDTH-4)}||")
+                print(f"||{' '*(FRAME_WIDTH-4)}||")
+                print(f"||{'VOCÊ SAIU DO JOGO!':^{FRAME_WIDTH-4}}||")
+                print(f"||{' '*(FRAME_WIDTH-4)}||")
+                print(f"||{'-'*(FRAME_WIDTH-4)}||")
                 sleep(1)
 
                 game_ended = True

@@ -1,6 +1,7 @@
 import time
 import random
 
+from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
 from .damage import calc_damage
 from utils.option import validate_option
 from utils.suspense import make_suspense
@@ -23,17 +24,15 @@ def fight(
     int,  # phase
     bool,  # increase_enemy_power
 ]:
-    # Definindo o tamanho da largura do quadro
-    WIDTH: int = 40
 
     if (player_attack - enemy_defense <= 0) and (enemy_attack - player_defense <= 0):
         print()
-        print(f"||{'-'*(WIDTH-4)}||")
-        print(f"||{'EMPATE':^{WIDTH-4}}||")
-        print(f"||{'-'*(WIDTH-4)}||")
-        print(f"||{'Seu inimigo e você':^{WIDTH-4}}||")
-        print(f"||{'tem poder equivalentes!':^{WIDTH-4}}||")
-        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
+        print(f"||{'EMPATE':^{FRAME_WIDTH-4}}||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
+        print(f"||{'Seu inimigo e você':^{FRAME_WIDTH-4}}||")
+        print(f"||{'tem poder equivalentes!':^{FRAME_WIDTH-4}}||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
         time.sleep(1)
         phase -= 1
         return player_life, player_magic, coins, phase, False
@@ -71,15 +70,15 @@ def fight(
                 print("\nVocê novamente!")
 
             print()
-            print(f"||{'-'*(WIDTH-4)}||")
-            print(f"||{'SUA VEZ':^{WIDTH-4}}||")
-            print(f"||{'-'*(WIDTH-4)}||")
-            print(f"||{'AÇÕES':^{WIDTH-4}}||")
-            print(f"||{' ' * 10}{'1. Atacar':<{WIDTH-14}}||")
-            print(f"||{' ' * 10}{'2. Usar Magia':<{WIDTH-14}}||")
-            print(f"||{' ' * 10}{'3. Defender':<{WIDTH-14}}||")
-            print(f"||{' ' * 10}{'4. Fugir':<{WIDTH-14}}||")
-            print(f"||{'-'*(WIDTH-4)}||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
+            print(f"||{'SUA VEZ':^{FRAME_WIDTH-4}}||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
+            print(f"||{'AÇÕES':^{FRAME_WIDTH-4}}||")
+            print(f"||{' ' * 10}{'1. Atacar':<{FRAME_WIDTH-14}}||")
+            print(f"||{' ' * 10}{'2. Usar Magia':<{FRAME_WIDTH-14}}||")
+            print(f"||{' ' * 10}{'3. Defender':<{FRAME_WIDTH-14}}||")
+            print(f"||{' ' * 10}{'4. Fugir':<{FRAME_WIDTH-14}}||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
             action: str = input("\nAção: ")
 
@@ -113,20 +112,20 @@ def fight(
                     phase -= 1
 
                     print()
-                    print(f"||{'-'*(WIDTH-4)}||")
-                    print(f"||{'FUGIU':^{WIDTH-4}}||")
-                    print(f"||{'-'*(WIDTH-4)}||")
-                    print(f"||{'Você fugiu da batalha!':^{WIDTH-4}}||")
-                    print(f"||{'Você perdeu 100 moedas!':^{WIDTH-4}}||")
-                    print(f"||{'-'*(WIDTH-4)}||")
+                    print(f"||{'-'*(FRAME_WIDTH-4)}||")
+                    print(f"||{'FUGIU':^{FRAME_WIDTH-4}}||")
+                    print(f"||{'-'*(FRAME_WIDTH-4)}||")
+                    print(f"||{'Você fugiu da batalha!':^{FRAME_WIDTH-4}}||")
+                    print(f"||{'Você perdeu 100 moedas!':^{FRAME_WIDTH-4}}||")
+                    print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
                     if coins > 100:
                         coins -= 100
                     else:
                         coins = 0
 
-                    print(f"||{f'Você tem {coins} moedas':^{WIDTH-4}}||")
-                    print(f"||{'-'*(WIDTH-4)}||")
+                    print(f"||{f'Você tem {coins} moedas':^{FRAME_WIDTH-4}}||")
+                    print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
                     return player_life, player_magic, coins, phase, True
 
@@ -141,15 +140,15 @@ def fight(
                 print("\nVocê novamente!")
 
             print()
-            print(f"||{'-'*(WIDTH-4)}||")
-            print(f"||{'SUA VEZ':^{WIDTH-4}}||")
-            print(f"||{'-'*(WIDTH-4)}||")
-            print(f"||{'AÇÕES':^{WIDTH-4}}||")
-            print(f"||{' ' * 10}{'1. Atacar':<{WIDTH-14}}||")
-            print(f"||{' ' * 10}{'2. Usar Magia':<{WIDTH-14}}||")
-            print(f"||{' ' * 10}{'3. Defender':<{WIDTH-14}}||")
-            print(f"||{' ' * 10}{'4. Fugir':<{WIDTH-14}}||")
-            print(f"||{'-'*(WIDTH-4)}||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
+            print(f"||{'SUA VEZ':^{FRAME_WIDTH-4}}||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
+            print(f"||{'AÇÕES':^{FRAME_WIDTH-4}}||")
+            print(f"||{' ' * 10}{'1. Atacar':<{FRAME_WIDTH-14}}||")
+            print(f"||{' ' * 10}{'2. Usar Magia':<{FRAME_WIDTH-14}}||")
+            print(f"||{' ' * 10}{'3. Defender':<{FRAME_WIDTH-14}}||")
+            print(f"||{' ' * 10}{'4. Fugir':<{FRAME_WIDTH-14}}||")
+            print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
             action: str = input("\nAção: ")
 
@@ -184,20 +183,20 @@ def fight(
                     phase -= 1
 
                     print()
-                    print(f"||{'-'*(WIDTH-4)}||")
-                    print(f"||{'FUGIU':^{WIDTH-4}}||")
-                    print(f"||{'-'*(WIDTH-4)}||")
-                    print(f"||{'Você fugiu da batalha!':^{WIDTH-4}}||")
-                    print(f"||{'Você perdeu 100 moedas!':^{WIDTH-4}}||")
-                    print(f"||{'-'*(WIDTH-4)}||")
+                    print(f"||{'-'*(FRAME_WIDTH-4)}||")
+                    print(f"||{'FUGIU':^{FRAME_WIDTH-4}}||")
+                    print(f"||{'-'*(FRAME_WIDTH-4)}||")
+                    print(f"||{'Você fugiu da batalha!':^{FRAME_WIDTH-4}}||")
+                    print(f"||{'Você perdeu 100 moedas!':^{FRAME_WIDTH-4}}||")
+                    print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
                     if coins > 100:
                         coins -= 100
                     else:
                         coins = 0
 
-                    print(f"||{f'Você tem {coins} moedas':^{WIDTH-4}}||")
-                    print(f"||{'-'*(WIDTH-4)}||")
+                    print(f"||{f'Você tem {coins} moedas':^{FRAME_WIDTH-4}}||")
+                    print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
                     return player_life, player_magic, coins, phase, True
             if fight_completed == True:

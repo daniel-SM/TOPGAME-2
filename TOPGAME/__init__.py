@@ -1,0 +1,1 @@
+FRAME_WIDTH: int = 40

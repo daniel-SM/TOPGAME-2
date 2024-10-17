@@ -1,3 +1,4 @@
+from TOPGAME import FRAME_WIDTH  # Importando contante com tamanho dos quadros
 from utils.clear import clear_screen  # Importando para limpar a tela
 from utils.option import validate_option  # Importando para validar opcao digitada
 
@@ -9,9 +10,6 @@ def search_saved_games(
     # Limpando a tela
     clear_screen()
 
-    # Definindo a largura do quadro
-    WIDTH: int = 40
-
     # Iniciando contagem com valor 1
     count: int = 1
 
@@ -20,9 +18,9 @@ def search_saved_games(
     saved_games: list[dict[str, str | int]] = []
 
     # Imprimindo a quantidade de jogos salvos
-    print(f"||{'-'*(WIDTH-4)}||")
-    print(f"||{f'Você tem {saved_games_count} jogo(s) salvo(s)!':^{WIDTH-4}}||")
-    print(f"||{'-'*(WIDTH-4)}||")
+    print(f"||{'-'*(FRAME_WIDTH-4)}||")
+    print(f"||{f'Você tem {saved_games_count} jogo(s) salvo(s)!':^{FRAME_WIDTH-4}}||")
+    print(f"||{'-'*(FRAME_WIDTH-4)}||")
     input("\nEnter para continuar... ")
 
     # Loop para ler informacoes dos jogos salvos
@@ -51,19 +49,19 @@ def search_saved_games(
 
         # Imprimindo as informacoes do jogo atual
         print()
-        print(f"||{'-'*(WIDTH-4)}||")
-        print(f"||{f'JOGO {count}':^{WIDTH-4}}||")
-        print(f"||{'-'*(WIDTH-4)}||")
-        print(f"|| Código:       {info['code']    :>{WIDTH-20}} ||")
-        print(f"|| Nome:         {info['name']    :>{WIDTH-20}} ||")
-        print(f"|| Fase:         {info['phase']   :>{WIDTH-20}} ||")
-        print(f"|| Vida:         {info['life']    :>{WIDTH-20}} ||")
-        print(f"|| Ataque:       {info['attack']  :>{WIDTH-20}} ||")
-        print(f"|| Defesa:       {info['defense'] :>{WIDTH-20}} ||")
-        print(f"|| Regeneração:  {info['regen']   :>{WIDTH-20}} ||")
-        print(f"|| Magia:        {info['magic']   :>{WIDTH-20}} ||")
-        print(f"|| Moedas:       {info['coins']   :>{WIDTH-20}} ||")
-        print(f"||{'-'*(WIDTH-4)}||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
+        print(f"||{f'JOGO {count}':^{FRAME_WIDTH-4}}||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
+        print(f"|| Código:       {info['code']    :>{FRAME_WIDTH-20}} ||")
+        print(f"|| Nome:         {info['name']    :>{FRAME_WIDTH-20}} ||")
+        print(f"|| Fase:         {info['phase']   :>{FRAME_WIDTH-20}} ||")
+        print(f"|| Vida:         {info['life']    :>{FRAME_WIDTH-20}} ||")
+        print(f"|| Ataque:       {info['attack']  :>{FRAME_WIDTH-20}} ||")
+        print(f"|| Defesa:       {info['defense'] :>{FRAME_WIDTH-20}} ||")
+        print(f"|| Regeneração:  {info['regen']   :>{FRAME_WIDTH-20}} ||")
+        print(f"|| Magia:        {info['magic']   :>{FRAME_WIDTH-20}} ||")
+        print(f"|| Moedas:       {info['coins']   :>{FRAME_WIDTH-20}} ||")
+        print(f"||{'-'*(FRAME_WIDTH-4)}||")
 
         # Adicionar as informacoes na lista de jogos salvos
         saved_games.append(info)
